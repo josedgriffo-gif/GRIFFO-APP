@@ -92,6 +92,7 @@ module.exports = async function(req, res) {
     var withPictures = 0;
     var withLinks = 0;
     var sampleProducts = [];
+    var suffixes = {};
 
     allProducts.forEach(function(p) {
       var cat = p.category || 'Sin categoria';
@@ -110,6 +111,20 @@ module.exports = async function(req, res) {
           pictures_count: p.pictures ? p.pictures.length : 0
         });
       }
+      var code = p.code || '';
+      var dashIdx = code.lastIndexOf('-');
+      var suffix = dashIdx >= 0 ? code.substring(dashIdx) : 'sin-guion';
+      if (!suffixes[suffix]) suffixes[suffix] = { count: 0, examples: [] };
+      suffixes[suffix].count++;
+      if (suffixes[suffix].examples.length < 5) {
+        suffixes[suffix].examples.push({
+          code: p.code,
+          product: p.product || '-',
+          category: p.category || '-',
+          description: p.description || '-',
+          vehicles_count: p.vehicles ? p.vehicles.length : 0
+        });
+      }
     });
 
     results.tests.products = {
@@ -118,6 +133,8 @@ module.exports = async function(req, res) {
       with_pictures: withPictures, with_links: withLinks,
       categories: categories, product_types: products, sample_products: sampleProducts
     };
+
+    results.tests.code_suffixes = suffixes;
 
     var searchCode = req.query.code || '';
     if (searchCode) {
