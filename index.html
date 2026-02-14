@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GRIFFO - Diagnóstico API</title>
+<title>GRIFFO - Diagnostico API</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:monospace;background:#111;color:#0f0;padding:20px;font-size:14px}
@@ -56,8 +56,8 @@ if(t.auth){var ok=t.auth.status==='OK';
 h+='<div class="test"><h3>'+(ok?'OK':'ERROR')+' TEST 2: AUTENTICACION</h3>';
 h+='<p class="'+(ok?'ok':'fail')+'">'+t.auth.status+'</p>';
 if(t.auth.token_first_10)h+='<p>Token: '+t.auth.token_first_10+'</p>';
-if(t.auth.httpCode)h+='<p class="fail">HTTP '+t.auth.httpCode+'</p>';
-h+='</div>';}
+if(t.auth.httpCode)h+='<p class="fail">HTTP '+t.auth.httpCode+'</p></div>';
+else h+='</div>';}
 if(t.products){var pok=t.products.total>100;
 h+='<div class="test"><h3>'+(pok?'OK':'ERROR')+' TEST 3: PRODUCTOS GRIFFO</h3>';
 h+='<p>Total: <span class="num">'+t.products.total+'</span> '+(pok?'CORRECTO':'INCORRECTO')+'</p>';
@@ -72,6 +72,16 @@ Object.entries(t.products.product_types).sort(function(a,b){return b[1]-a[1]}).f
 if(t.products.sample_products){h+='<h4 style="color:#ff0;margin-top:12px">Muestra:</h4><table><tr><th>Codigo</th><th>Desc</th><th>Cat</th><th>Vehic</th><th>Fotos</th></tr>';
 t.products.sample_products.forEach(function(p){h+='<tr><td class="num">'+p.code+'</td><td>'+(p.description||'-')+'</td><td>'+(p.category||'-')+'</td><td class="num">'+p.vehicles_count+'</td><td class="num">'+p.pictures_count+'</td></tr>';});h+='</table>';}
 h+='</div>';}
+if(t.code_suffixes){
+h+='<div class="test"><h3>TEST TERMINACIONES DE CODIGO</h3>';
+h+='<p style="color:#888">Agrupados por terminacion (despues del ultimo guion)</p>';
+h+='<table><tr><th>Terminacion</th><th>Cant</th><th>Ejemplos (codigo = producto (categoria) [vehiculos])</th></tr>';
+Object.entries(t.code_suffixes).sort(function(a,b){return b[1].count-a[1].count}).forEach(function(e){
+var suf=e[0],info=e[1];
+var exList=info.examples.map(function(ex){return ex.code+' = '+ex.product+' ('+ex.category+') ['+ex.vehicles_count+' vehic]';}).join('<br>');
+h+='<tr><td class="num" style="font-size:16px">'+suf+'</td><td class="num">'+info.count+'</td><td style="font-size:11px">'+exList+'</td></tr>';
+});
+h+='</table></div>';}
 if(t.code_search){h+='<div class="test"><h3>TEST 4: BUSQUEDA CODIGO "'+t.code_search.searched+'"</h3>';
 h+='<p>Resultados: <span class="num">'+t.code_search.found+'</span></p>';
 if(t.code_search.matches)t.code_search.matches.forEach(function(m){
@@ -90,7 +100,6 @@ h+='<p>Vehiculo: <span class="num">'+(v.brand||'?')+' '+(v.model||'?')+' '+(v.ve
 else h+='<p class="'+(plok?'warn':'fail')+'">'+(t.plate_search.message||JSON.stringify(t.plate_search.result))+'</p>';
 h+='</div>';}
 if(data.error)h+='<div class="test"><h3 class="fail">ERROR</h3><pre>'+data.error+'</pre></div>';
-h+='<div class="test"><h3>JSON COMPLETO</h3><pre>'+JSON.stringify(data,null,2)+'</pre></div>';
 document.getElementById('out').innerHTML=h;}
 </script>
 </body>
