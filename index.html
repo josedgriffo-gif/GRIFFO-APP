@@ -112,6 +112,16 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;d
 .adm-row-l{color:var(--t);font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:8px}.adm-row-v{color:var(--p);font-weight:800;flex-shrink:0}
 .adm-exp{margin:0 20px 20px;padding:14px;border:none;border-radius:12px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;background:#27ae60;color:#fff;width:calc(100% - 40px)}
 .adm-ld{text-align:center;padding:40px 20px;color:var(--m);font-size:14px}
+
+/* === LIGHTBOX (zoom imágenes) === */
+.lb{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.92);z-index:9999;display:none;align-items:center;justify-content:center;flex-direction:column}
+.lb.on{display:flex}
+.lb-img{max-width:92%;max-height:80vh;object-fit:contain;border-radius:8px}
+.lb-close{position:absolute;top:16px;right:16px;width:40px;height:40px;background:rgba(255,255,255,.15);border:none;border-radius:50%;color:#fff;font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;background:rgba(255,255,255,.15);border:none;border-radius:50%;color:#fff;font-size:22px;cursor:pointer}
+.lb-prev{left:12px}.lb-next{right:12px}
+.lb-counter{color:rgba(255,255,255,.6);font-size:12px;margin-top:12px;font-weight:600}
+.d-gallery img{cursor:pointer}
 </style>
 </head>
 <body>
@@ -239,6 +249,15 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;d
 
 </div>
 
+<!-- LIGHTBOX (zoom imágenes) -->
+<div id="lightbox" class="lb" onclick="closeLB(event)">
+<button class="lb-close" onclick="closeLB(event)">&#10005;</button>
+<button class="lb-nav lb-prev" onclick="navLB(-1,event)">&#8249;</button>
+<img class="lb-img" id="lb-img">
+<button class="lb-nav lb-next" onclick="navLB(1,event)">&#8250;</button>
+<div class="lb-counter" id="lb-counter"></div>
+</div>
+
 <!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
@@ -251,6 +270,27 @@ var P=null,RP=[],BS='';
 
 /* === VARIABLES AUTH (nuevas) === */
 var pendingGo=null,currentUser=null;
+
+/* === LIGHTBOX === */
+var lbImgs=[],lbIdx=0;
+function openLB(idx){
+lbIdx=idx;
+document.getElementById('lb-img').src=lbImgs[lbIdx];
+document.getElementById('lb-counter').textContent=(lbIdx+1)+' / '+lbImgs.length;
+document.getElementById('lightbox').classList.add('on');
+document.body.style.overflow='hidden';
+}
+function closeLB(e){
+if(e&&(e.target.classList.contains('lb-img')||e.target.classList.contains('lb-nav')||e.target.classList.contains('lb-prev')||e.target.classList.contains('lb-next')))return;
+document.getElementById('lightbox').classList.remove('on');
+document.body.style.overflow='';
+}
+function navLB(dir,e){
+if(e){e.stopPropagation();e.preventDefault();}
+lbIdx=(lbIdx+dir+lbImgs.length)%lbImgs.length;
+document.getElementById('lb-img').src=lbImgs[lbIdx];
+document.getElementById('lb-counter').textContent=(lbIdx+1)+' / '+lbImgs.length;
+}
 
 /* === LOGOS === */
 function setLogos(){var s='/griffologoblancotransparente.png';['logo-main','logo-plate','logo-vehi','logo-code','logo-kw','logo-det','logo-login','logo-reg','logo-adm'].forEach(function(id){var el=document.getElementById(id);if(el)el.src=s;});}
@@ -573,9 +613,21 @@ var p=RP[i];if(!p)return;
 track('product_view',{code:p.code||'',product:p.product||'',category:p.category||''});
 var gal=document.getElementById('det-gallery');
 var body=document.getElementById('det-body');
+
+/* === GALERÍA CON LIGHTBOX === */
 var gh='';
-if(p.pictures&&p.pictures.length>0){p.pictures.forEach(function(pic){var u=pic.image_url||pic.url||'';if(u)gh+='<img src="'+u+'" onerror="this.style.display=\'none\'">';});}
+lbImgs=[];
+if(p.pictures&&p.pictures.length>0){
+p.pictures.forEach(function(pic,idx){
+var u=pic.image_url||pic.url||'';
+if(u){
+lbImgs.push(u);
+gh+='<img src="'+u+'" onclick="openLB('+(lbImgs.length-1)+')" onerror="this.style.display=\'none\'">';
+}
+});
+}
 gal.innerHTML=gh;
+
 var h='<div class="d-code">'+(p.code||'')+'</div>';
 h+='<div class="d-prod">'+(p.product||'')+'</div>';
 h+='<div class="d-desc">'+(p.description||'')+'</div>';
