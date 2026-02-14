@@ -101,6 +101,17 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;d
 .usr-name{font-size:12px;font-weight:600;color:var(--p);display:flex;align-items:center;gap:6px}
 .usr-name svg{width:16px;height:16px;stroke:var(--p);fill:none;stroke-width:2}
 .usr-out{font-size:11px;color:var(--m);cursor:pointer;font-weight:600;background:none;border:none;font-family:inherit;text-decoration:underline}
+.adm-btn{display:none;margin:8px 20px 0;padding:12px;background:linear-gradient(135deg,#1a1a2e,#16213e);color:#00ADD0;border:none;border-radius:12px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;text-align:center;letter-spacing:1px}
+.adm-btn.on{display:block}
+.adm-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 20px 16px}
+.adm-c{background:var(--c);border-radius:12px;padding:14px;box-shadow:0 2px 8px rgba(0,84,159,.06)}
+.adm-c-n{font-size:28px;font-weight:900;color:var(--p)}.adm-c-l{font-size:10px;font-weight:700;color:var(--m);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.adm-c.wide{grid-column:span 2}
+.adm-sec{padding:0 20px 16px}.adm-sec-t{font-size:13px;font-weight:800;color:var(--t);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.adm-row{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--c);border-radius:8px;margin-bottom:6px;font-size:12px}
+.adm-row-l{color:var(--t);font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:8px}.adm-row-v{color:var(--p);font-weight:800;flex-shrink:0}
+.adm-exp{margin:0 20px 20px;padding:14px;border:none;border-radius:12px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;background:#27ae60;color:#fff;width:calc(100% - 40px)}
+.adm-ld{text-align:center;padding:40px 20px;color:var(--m);font-size:14px}
 </style>
 </head>
 <body>
@@ -115,6 +126,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;d
 <div class="sub">Buscador de productos</div>
 </div></div>
 <div id="usr-home" class="usr-bar"><span class="usr-name"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg><span id="usr-display"></span></span><button class="usr-out" onclick="logout()">Salir</button></div>
+<button id="adm-home" class="adm-btn" onclick="go('admin')">&#9881; Panel Administrador</button>
 <div class="ow"><div class="ol">&#191;C&#243;mo quer&#233;s buscar?</div>
 <div class="opts">
 <button class="ob" onclick="go('plate')"><div class="oi"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#00549F" stroke-width="1.6"><rect x="2" y="6" width="20" height="12" rx="3"/><text x="12" y="15" text-anchor="middle" font-size="6.5" font-weight="700" fill="#00549F" stroke="none" font-family="monospace">AB 123</text></svg></div><div><div class="ot">Por Patente</div><div class="od">Ingres&#225; la patente del veh&#237;culo</div></div></button>
@@ -217,6 +229,14 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;d
 <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar</div></div><div class="bl"></div>
 </div>
 
+<!-- ===== ADMIN PANEL ===== -->
+<div id="s-admin" class="scr">
+<div class="hdr"><div class="ov o1"></div><div class="ov o2"></div><button class="bk" onclick="go('home')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button><div class="hdr-info"><img class="logo-s" id="logo-adm" alt="Griffo"><div class="slo-s">Impulsamos Soluciones</div></div></div>
+<div class="sa"><div class="st">Panel Administrador</div></div>
+<div id="adm-content"><div class="adm-ld">Cargando datos...</div></div>
+<div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar</div></div><div class="bl"></div>
+</div>
+
 </div>
 
 <!-- Firebase SDK -->
@@ -232,7 +252,7 @@ var P=null,RP=[],BS='',LG='iVBORw0KGgoAAAANSUhEUgAAAZAAAAFPCAQAAADJ3lC9AAAdPElEQ
 var pendingGo=null,currentUser=null;
 
 /* === LOGOS === */
-function setLogos(){var s='data:image/png;base64,'+LG;['logo-main','logo-plate','logo-vehi','logo-code','logo-kw','logo-det','logo-login','logo-reg'].forEach(function(id){var el=document.getElementById(id);if(el)el.src=s;});}
+function setLogos(){var s='data:image/png;base64,'+LG;['logo-main','logo-plate','logo-vehi','logo-code','logo-kw','logo-det','logo-login','logo-reg','logo-adm'].forEach(function(id){var el=document.getElementById(id);if(el)el.src=s;});}
 setLogos();
 
 /* === FIREBASE INIT === */
@@ -245,27 +265,34 @@ appId:"1:710468527470:web:f673ee218ee383b763cd7f"
 
 var db=firebase.firestore();
 
+var ADMIN_EMAIL='josedgriffo@gmail.com';
+
 firebase.auth().onAuthStateChanged(function(user){
 currentUser=user;
 var bar=document.getElementById('usr-home');
 var name=document.getElementById('usr-display');
+var adm=document.getElementById('adm-home');
 if(user){
 bar.classList.add('on');
 name.textContent=user.displayName||user.email;
+if(user.email===ADMIN_EMAIL)adm.classList.add('on');else adm.classList.remove('on');
 if(pendingGo){var dest=pendingGo;pendingGo=null;go(dest);}
 }else{
 bar.classList.remove('on');
 name.textContent='';
+adm.classList.remove('on');
 }
 });
 
 /* === NAVEGACIÓN (modificado: agrega login diferido) === */
 function go(s){
 if(['plate','vehicle','code','keyword'].indexOf(s)>=0&&!currentUser){pendingGo=s;s='login';}
+if(s==='admin'&&(!currentUser||currentUser.email!==ADMIN_EMAIL)){go('home');return;}
 document.querySelectorAll('.scr').forEach(function(e){e.classList.remove('on')});
 document.getElementById('s-'+s).classList.add('on');
 window.scrollTo(0,0);
-if(s!=='home'&&s!=='detail'&&s!=='login'&&s!=='register'&&!P)loadP();
+if(s==='admin')loadAdmin();
+if(s!=='home'&&s!=='detail'&&s!=='login'&&s!=='register'&&s!=='admin'&&!P)loadP();
 }
 
 function goBack(){go(BS||'home');}
@@ -346,6 +373,103 @@ function trackML(code,product,link){
 var c=decodeURIComponent(code),pr=decodeURIComponent(product),l=decodeURIComponent(link);
 track('mercadolibre_click',{code:c,product:pr,link:l});
 window.open(l,'_blank');
+}
+
+var allAnalytics=[];
+async function loadAdmin(){
+var cont=document.getElementById('adm-content');
+cont.innerHTML='<div class="adm-ld">Cargando datos...</div>';
+try{
+var snap=await db.collection('analytics').get();
+allAnalytics=[];
+snap.forEach(function(doc){allAnalytics.push(doc.data());});
+renderAdmin();
+}catch(e){cont.innerHTML='<div class="adm-ld">Error al cargar: '+e.message+'</div>';}
+}
+
+function renderAdmin(){
+var d=allAnalytics;
+var searches=d.filter(function(r){return r.event==='search';});
+var found=searches.filter(function(r){return r.results>0;});
+var notFound=searches.filter(function(r){return r.results===0;});
+var views=d.filter(function(r){return r.event==='product_view';});
+var wa=d.filter(function(r){return r.event==='whatsapp_click';});
+var ml=d.filter(function(r){return r.event==='mercadolibre_click';});
+var users={};d.forEach(function(r){if(r.userEmail)users[r.userEmail]={name:r.userName||r.userEmail,email:r.userEmail};});
+var h='';
+h+='<div class="adm-cards">';
+h+='<div class="adm-c"><div class="adm-c-n">'+searches.length+'</div><div class="adm-c-l">B\u00fasquedas</div></div>';
+h+='<div class="adm-c"><div class="adm-c-n">'+found.length+'</div><div class="adm-c-l">Con resultado</div></div>';
+h+='<div class="adm-c"><div class="adm-c-n">'+notFound.length+'</div><div class="adm-c-l">Sin resultado</div></div>';
+h+='<div class="adm-c"><div class="adm-c-n">'+views.length+'</div><div class="adm-c-l">Productos vistos</div></div>';
+h+='<div class="adm-c"><div class="adm-c-n">'+wa.length+'</div><div class="adm-c-l">WhatsApp enviados</div></div>';
+h+='<div class="adm-c"><div class="adm-c-n">'+ml.length+'</div><div class="adm-c-l">Clics MercadoLibre</div></div>';
+h+='<div class="adm-c"><div class="adm-c-n">'+Object.keys(users).length+'</div><div class="adm-c-l">Usuarios activos</div></div>';
+h+='<div class="adm-c"><div class="adm-c-n">'+d.length+'</div><div class="adm-c-l">Eventos totales</div></div>';
+h+='</div>';
+var topSearch=countBy(searches,'query');
+if(topSearch.length){
+h+='<div class="adm-sec"><div class="adm-sec-t">Top b\u00fasquedas</div>';
+topSearch.slice(0,10).forEach(function(r){h+='<div class="adm-row"><span class="adm-row-l">'+esc(r.key)+'</span><span class="adm-row-v">'+r.count+'</span></div>';});
+h+='</div>';
+}
+if(notFound.length){
+var nfTerms=countBy(notFound,'query');
+h+='<div class="adm-sec"><div class="adm-sec-t">Buscaron y NO encontraron</div>';
+nfTerms.slice(0,10).forEach(function(r){h+='<div class="adm-row"><span class="adm-row-l">'+esc(r.key)+'</span><span class="adm-row-v">'+r.count+'</span></div>';});
+h+='</div>';
+}
+var topProd=countBy(views,'code');
+if(topProd.length){
+h+='<div class="adm-sec"><div class="adm-sec-t">Productos m\u00e1s vistos</div>';
+topProd.slice(0,10).forEach(function(r){h+='<div class="adm-row"><span class="adm-row-l">'+esc(r.key)+'</span><span class="adm-row-v">'+r.count+'</span></div>';});
+h+='</div>';
+}
+var topWA=countBy(wa,'code');
+if(topWA.length){
+h+='<div class="adm-sec"><div class="adm-sec-t">Productos con m\u00e1s WhatsApp</div>';
+topWA.slice(0,10).forEach(function(r){h+='<div class="adm-row"><span class="adm-row-l">'+esc(r.key)+'</span><span class="adm-row-v">'+r.count+'</span></div>';});
+h+='</div>';
+}
+var topML=countBy(ml,'code');
+if(topML.length){
+h+='<div class="adm-sec"><div class="adm-sec-t">Productos con m\u00e1s MercadoLibre</div>';
+topML.slice(0,10).forEach(function(r){h+='<div class="adm-row"><span class="adm-row-l">'+esc(r.key)+'</span><span class="adm-row-v">'+r.count+'</span></div>';});
+h+='</div>';
+}
+var uList=Object.values(users);
+if(uList.length){
+h+='<div class="adm-sec"><div class="adm-sec-t">Usuarios registrados ('+uList.length+')</div>';
+uList.forEach(function(u){h+='<div class="adm-row"><span class="adm-row-l">'+esc(u.name)+'</span><span class="adm-row-v">'+esc(u.email)+'</span></div>';});
+h+='</div>';
+}
+h+='<button class="adm-exp" onclick="exportCSV()">&#11015; Descargar Excel (CSV)</button>';
+document.getElementById('adm-content').innerHTML=h;
+}
+
+function countBy(arr,field){
+var m={};arr.forEach(function(r){var k=r[field]||'(vac\u00edo)';m[k]=(m[k]||0)+1;});
+var a=[];for(var k in m)a.push({key:k,count:m[k]});
+a.sort(function(x,y){return y.count-x.count;});
+return a;
+}
+
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function exportCSV(){
+var rows=[['Fecha','Evento','Usuario','Email','Tipo B\u00fasqueda','Query','Producto','C\u00f3digo','Resultados','Link']];
+allAnalytics.forEach(function(r){
+rows.push([
+r.timestamp||'',r.event||'',r.userName||'',r.userEmail||'',
+r.type||'',r.query||'',r.product||'',r.code||'',
+r.results!==undefined?r.results:'',r.link||''
+]);
+});
+var csv=rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"';}).join(',');}).join('\n');
+var blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'});
+var url=URL.createObjectURL(blob);
+var a=document.createElement('a');a.href=url;a.download='griffo-analytics-'+new Date().toISOString().slice(0,10)+'.csv';
+a.click();URL.revokeObjectURL(url);
 }
 
 /* === PRODUCTOS Y BÚSQUEDAS (sin cambios) === */
