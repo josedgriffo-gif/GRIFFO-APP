@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>GRIFFO APP</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@4.logo-s{width:120px00;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--p:#00549F;--a:#00ADD0;--d:#005B82;--bg:#F0F4F8;--c:#FFF;--t:#0D1B2A;--m:#4A6175}
@@ -63,7 +63,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;d
 .ft-t{font-size:10.5px;color:var(--m);font-weight:500}
 .bl{height:4px;background:linear-gradient(90deg,var(--d),var(--p),var(--a))}
 .d-gallery{display:flex;gap:10px;overflow-x:auto;padding:16px 20px;scroll-snap-type:x mandatory}
-.d-gallery img{height:180px;border-radius:12px;border:1px solid #eee;scroll-snap-align:start;background:#f5f5f5}
+.d-gallery img{height:180px;border-radius:12px;border:1px solid #eee;scroll-snap-align:start;background:#f5f5f5;cursor:pointer}
 .d-body{padding:0 20px 20px}
 .d-code{font-size:24px;font-weight:900;color:var(--p)}
 .d-prod{font-size:15px;font-weight:700;color:var(--t);margin-top:4px}
@@ -85,8 +85,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;d
 .bw2{flex:1;padding:14px;border:none;border-radius:12px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 16px rgba(37,211,102,.3)}
 .bm2{flex:1;padding:14px;border:none;border-radius:12px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;background:#FFE600;color:#333;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 16px rgba(255,230,0,.3)}
 @keyframes pu{0%,100%{opacity:1}50%{opacity:.5}}
-
-/* === AUTH STYLES === */
 .auth-card{background:var(--c);border-radius:16px;padding:24px;margin:24px 20px;box-shadow:0 2px 16px rgba(0,84,159,.1)}
 .auth-title{font-size:20px;font-weight:800;color:var(--t);margin-bottom:20px;text-align:center}
 .auth-sep{display:flex;align-items:center;gap:12px;margin:18px 0;font-size:11px;color:var(--m);font-weight:700;text-transform:uppercase;letter-spacing:1px}
@@ -112,8 +110,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;d
 .adm-row-l{color:var(--t);font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:8px}.adm-row-v{color:var(--p);font-weight:800;flex-shrink:0}
 .adm-exp{margin:0 20px 20px;padding:14px;border:none;border-radius:12px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;background:#27ae60;color:#fff;width:calc(100% - 40px)}
 .adm-ld{text-align:center;padding:40px 20px;color:var(--m);font-size:14px}
-
-/* === LIGHTBOX (zoom imágenes) === */
+/* === LIGHTBOX === */
 .lb{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.92);z-index:9999;display:none;align-items:center;justify-content:center;flex-direction:column}
 .lb.on{display:flex}
 .lb-img{max-width:92%;max-height:80vh;object-fit:contain;border-radius:8px}
@@ -121,13 +118,10 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;d
 .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;background:rgba(255,255,255,.15);border:none;border-radius:50%;color:#fff;font-size:22px;cursor:pointer}
 .lb-prev{left:12px}.lb-next{right:12px}
 .lb-counter{color:rgba(255,255,255,.6);font-size:12px;margin-top:12px;font-weight:600}
-.d-gallery img{cursor:pointer}
 </style>
 </head>
 <body>
 <div class="app">
-
-<!-- ===== HOME ===== -->
 <div id="s-home" class="scr on">
 <div class="hero"><div class="ov o1"></div><div class="ov o2"></div>
 <div class="hero-c">
@@ -147,8 +141,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;d
 <div class="ft"><div class="sd"><div class="sd-d"></div><span class="sd-t">Cat&#225;logo conectado</span></div><div class="ft-t">GRIFFO SRL &#183; Industria Argentina &#183; griffo.com.ar</div></div>
 <div class="bl"></div>
 </div>
-
-<!-- ===== LOGIN ===== -->
 <div id="s-login" class="scr">
 <div class="hero"><div class="ov o1"></div><div class="ov o2"></div>
 <div class="hero-c">
@@ -170,8 +162,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;d
 <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar</div></div>
 <div class="bl"></div>
 </div>
-
-<!-- ===== REGISTRO ===== -->
 <div id="s-register" class="scr">
 <div class="hero"><div class="ov o1"></div><div class="ov o2"></div>
 <div class="hero-c">
@@ -194,16 +184,12 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;d
 <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar</div></div>
 <div class="bl"></div>
 </div>
-
-<!-- ===== BÚSQUEDA POR PATENTE ===== -->
 <div id="s-plate" class="scr">
 <div class="hdr"><div class="ov o1"></div><div class="ov o2"></div><button class="bk" onclick="go('home')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button><div class="hdr-info"><img class="logo-s" id="logo-plate" alt="Griffo"><div class="slo-s">Impulsamos Soluciones</div></div></div>
 <div class="sa"><div class="st">Buscar por Patente</div><div class="fld"><label>Patente del veh&#237;culo</label><input id="inp-plate" placeholder="Ej: AC923HI" maxlength="10" style="text-transform:uppercase" onkeydown="if(event.key==='Enter')searchPlate()"></div><button class="sb" onclick="searchPlate()">Buscar</button></div>
 <div id="plate-vi"></div><div id="plate-res" class="res"></div>
 <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar</div></div><div class="bl"></div>
 </div>
-
-<!-- ===== BÚSQUEDA POR VEHÍCULO ===== -->
 <div id="s-vehicle" class="scr">
 <div class="hdr"><div class="ov o1"></div><div class="ov o2"></div><button class="bk" onclick="go('home')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button><div class="hdr-info"><img class="logo-s" id="logo-vehi" alt="Griffo"><div class="slo-s">Impulsamos Soluciones</div></div></div>
 <div class="sa"><div class="st">Buscar por Veh&#237;culo</div>
@@ -214,42 +200,31 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;d
 <div id="vehi-res" class="res"></div>
 <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar</div></div><div class="bl"></div>
 </div>
-
-<!-- ===== BÚSQUEDA POR CÓDIGO ===== -->
 <div id="s-code" class="scr">
 <div class="hdr"><div class="ov o1"></div><div class="ov o2"></div><button class="bk" onclick="go('home')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button><div class="hdr-info"><img class="logo-s" id="logo-code" alt="Griffo"><div class="slo-s">Impulsamos Soluciones</div></div></div>
 <div class="sa"><div class="st">Buscar por C&#243;digo</div><div class="fld"><label>C&#243;digo del producto</label><input id="inp-code" placeholder="Ej: 253-32" onkeydown="if(event.key==='Enter')searchCode()"></div><button class="sb" onclick="searchCode()">Buscar</button></div>
 <div id="code-res" class="res"></div>
 <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar</div></div><div class="bl"></div>
 </div>
-
-<!-- ===== BÚSQUEDA POR PALABRA ===== -->
 <div id="s-keyword" class="scr">
 <div class="hdr"><div class="ov o1"></div><div class="ov o2"></div><button class="bk" onclick="go('home')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button><div class="hdr-info"><img class="logo-s" id="logo-kw" alt="Griffo"><div class="slo-s">Impulsamos Soluciones</div></div></div>
-<div class="sa"><div class="st">B&#250;squeda Libre</div><div class="fld"><label>Palabra clave</label><input id="inp-kw" placeholder="Ej: amortiguador, fuelle, direccion..." onkeydown="if(event.key==='Enter')searchKw()"></div><button class="sb" onclick="searchKw()">Buscar</button></div>
+<div class="sa"><div class="st">B&#250;squeda Libre</div><div class="fld"><label>Palabra clave</label><input id="inp-kw" placeholder="Ej: fiat, gol, amortiguador, delantero..." onkeydown="if(event.key==='Enter')searchKw()"></div><button class="sb" onclick="searchKw()">Buscar</button></div>
 <div id="kw-res" class="res"></div>
 <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar</div></div><div class="bl"></div>
 </div>
-
-<!-- ===== DETALLE PRODUCTO ===== -->
 <div id="s-detail" class="scr">
 <div class="hdr"><div class="ov o1"></div><div class="ov o2"></div><button class="bk" onclick="goBack()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button><div class="hdr-info"><img class="logo-s" id="logo-det" alt="Griffo"><div class="slo-s">Impulsamos Soluciones</div></div></div>
 <div id="det-gallery" class="d-gallery"></div>
 <div id="det-body" class="d-body"></div>
 <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar</div></div><div class="bl"></div>
 </div>
-
-<!-- ===== ADMIN PANEL ===== -->
 <div id="s-admin" class="scr">
 <div class="hdr"><div class="ov o1"></div><div class="ov o2"></div><button class="bk" onclick="go('home')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button><div class="hdr-info"><img class="logo-s" id="logo-adm" alt="Griffo"><div class="slo-s">Impulsamos Soluciones</div></div></div>
 <div class="sa"><div class="st">Panel Administrador</div></div>
 <div id="adm-content"><div class="adm-ld">Cargando datos...</div></div>
 <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar</div></div><div class="bl"></div>
 </div>
-
 </div>
-
-<!-- LIGHTBOX (zoom imágenes) -->
 <div id="lightbox" class="lb" onclick="closeLB(event)">
 <button class="lb-close" onclick="closeLB(event)">&#10005;</button>
 <button class="lb-nav lb-prev" onclick="navLB(-1,event)">&#8249;</button>
@@ -257,410 +232,50 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;d
 <button class="lb-nav lb-next" onclick="navLB(1,event)">&#8250;</button>
 <div class="lb-counter" id="lb-counter"></div>
 </div>
-
-<!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
-
 <script>
-/* === VARIABLES EXISTENTES (sin cambios) === */
 var P=null,RP=[],BS='';
-
-
-/* === VARIABLES AUTH (nuevas) === */
 var pendingGo=null,currentUser=null;
-
-/* === LIGHTBOX === */
 var lbImgs=[],lbIdx=0;
-function openLB(idx){
-lbIdx=idx;
-document.getElementById('lb-img').src=lbImgs[lbIdx];
-document.getElementById('lb-counter').textContent=(lbIdx+1)+' / '+lbImgs.length;
-document.getElementById('lightbox').classList.add('on');
-document.body.style.overflow='hidden';
-}
-function closeLB(e){
-if(e&&(e.target.classList.contains('lb-img')||e.target.classList.contains('lb-nav')||e.target.classList.contains('lb-prev')||e.target.classList.contains('lb-next')))return;
-document.getElementById('lightbox').classList.remove('on');
-document.body.style.overflow='';
-}
-function navLB(dir,e){
-if(e){e.stopPropagation();e.preventDefault();}
-lbIdx=(lbIdx+dir+lbImgs.length)%lbImgs.length;
-document.getElementById('lb-img').src=lbImgs[lbIdx];
-document.getElementById('lb-counter').textContent=(lbIdx+1)+' / '+lbImgs.length;
-}
-
-/* === LOGOS === */
+function openLB(idx){lbIdx=idx;document.getElementById('lb-img').src=lbImgs[lbIdx];document.getElementById('lb-counter').textContent=(lbIdx+1)+' / '+lbImgs.length;document.getElementById('lightbox').classList.add('on');document.body.style.overflow='hidden';}
+function closeLB(e){if(e&&(e.target.classList.contains('lb-img')||e.target.classList.contains('lb-nav')||e.target.classList.contains('lb-prev')||e.target.classList.contains('lb-next')))return;document.getElementById('lightbox').classList.remove('on');document.body.style.overflow='';}
+function navLB(dir,e){if(e){e.stopPropagation();e.preventDefault();}lbIdx=(lbIdx+dir+lbImgs.length)%lbImgs.length;document.getElementById('lb-img').src=lbImgs[lbIdx];document.getElementById('lb-counter').textContent=(lbIdx+1)+' / '+lbImgs.length;}
 function setLogos(){var s='/griffologoblancotransparente.png';['logo-main','logo-plate','logo-vehi','logo-code','logo-kw','logo-det','logo-login','logo-reg','logo-adm'].forEach(function(id){var el=document.getElementById(id);if(el)el.src=s;});}
 setLogos();
-
-/* === FIREBASE INIT === */
-firebase.initializeApp({
-apiKey:"AIzaSyBOvhsx73SX0WJDdz9fP0z9pcA-svsiVD8",
-authDomain:"griffo-app.firebaseapp.com",
-projectId:"griffo-app",
-appId:"1:710468527470:web:f673ee218ee383b763cd7f"
-});
-
+firebase.initializeApp({apiKey:"AIzaSyBOvhsx73SX0WJDdz9fP0z9pcA-svsiVD8",authDomain:"griffo-app.firebaseapp.com",projectId:"griffo-app",appId:"1:710468527470:web:f673ee218ee383b763cd7f"});
 var db=firebase.firestore();
-
 var ADMIN_EMAIL='josedgriffo@gmail.com';
-
-firebase.auth().onAuthStateChanged(function(user){
-currentUser=user;
-var bar=document.getElementById('usr-home');
-var name=document.getElementById('usr-display');
-var adm=document.getElementById('adm-home');
-if(user){
-bar.classList.add('on');
-name.textContent=user.displayName||user.email;
-if(user.email===ADMIN_EMAIL)adm.classList.add('on');else adm.classList.remove('on');
-if(pendingGo){var dest=pendingGo;pendingGo=null;go(dest);}
-}else{
-bar.classList.remove('on');
-name.textContent='';
-adm.classList.remove('on');
-}
-});
-
-/* === NAVEGACIÓN (modificado: agrega login diferido) === */
-function go(s){
-if(['plate','vehicle','code','keyword'].indexOf(s)>=0&&!currentUser){pendingGo=s;s='login';}
-if(s==='admin'&&(!currentUser||currentUser.email!==ADMIN_EMAIL)){go('home');return;}
-document.querySelectorAll('.scr').forEach(function(e){e.classList.remove('on')});
-document.getElementById('s-'+s).classList.add('on');
-window.scrollTo(0,0);
-if(s==='admin')loadAdmin();
-if(s!=='home'&&s!=='detail'&&s!=='login'&&s!=='register'&&s!=='admin'&&!P)loadP();
-}
-
+firebase.auth().onAuthStateChanged(function(user){currentUser=user;var bar=document.getElementById('usr-home');var name=document.getElementById('usr-display');var adm=document.getElementById('adm-home');if(user){bar.classList.add('on');name.textContent=user.displayName||user.email;if(user.email===ADMIN_EMAIL)adm.classList.add('on');else adm.classList.remove('on');if(pendingGo){var dest=pendingGo;pendingGo=null;go(dest);}}else{bar.classList.remove('on');name.textContent='';adm.classList.remove('on');}});
+function go(s){if(['plate','vehicle','code','keyword'].indexOf(s)>=0&&!currentUser){pendingGo=s;s='login';}if(s==='admin'&&(!currentUser||currentUser.email!==ADMIN_EMAIL)){go('home');return;}document.querySelectorAll('.scr').forEach(function(e){e.classList.remove('on')});document.getElementById('s-'+s).classList.add('on');window.scrollTo(0,0);if(s==='admin')loadAdmin();if(s!=='home'&&s!=='detail'&&s!=='login'&&s!=='register'&&s!=='admin'&&!P)loadP();}
 function goBack(){go(BS||'home');}
-
-/* === FUNCIONES AUTH (nuevas) === */
 function showErr(id,msg){var el=document.getElementById(id);el.textContent=msg;el.style.display='block';}
 function hideErr(id){document.getElementById(id).style.display='none';}
-
-async function emailLogin(){
-var email=document.getElementById('login-email').value.trim();
-var pass=document.getElementById('login-pass').value;
-if(!email||!pass){showErr('login-err','Complet\u00e1 email y contrase\u00f1a');return;}
-hideErr('login-err');
-try{await firebase.auth().signInWithEmailAndPassword(email,pass);}
-catch(e){
-var msg='Error al ingresar';
-if(e.code==='auth/user-not-found'||e.code==='auth/wrong-password'||e.code==='auth/invalid-credential')msg='Email o contrase\u00f1a incorrectos';
-if(e.code==='auth/invalid-email')msg='Email inv\u00e1lido';
-if(e.code==='auth/too-many-requests')msg='Demasiados intentos. Esper\u00e1 un momento';
-showErr('login-err',msg);
-}
-}
-
-async function emailRegister(){
-var name=document.getElementById('reg-name').value.trim();
-var email=document.getElementById('reg-email').value.trim();
-var pass=document.getElementById('reg-pass').value;
-if(!name){showErr('reg-err','Ingres\u00e1 tu nombre');return;}
-if(!email){showErr('reg-err','Ingres\u00e1 tu email');return;}
-if(pass.length<6){showErr('reg-err','La contrase\u00f1a debe tener al menos 6 caracteres');return;}
-hideErr('reg-err');
-try{
-var cred=await firebase.auth().createUserWithEmailAndPassword(email,pass);
-await cred.user.updateProfile({displayName:name});
-currentUser=firebase.auth().currentUser;
-var bar=document.getElementById('usr-home');
-var disp=document.getElementById('usr-display');
-bar.classList.add('on');disp.textContent=name;
-if(pendingGo){var dest=pendingGo;pendingGo=null;go(dest);}else{go('home');}
-}catch(e){
-var msg='Error al registrar';
-if(e.code==='auth/email-already-in-use')msg='Ese email ya est\u00e1 registrado';
-if(e.code==='auth/invalid-email')msg='Email inv\u00e1lido';
-if(e.code==='auth/weak-password')msg='Contrase\u00f1a muy d\u00e9bil';
-showErr('reg-err',msg);
-}
-}
-
-async function googleLogin(){
-try{var provider=new firebase.auth.GoogleAuthProvider();await firebase.auth().signInWithPopup(provider);}
-catch(e){if(e.code!=='auth/popup-closed-by-user')console.error('Google login error:',e);}
-}
-
+async function emailLogin(){var email=document.getElementById('login-email').value.trim();var pass=document.getElementById('login-pass').value;if(!email||!pass){showErr('login-err','Complet\u00e1 email y contrase\u00f1a');return;}hideErr('login-err');try{await firebase.auth().signInWithEmailAndPassword(email,pass);}catch(e){var msg='Error al ingresar';if(e.code==='auth/user-not-found'||e.code==='auth/wrong-password'||e.code==='auth/invalid-credential')msg='Email o contrase\u00f1a incorrectos';if(e.code==='auth/invalid-email')msg='Email inv\u00e1lido';if(e.code==='auth/too-many-requests')msg='Demasiados intentos. Esper\u00e1 un momento';showErr('login-err',msg);}}
+async function emailRegister(){var name=document.getElementById('reg-name').value.trim();var email=document.getElementById('reg-email').value.trim();var pass=document.getElementById('reg-pass').value;if(!name){showErr('reg-err','Ingres\u00e1 tu nombre');return;}if(!email){showErr('reg-err','Ingres\u00e1 tu email');return;}if(pass.length<6){showErr('reg-err','La contrase\u00f1a debe tener al menos 6 caracteres');return;}hideErr('reg-err');try{var cred=await firebase.auth().createUserWithEmailAndPassword(email,pass);await cred.user.updateProfile({displayName:name});currentUser=firebase.auth().currentUser;var bar=document.getElementById('usr-home');var disp=document.getElementById('usr-display');bar.classList.add('on');disp.textContent=name;if(pendingGo){var dest=pendingGo;pendingGo=null;go(dest);}else{go('home');}}catch(e){var msg='Error al registrar';if(e.code==='auth/email-already-in-use')msg='Ese email ya est\u00e1 registrado';if(e.code==='auth/invalid-email')msg='Email inv\u00e1lido';if(e.code==='auth/weak-password')msg='Contrase\u00f1a muy d\u00e9bil';showErr('reg-err',msg);}}
+async function googleLogin(){try{var provider=new firebase.auth.GoogleAuthProvider();await firebase.auth().signInWithPopup(provider);}catch(e){if(e.code!=='auth/popup-closed-by-user')console.error('Google login error:',e);}}
 function logout(){firebase.auth().signOut();pendingGo=null;go('home');}
-
-/* === ANALYTICS TRACKING === */
-function track(event,data){
-try{
-data=data||{};
-data.event=event;
-data.timestamp=new Date().toISOString();
-data.uid=currentUser?currentUser.uid:null;
-data.userEmail=currentUser?currentUser.email:null;
-data.userName=currentUser?currentUser.displayName:null;
-db.collection('analytics').add(data);
-}catch(e){console.error('Track error:',e);}
-}
-
-function trackWA(code,product){
-var c=decodeURIComponent(code),pr=decodeURIComponent(product);
-var msg='Hola! Vi en la app GRIFFO el producto '+c+' ('+pr+'). Tenes disponibilidad y precio?';
-var url='https://wa.me/?text='+encodeURIComponent(msg);
-track('whatsapp_click',{code:c,product:pr});
-window.open(url,'_blank');
-}
-
-function trackML(code,product,link){
-var c=decodeURIComponent(code),pr=decodeURIComponent(product),l=decodeURIComponent(link);
-track('mercadolibre_click',{code:c,product:pr,link:l});
-window.open(l,'_blank');
-}
-
+function track(event,data){try{data=data||{};data.event=event;data.timestamp=new Date().toISOString();data.uid=currentUser?currentUser.uid:null;data.userEmail=currentUser?currentUser.email:null;data.userName=currentUser?currentUser.displayName:null;db.collection('analytics').add(data);}catch(e){console.error('Track error:',e);}}
+function trackWA(code,product){var c=decodeURIComponent(code),pr=decodeURIComponent(product);var msg='Hola! Vi en la app GRIFFO el producto '+c+' ('+pr+'). Tenes disponibilidad y precio?';var url='https://wa.me/?text='+encodeURIComponent(msg);track('whatsapp_click',{code:c,product:pr});window.open(url,'_blank');}
+function trackML(code,product,link){var c=decodeURIComponent(code),pr=decodeURIComponent(product),l=decodeURIComponent(link);track('mercadolibre_click',{code:c,product:pr,link:l});window.open(l,'_blank');}
 var allAnalytics=[];
-async function loadAdmin(){
-var cont=document.getElementById('adm-content');
-cont.innerHTML='<div class="adm-ld">Cargando datos...</div>';
-try{
-var snap=await db.collection('analytics').get();
-allAnalytics=[];
-snap.forEach(function(doc){allAnalytics.push(doc.data());});
-renderAdmin();
-}catch(e){cont.innerHTML='<div class="adm-ld">Error al cargar: '+e.message+'</div>';}
-}
-
-function renderAdmin(){
-var d=allAnalytics;
-var searches=d.filter(function(r){return r.event==='search';});
-var found=searches.filter(function(r){return r.results>0;});
-var notFound=searches.filter(function(r){return r.results===0;});
-var views=d.filter(function(r){return r.event==='product_view';});
-var wa=d.filter(function(r){return r.event==='whatsapp_click';});
-var ml=d.filter(function(r){return r.event==='mercadolibre_click';});
-var users={};d.forEach(function(r){if(r.userEmail)users[r.userEmail]={name:r.userName||r.userEmail,email:r.userEmail};});
-var h='';
-h+='<div class="adm-cards">';
-h+='<div class="adm-c"><div class="adm-c-n">'+searches.length+'</div><div class="adm-c-l">B\u00fasquedas</div></div>';
-h+='<div class="adm-c"><div class="adm-c-n">'+found.length+'</div><div class="adm-c-l">Con resultado</div></div>';
-h+='<div class="adm-c"><div class="adm-c-n">'+notFound.length+'</div><div class="adm-c-l">Sin resultado</div></div>';
-h+='<div class="adm-c"><div class="adm-c-n">'+views.length+'</div><div class="adm-c-l">Productos vistos</div></div>';
-h+='<div class="adm-c"><div class="adm-c-n">'+wa.length+'</div><div class="adm-c-l">WhatsApp enviados</div></div>';
-h+='<div class="adm-c"><div class="adm-c-n">'+ml.length+'</div><div class="adm-c-l">Clics MercadoLibre</div></div>';
-h+='<div class="adm-c"><div class="adm-c-n">'+Object.keys(users).length+'</div><div class="adm-c-l">Usuarios activos</div></div>';
-h+='<div class="adm-c"><div class="adm-c-n">'+d.length+'</div><div class="adm-c-l">Eventos totales</div></div>';
-h+='</div>';
-var topSearch=countBy(searches,'query');
-if(topSearch.length){
-h+='<div class="adm-sec"><div class="adm-sec-t">Top b\u00fasquedas</div>';
-topSearch.slice(0,10).forEach(function(r){h+='<div class="adm-row"><span class="adm-row-l">'+esc(r.key)+'</span><span class="adm-row-v">'+r.count+'</span></div>';});
-h+='</div>';
-}
-if(notFound.length){
-var nfTerms=countBy(notFound,'query');
-h+='<div class="adm-sec"><div class="adm-sec-t">Buscaron y NO encontraron</div>';
-nfTerms.slice(0,10).forEach(function(r){h+='<div class="adm-row"><span class="adm-row-l">'+esc(r.key)+'</span><span class="adm-row-v">'+r.count+'</span></div>';});
-h+='</div>';
-}
-var topProd=countBy(views,'code');
-if(topProd.length){
-h+='<div class="adm-sec"><div class="adm-sec-t">Productos m\u00e1s vistos</div>';
-topProd.slice(0,10).forEach(function(r){h+='<div class="adm-row"><span class="adm-row-l">'+esc(r.key)+'</span><span class="adm-row-v">'+r.count+'</span></div>';});
-h+='</div>';
-}
-var topWA=countBy(wa,'code');
-if(topWA.length){
-h+='<div class="adm-sec"><div class="adm-sec-t">Productos con m\u00e1s WhatsApp</div>';
-topWA.slice(0,10).forEach(function(r){h+='<div class="adm-row"><span class="adm-row-l">'+esc(r.key)+'</span><span class="adm-row-v">'+r.count+'</span></div>';});
-h+='</div>';
-}
-var topML=countBy(ml,'code');
-if(topML.length){
-h+='<div class="adm-sec"><div class="adm-sec-t">Productos con m\u00e1s MercadoLibre</div>';
-topML.slice(0,10).forEach(function(r){h+='<div class="adm-row"><span class="adm-row-l">'+esc(r.key)+'</span><span class="adm-row-v">'+r.count+'</span></div>';});
-h+='</div>';
-}
-var uList=Object.values(users);
-if(uList.length){
-h+='<div class="adm-sec"><div class="adm-sec-t">Usuarios registrados ('+uList.length+')</div>';
-uList.forEach(function(u){h+='<div class="adm-row"><span class="adm-row-l">'+esc(u.name)+'</span><span class="adm-row-v">'+esc(u.email)+'</span></div>';});
-h+='</div>';
-}
-h+='<button class="adm-exp" onclick="exportCSV()">&#11015; Descargar Excel (CSV)</button>';
-document.getElementById('adm-content').innerHTML=h;
-}
-
-function countBy(arr,field){
-var m={};arr.forEach(function(r){var k=r[field]||'(vac\u00edo)';m[k]=(m[k]||0)+1;});
-var a=[];for(var k in m)a.push({key:k,count:m[k]});
-a.sort(function(x,y){return y.count-x.count;});
-return a;
-}
-
+async function loadAdmin(){var cont=document.getElementById('adm-content');cont.innerHTML='<div class="adm-ld">Cargando datos...</div>';try{var snap=await db.collection('analytics').get();allAnalytics=[];snap.forEach(function(doc){allAnalytics.push(doc.data());});renderAdmin();}catch(e){cont.innerHTML='<div class="adm-ld">Error al cargar: '+e.message+'</div>';}}
+function renderAdmin(){var d=allAnalytics;var searches=d.filter(function(r){return r.event==='search';});var found=searches.filter(function(r){return r.results>0;});var notFound=searches.filter(function(r){return r.results===0;});var views=d.filter(function(r){return r.event==='product_view';});var wa=d.filter(function(r){return r.event==='whatsapp_click';});var ml=d.filter(function(r){return r.event==='mercadolibre_click';});var users={};d.forEach(function(r){if(r.userEmail)users[r.userEmail]={name:r.userName||r.userEmail,email:r.userEmail};});var h='';h+='<div class="adm-cards">';h+='<div class="adm-c"><div class="adm-c-n">'+searches.length+'</div><div class="adm-c-l">B\u00fasquedas</div></div>';h+='<div class="adm-c"><div class="adm-c-n">'+found.length+'</div><div class="adm-c-l">Con resultado</div></div>';h+='<div class="adm-c"><div class="adm-c-n">'+notFound.length+'</div><div class="adm-c-l">Sin resultado</div></div>';h+='<div class="adm-c"><div class="adm-c-n">'+views.length+'</div><div class="adm-c-l">Productos vistos</div></div>';h+='<div class="adm-c"><div class="adm-c-n">'+wa.length+'</div><div class="adm-c-l">WhatsApp enviados</div></div>';h+='<div class="adm-c"><div class="adm-c-n">'+ml.length+'</div><div class="adm-c-l">Clics MercadoLibre</div></div>';h+='<div class="adm-c"><div class="adm-c-n">'+Object.keys(users).length+'</div><div class="adm-c-l">Usuarios activos</div></div>';h+='<div class="adm-c"><div class="adm-c-n">'+d.length+'</div><div class="adm-c-l">Eventos totales</div></div>';h+='</div>';var topSearch=countBy(searches,'query');if(topSearch.length){h+='<div class="adm-sec"><div class="adm-sec-t">Top b\u00fasquedas</div>';topSearch.slice(0,10).forEach(function(r){h+='<div class="adm-row"><span class="adm-row-l">'+esc(r.key)+'</span><span class="adm-row-v">'+r.count+'</span></div>';});h+='</div>';}if(notFound.length){var nfTerms=countBy(notFound,'query');h+='<div class="adm-sec"><div class="adm-sec-t">Buscaron y NO encontraron</div>';nfTerms.slice(0,10).forEach(function(r){h+='<div class="adm-row"><span class="adm-row-l">'+esc(r.key)+'</span><span class="adm-row-v">'+r.count+'</span></div>';});h+='</div>';}var topProd=countBy(views,'code');if(topProd.length){h+='<div class="adm-sec"><div class="adm-sec-t">Productos m\u00e1s vistos</div>';topProd.slice(0,10).forEach(function(r){h+='<div class="adm-row"><span class="adm-row-l">'+esc(r.key)+'</span><span class="adm-row-v">'+r.count+'</span></div>';});h+='</div>';}var topWA=countBy(wa,'code');if(topWA.length){h+='<div class="adm-sec"><div class="adm-sec-t">Productos con m\u00e1s WhatsApp</div>';topWA.slice(0,10).forEach(function(r){h+='<div class="adm-row"><span class="adm-row-l">'+esc(r.key)+'</span><span class="adm-row-v">'+r.count+'</span></div>';});h+='</div>';}var topML=countBy(ml,'code');if(topML.length){h+='<div class="adm-sec"><div class="adm-sec-t">Productos con m\u00e1s MercadoLibre</div>';topML.slice(0,10).forEach(function(r){h+='<div class="adm-row"><span class="adm-row-l">'+esc(r.key)+'</span><span class="adm-row-v">'+r.count+'</span></div>';});h+='</div>';}var uList=Object.values(users);if(uList.length){h+='<div class="adm-sec"><div class="adm-sec-t">Usuarios registrados ('+uList.length+')</div>';uList.forEach(function(u){h+='<div class="adm-row"><span class="adm-row-l">'+esc(u.name)+'</span><span class="adm-row-v">'+esc(u.email)+'</span></div>';});h+='</div>';}h+='<button class="adm-exp" onclick="exportCSV()">&#11015; Descargar Excel (CSV)</button>';document.getElementById('adm-content').innerHTML=h;}
+function countBy(arr,field){var m={};arr.forEach(function(r){var k=r[field]||'(vac\u00edo)';m[k]=(m[k]||0)+1;});var a=[];for(var k in m)a.push({key:k,count:m[k]});a.sort(function(x,y){return y.count-x.count;});return a;}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-
-function exportCSV(){
-var rows=[['Fecha','Evento','Usuario','Email','Tipo B\u00fasqueda','Query','Producto','C\u00f3digo','Resultados','Link']];
-allAnalytics.forEach(function(r){
-rows.push([
-r.timestamp||'',r.event||'',r.userName||'',r.userEmail||'',
-r.type||'',r.query||'',r.product||'',r.code||'',
-r.results!==undefined?r.results:'',r.link||''
-]);
-});
-var csv=rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"';}).join(',');}).join('\n');
-var blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'});
-var url=URL.createObjectURL(blob);
-var a=document.createElement('a');a.href=url;a.download='griffo-analytics-'+new Date().toISOString().slice(0,10)+'.csv';
-a.click();URL.revokeObjectURL(url);
-}
-
-/* === PRODUCTOS Y BÚSQUEDAS (sin cambios) === */
-async function loadP(){
-try{var r=await fetch('/api/products');var d=await r.json();P=d.products;fillBrands();}
-catch(e){console.error(e);}
-}
-
-function fillBrands(){
-var ex={'AGRALE':1,'IVECO':1,'UNIVERSAL':1};
-var br={};P.forEach(function(p){if(p.vehicles)p.vehicles.forEach(function(v){if(v.brand&&!ex[v.brand])br[v.brand]=1;});});
-var s=document.getElementById('sel-brand');s.innerHTML='<option value="">Seleccion&#225; marca</option>';
-Object.keys(br).sort().forEach(function(b){s.innerHTML+='<option value="'+b+'">'+b+'</option>';});
-}
-
-function onBrand(){
-var b=document.getElementById('sel-brand').value;var ms={};
-P.forEach(function(p){if(p.vehicles)p.vehicles.forEach(function(v){if(v.brand===b&&v.master_model)ms[v.master_model]=1;});});
-var s=document.getElementById('sel-model');s.disabled=!b;s.innerHTML='<option value="">Seleccion&#225; modelo</option>';
-Object.keys(ms).sort().forEach(function(m){s.innerHTML+='<option value="'+m+'">'+m+'</option>';});
-document.getElementById('sel-year').disabled=true;document.getElementById('sel-year').innerHTML='<option value="">Primero eleg&#237; modelo</option>';
-}
-
-function onModel(){
-var b=document.getElementById('sel-brand').value,m=document.getElementById('sel-model').value,ys={};
-P.forEach(function(p){if(p.vehicles)p.vehicles.forEach(function(v){
-if(v.brand===b&&v.master_model===m){for(var y=v.sold_from_year;y<=v.sold_until_year;y++)ys[y]=1;}
-});});
-var s=document.getElementById('sel-year');s.disabled=!m;s.innerHTML='<option value="">Seleccion&#225; a&#241;o (opcional)</option>';
-Object.keys(ys).sort(function(a,b){return b-a}).forEach(function(y){s.innerHTML+='<option value="'+y+'">'+y+'</option>';});
-}
-
-async function searchPlate(){
-var pl=document.getElementById('inp-plate').value.trim().toUpperCase();if(!pl)return;
-document.getElementById('plate-vi').innerHTML='';document.getElementById('plate-res').innerHTML='<div class="ld">Buscando veh&#237;culo...</div>';
-try{
-var r=await fetch('/api/plate?plate='+encodeURIComponent(pl));var v=await r.json();
-if(v.error){document.getElementById('plate-res').innerHTML='<div class="nr">No se encontr&#243; veh&#237;culo para esa patente</div>';return;}
-document.getElementById('plate-vi').innerHTML='<div class="vi"><h3>'+(v.brand||'')+' '+(v.master_model||v.model||'')+'</h3><p>'+(v.version||'')+' ('+(v.sold_from_year||'')+')</p></div>';
-if(!P){document.getElementById('plate-res').innerHTML='<div class="ld">Cargando cat&#225;logo...</div>';var pr=await fetch('/api/products');var pd=await pr.json();P=pd.products;fillBrands();}
-var matches=P.filter(function(p){if(!p.vehicles)return false;return p.vehicles.some(function(pv){
-if(pv.brand!==v.brand)return false;
-if(v.master_model&&pv.master_model===v.master_model)return true;
-if(v.model&&pv.model===v.model)return true;
-return false;
-});});
-render('plate-res',matches,'plate');
-track('search',{type:'plate',query:pl,brand:v.brand||'',model:v.master_model||v.model||'',results:matches.length});
-}catch(e){document.getElementById('plate-res').innerHTML='<div class="nr">Error: '+e.message+'</div>';}
-}
-
-function searchVehicle(){
-var b=document.getElementById('sel-brand').value,m=document.getElementById('sel-model').value,y=document.getElementById('sel-year').value;
-if(!b){alert('Seleccion\u00e1 al menos una marca');return;}if(!P)return;
-var matches=P.filter(function(p){if(!p.vehicles)return false;return p.vehicles.some(function(v){
-if(v.brand!==b)return false;if(m&&v.master_model!==m)return false;
-if(y){var yr=parseInt(y);if(yr<v.sold_from_year||yr>v.sold_until_year)return false;}
-return true;
-});});
-render('vehi-res',matches,'vehicle');
-track('search',{type:'vehicle',query:b+' '+m+(y?' '+y:''),brand:b,model:m,year:y,results:matches.length});
-}
-
-function searchCode(){
-var c=document.getElementById('inp-code').value.trim();if(!c||!P)return;
-var matches=P.filter(function(p){return p.code&&p.code.toLowerCase().indexOf(c.toLowerCase())>=0;});
-render('code-res',matches,'code');
-track('search',{type:'code',query:c,results:matches.length});
-}
-
-function searchKw(){
-var k=document.getElementById('inp-kw').value.trim().toLowerCase();if(!k||!P)return;
-var matches=P.filter(function(p){
-var t=((p.code||'')+' '+(p.description||'')+' '+(p.product||'')+' '+(p.category||'')).toLowerCase();
-return t.indexOf(k)>=0;
-});
-render('kw-res',matches,'keyword');
-track('search',{type:'keyword',query:k,results:matches.length});
-}
-
-function render(id,items,from){
-var el=document.getElementById(id);RP=items;BS=from||'home';
-if(!items||items.length===0){el.innerHTML='<div class="nr">No se encontraron productos</div>';return;}
-var h='<div class="cnt">'+items.length+' producto'+(items.length>1?'s':'')+' encontrado'+(items.length>1?'s':'')+'</div>';
-items.forEach(function(p,i){
-h+='<div class="rc" onclick="showDetail('+i+')">';
-h+='<div class="r-code">'+(p.code||'')+'</div>';
-h+='<div class="r-desc">'+(p.product||'')+' - '+(p.description||'')+'</div>';
-h+='<div class="r-cat">'+(p.category||'')+'</div>';
-if(p.pictures&&p.pictures.length>0){h+='<div class="r-imgs">';p.pictures.slice(0,2).forEach(function(pic){var u=pic.image_url||pic.url||'';if(u)h+='<img src="'+u+'" onerror="this.style.display=\'none\'">';});h+='</div>';}
-if(p.vehicles&&p.vehicles.length>0)h+='<div class="r-vehi">'+p.vehicles.length+' veh\u00edculo'+(p.vehicles.length>1?'s':'')+' compatible'+(p.vehicles.length>1?'s':'')+'</div>';
-h+='<div class="r-more">Ver detalle &#8594;</div>';
-h+='</div>';
-});
-el.innerHTML=h;
-}
-
-function showDetail(i){
-var p=RP[i];if(!p)return;
-track('product_view',{code:p.code||'',product:p.product||'',category:p.category||''});
-var gal=document.getElementById('det-gallery');
-var body=document.getElementById('det-body');
-
-/* === GALERÍA CON LIGHTBOX === */
-var gh='';
-lbImgs=[];
-if(p.pictures&&p.pictures.length>0){
-p.pictures.forEach(function(pic,idx){
-var u=pic.image_url||pic.url||'';
-if(u){
-lbImgs.push(u);
-gh+='<img src="'+u+'" onclick="openLB('+(lbImgs.length-1)+')" onerror="this.style.display=\'none\'">';
-}
-});
-}
-gal.innerHTML=gh;
-
-var h='<div class="d-code">'+(p.code||'')+'</div>';
-h+='<div class="d-prod">'+(p.product||'')+'</div>';
-h+='<div class="d-desc">'+(p.description||'')+'</div>';
-h+='<span class="d-cat">'+(p.category||'')+'</span>';
-if(p.attributes&&p.attributes.length>0){
-h+='<div class="d-sec"><div class="d-sec-t">Medidas / Atributos</div><div class="d-attr">';
-p.attributes.forEach(function(a){h+='<div class="d-attr-i"><div class="d-attr-n">'+(a.name||'')+'</div><div class="d-attr-v">'+(a.value||'')+' '+(a.unit||'')+'</div></div>';});
-h+='</div></div>';
-}
-if(p.components&&p.components.length>0){
-h+='<div class="d-sec"><div class="d-sec-t">Contenido del Kit</div>';
-p.components.forEach(function(c){h+='<div class="d-comp"><div class="d-comp-c">'+(c.code||'')+'</div><div class="d-comp-p">'+(c.product||'')+'</div></div>';});
-h+='</div>';
-}
-if(p.vehicles&&p.vehicles.length>0){
-var vg={};p.vehicles.forEach(function(v){var b=v.brand||'Otros';if(!vg[b])vg[b]=[];vg[b].push(v);});
-h+='<div class="d-sec"><div class="d-sec-t">Veh\u00edculos Compatibles ('+p.vehicles.length+')</div>';
-Object.keys(vg).sort().forEach(function(b){
-h+='<div class="d-vg"><div class="d-vg-brand">'+b+'</div>';
-vg[b].forEach(function(v){h+='<div class="d-vg-item">'+(v.master_model||v.model||'')+' '+(v.version||'')+' ('+v.sold_from_year+'-'+v.sold_until_year+')</div>';});
-h+='</div>';
-});
-h+='</div>';
-}
-var msg='Hola! Vi en la app GRIFFO el producto '+(p.code||'')+' ('+(p.product||'')+'). Tenes disponibilidad y precio?';
-h+='<div class="d-acts">';
-h+='<button class="bw2" onclick="trackWA(\''+encodeURIComponent(p.code||'')+'\',\''+encodeURIComponent(p.product||'')+'\')"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.624-1.472A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-2.168 0-4.183-.655-5.863-1.776l-.42-.282-2.751.876.877-2.672-.294-.44A9.787 9.787 0 012.182 12 9.818 9.818 0 0112 2.182 9.818 9.818 0 0121.818 12 9.818 9.818 0 0112 21.818z"/></svg>WhatsApp</button>';
-var meli='';if(p.links&&p.links.length>0)p.links.forEach(function(l){if(l.url||l.link)meli=l.url||l.link;});
-if(meli)h+='<button class="bm2" onclick="trackML(\''+encodeURIComponent(p.code||'')+'\',\''+encodeURIComponent(p.product||'')+'\',\''+encodeURIComponent(meli)+'\')">MercadoLibre</button>';
-h+='</div>';
-body.innerHTML=h;
-go('detail');
-}
+function exportCSV(){var rows=[['Fecha','Evento','Usuario','Email','Tipo B\u00fasqueda','Query','Producto','C\u00f3digo','Resultados','Link']];allAnalytics.forEach(function(r){rows.push([r.timestamp||'',r.event||'',r.userName||'',r.userEmail||'',r.type||'',r.query||'',r.product||'',r.code||'',r.results!==undefined?r.results:'',r.link||'']);});var csv=rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"';}).join(',');}).join('\n');var blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'});var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='griffo-analytics-'+new Date().toISOString().slice(0,10)+'.csv';a.click();URL.revokeObjectURL(url);}
+async function loadP(){try{var r=await fetch('/api/products');var d=await r.json();P=d.products;buildSearchIndex();fillBrands();}catch(e){console.error(e);}}
+function buildSearchIndex(){if(!P)return;P.forEach(function(p){var t=(p.code||'')+' '+(p.description||'')+' '+(p.product||'')+' '+(p.category||'')+' '+(p.slug||'');if(p.vehicles)p.vehicles.forEach(function(v){t+=' '+(v.brand||'')+' '+(v.master_model||'')+' '+(v.model||'')+' '+(v.version||'');});if(p.attributes)p.attributes.forEach(function(a){t+=' '+(a.name||'')+' '+(a.value||'')+' '+(a.unit||'');});if(p.components)p.components.forEach(function(c){t+=' '+(c.code||'')+' '+(c.product||'');});if(p.cross)p.cross.forEach(function(c){t+=' '+(c.brand||'')+' '+(c.code||'');});if(p.reference)p.reference.forEach(function(r){t+=' '+(r.brand||'')+' '+(r.code||'');});if(p.ean)p.ean.forEach(function(e){t+=' '+e;});p._searchText=t.toLowerCase();});}
+function fillBrands(){var ex={'AGRALE':1,'IVECO':1,'UNIVERSAL':1};var br={};P.forEach(function(p){if(p.vehicles)p.vehicles.forEach(function(v){if(v.brand&&!ex[v.brand])br[v.brand]=1;});});var s=document.getElementById('sel-brand');s.innerHTML='<option value="">Seleccion&#225; marca</option>';Object.keys(br).sort().forEach(function(b){s.innerHTML+='<option value="'+b+'">'+b+'</option>';});}
+function onBrand(){var b=document.getElementById('sel-brand').value;var ms={};P.forEach(function(p){if(p.vehicles)p.vehicles.forEach(function(v){if(v.brand===b&&v.master_model)ms[v.master_model]=1;});});var s=document.getElementById('sel-model');s.disabled=!b;s.innerHTML='<option value="">Seleccion&#225; modelo</option>';Object.keys(ms).sort().forEach(function(m){s.innerHTML+='<option value="'+m+'">'+m+'</option>';});document.getElementById('sel-year').disabled=true;document.getElementById('sel-year').innerHTML='<option value="">Primero eleg&#237; modelo</option>';}
+function onModel(){var b=document.getElementById('sel-brand').value,m=document.getElementById('sel-model').value,ys={};P.forEach(function(p){if(p.vehicles)p.vehicles.forEach(function(v){if(v.brand===b&&v.master_model===m){for(var y=v.sold_from_year;y<=v.sold_until_year;y++)ys[y]=1;}});});var s=document.getElementById('sel-year');s.disabled=!m;s.innerHTML='<option value="">Seleccion&#225; a&#241;o (opcional)</option>';Object.keys(ys).sort(function(a,b){return b-a}).forEach(function(y){s.innerHTML+='<option value="'+y+'">'+y+'</option>';});}
+async function searchPlate(){var pl=document.getElementById('inp-plate').value.trim().toUpperCase();if(!pl)return;document.getElementById('plate-vi').innerHTML='';document.getElementById('plate-res').innerHTML='<div class="ld">Buscando veh&#237;culo...</div>';try{var r=await fetch('/api/plate?plate='+encodeURIComponent(pl));var v=await r.json();if(v.error){document.getElementById('plate-res').innerHTML='<div class="nr">No se encontr&#243; veh&#237;culo para esa patente</div>';return;}document.getElementById('plate-vi').innerHTML='<div class="vi"><h3>'+(v.brand||'')+' '+(v.master_model||v.model||'')+'</h3><p>'+(v.version||'')+' ('+(v.sold_from_year||'')+')</p></div>';if(!P){document.getElementById('plate-res').innerHTML='<div class="ld">Cargando cat&#225;logo...</div>';var pr=await fetch('/api/products');var pd=await pr.json();P=pd.products;buildSearchIndex();fillBrands();}var matches=P.filter(function(p){if(!p.vehicles)return false;return p.vehicles.some(function(pv){if(pv.brand!==v.brand)return false;if(v.master_model&&pv.master_model===v.master_model)return true;if(v.model&&pv.model===v.model)return true;return false;});});render('plate-res',matches,'plate');track('search',{type:'plate',query:pl,brand:v.brand||'',model:v.master_model||v.model||'',results:matches.length});}catch(e){document.getElementById('plate-res').innerHTML='<div class="nr">Error: '+e.message+'</div>';}}
+function searchVehicle(){var b=document.getElementById('sel-brand').value,m=document.getElementById('sel-model').value,y=document.getElementById('sel-year').value;if(!b){alert('Seleccion\u00e1 al menos una marca');return;}if(!P)return;var matches=P.filter(function(p){if(!p.vehicles)return false;return p.vehicles.some(function(v){if(v.brand!==b)return false;if(m&&v.master_model!==m)return false;if(y){var yr=parseInt(y);if(yr<v.sold_from_year||yr>v.sold_until_year)return false;}return true;});});render('vehi-res',matches,'vehicle');track('search',{type:'vehicle',query:b+' '+m+(y?' '+y:''),brand:b,model:m,year:y,results:matches.length});}
+function searchCode(){var c=document.getElementById('inp-code').value.trim();if(!c||!P)return;var matches=P.filter(function(p){return p.code&&p.code.toLowerCase().indexOf(c.toLowerCase())>=0;});render('code-res',matches,'code');track('search',{type:'code',query:c,results:matches.length});}
+function searchKw(){var k=document.getElementById('inp-kw').value.trim().toLowerCase();if(!k||!P)return;var matches=P.filter(function(p){return p._searchText&&p._searchText.indexOf(k)>=0;});render('kw-res',matches,'keyword');track('search',{type:'keyword',query:k,results:matches.length});}
+function render(id,items,from){var el=document.getElementById(id);RP=items;BS=from||'home';if(!items||items.length===0){el.innerHTML='<div class="nr">No se encontraron productos</div>';return;}var h='<div class="cnt">'+items.length+' producto'+(items.length>1?'s':'')+' encontrado'+(items.length>1?'s':'')+'</div>';items.forEach(function(p,i){h+='<div class="rc" onclick="showDetail('+i+')">';h+='<div class="r-code">'+(p.code||'')+'</div>';h+='<div class="r-desc">'+(p.product||'')+' - '+(p.description||'')+'</div>';h+='<div class="r-cat">'+(p.category||'')+'</div>';if(p.pictures&&p.pictures.length>0){h+='<div class="r-imgs">';p.pictures.slice(0,2).forEach(function(pic){var u=pic.image_url||pic.url||'';if(u)h+='<img src="'+u+'" onerror="this.style.display=\'none\'">';});h+='</div>';}if(p.vehicles&&p.vehicles.length>0)h+='<div class="r-vehi">'+p.vehicles.length+' veh\u00edculo'+(p.vehicles.length>1?'s':'')+' compatible'+(p.vehicles.length>1?'s':'')+'</div>';h+='<div class="r-more">Ver detalle &#8594;</div>';h+='</div>';});el.innerHTML=h;}
+function showDetail(i){var p=RP[i];if(!p)return;track('product_view',{code:p.code||'',product:p.product||'',category:p.category||''});var gal=document.getElementById('det-gallery');var body=document.getElementById('det-body');var gh='';lbImgs=[];if(p.pictures&&p.pictures.length>0){p.pictures.forEach(function(pic){var u=pic.image_url||pic.url||'';if(u){lbImgs.push(u);gh+='<img src="'+u+'" onclick="openLB('+(lbImgs.length-1)+')" onerror="this.style.display=\'none\'">';}});}gal.innerHTML=gh;var h='<div class="d-code">'+(p.code||'')+'</div>';h+='<div class="d-prod">'+(p.product||'')+'</div>';h+='<div class="d-desc">'+(p.description||'')+'</div>';h+='<span class="d-cat">'+(p.category||'')+'</span>';if(p.attributes&&p.attributes.length>0){h+='<div class="d-sec"><div class="d-sec-t">Medidas / Atributos</div><div class="d-attr">';p.attributes.forEach(function(a){h+='<div class="d-attr-i"><div class="d-attr-n">'+(a.name||'')+'</div><div class="d-attr-v">'+(a.value||'')+' '+(a.unit||'')+'</div></div>';});h+='</div></div>';}if(p.components&&p.components.length>0){h+='<div class="d-sec"><div class="d-sec-t">Contenido del Kit</div>';p.components.forEach(function(c){h+='<div class="d-comp"><div class="d-comp-c">'+(c.code||'')+'</div><div class="d-comp-p">'+(c.product||'')+'</div></div>';});h+='</div>';}if(p.vehicles&&p.vehicles.length>0){var vg={};p.vehicles.forEach(function(v){var b=v.brand||'Otros';if(!vg[b])vg[b]=[];vg[b].push(v);});h+='<div class="d-sec"><div class="d-sec-t">Veh\u00edculos Compatibles ('+p.vehicles.length+')</div>';Object.keys(vg).sort().forEach(function(b){h+='<div class="d-vg"><div class="d-vg-brand">'+b+'</div>';vg[b].forEach(function(v){h+='<div class="d-vg-item">'+(v.master_model||v.model||'')+' '+(v.version||'')+' ('+v.sold_from_year+'-'+v.sold_until_year+')</div>';});h+='</div>';});h+='</div>';}h+='<div class="d-acts">';h+='<button class="bw2" onclick="trackWA(\''+encodeURIComponent(p.code||'')+'\',\''+encodeURIComponent(p.product||'')+'\')"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.624-1.472A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-2.168 0-4.183-.655-5.863-1.776l-.42-.282-2.751.876.877-2.672-.294-.44A9.787 9.787 0 012.182 12 9.818 9.818 0 0112 2.182 9.818 9.818 0 0121.818 12 9.818 9.818 0 0112 21.818z"/></svg>WhatsApp</button>';var meli='';if(p.links&&p.links.length>0)p.links.forEach(function(l){if(l.url||l.link)meli=l.url||l.link;});if(meli)h+='<button class="bm2" onclick="trackML(\''+encodeURIComponent(p.code||'')+'\',\''+encodeURIComponent(p.product||'')+'\',\''+encodeURIComponent(meli)+'\')">MercadoLibre</button>';h+='</div>';body.innerHTML=h;go('detail');}
 </script>
 </body>
 </html>
