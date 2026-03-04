@@ -2300,7 +2300,7 @@
                 render('kw-res', matches, 'keyword');
                 track('search', {
                     type: 'keyword',
-                    query: k,
+                    query: raw,
                     results: matches.length
                 });
             }
