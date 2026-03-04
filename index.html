@@ -1829,7 +1829,8 @@
                     h += '</div>';
                 }
                 h += '<button class="adm-exp" onclick="exportCSV()">&#11015; Descargar Excel (CSV)</button>';
-                // Productos sin link MercadoLibre (códigos con -3xxxxx)
+                document.getElementById('adm-content').innerHTML = h;
+                // Productos sin link MercadoLibre - se agrega después
                 if (P && P.length > 0) {
                     var sinMeli = P.filter(function(p) {
                         var c = p.code || '';
@@ -1842,18 +1843,21 @@
                         }
                         return !tieneLink;
                     });
-                    h += '<div class="adm-sec"><div class="adm-sec-t">Sin link MercadoLibre (' + sinMeli.length + ')</div>';
+                    console.log('Productos -3 sin MeLi:', sinMeli.length, 'Total P:', P.length);
+                    var meliH = '<div class="adm-sec" style="margin:0 20px 16px"><div class="adm-sec-t">Sin link MercadoLibre (' + sinMeli.length + ')</div>';
                     if (sinMeli.length === 0) {
-                        h += '<div class="adm-row"><span class="adm-row-l">Todos los productos -3xx tienen link \u2705</span></div>';
+                        meliH += '<div class="adm-row"><span class="adm-row-l">Todos los productos -3xx tienen link \u2705</span></div>';
                     } else {
                         sinMeli.sort(function(a, b) { return (a.code || '').localeCompare(b.code || ''); });
                         sinMeli.forEach(function(p) {
-                            h += '<div class="adm-row"><span class="adm-row-l">' + esc(p.code) + '</span><span class="adm-row-v">' + esc(p.product || '') + '</span></div>';
+                            meliH += '<div class="adm-row"><span class="adm-row-l">' + esc(p.code) + '</span><span class="adm-row-v" style="font-size:10px">' + esc(p.product || '') + '</span></div>';
                         });
                     }
-                    h += '</div>';
+                    meliH += '</div>';
+                    document.getElementById('adm-content').insertAdjacentHTML('beforeend', meliH);
+                } else {
+                    console.log('P no cargado en admin. P=', P);
                 }
-                document.getElementById('adm-content').innerHTML = h;
             }
             function countBy(arr, field) {
                 var m = {};
