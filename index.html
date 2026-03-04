@@ -434,10 +434,10 @@
                 background: none;
                 border: none;
                 cursor: pointer;
-                padding: 4px;
-                font-size: 22px;
+                padding: 6px;
+                font-size: 28px;
                 line-height: 1;
-                color: #ccc;
+                color: #bbb;
                 transition: color .2s
             }
 
@@ -1518,9 +1518,15 @@
                 <div class="hdr">
                     <div class="ov o1"></div>
                     <div class="ov o2"></div>
-                    <button class="bk" onclick="goBack()">
+                    <button class="bk" onclick="go('home')">
                         <svg viewBox="0 0 24 24">
-                            <polyline points="15 18 9 12 15 6"/>
+                            <path d="M3 12l9-9 9 9"/>
+                            <path d="M5 10v10a1 1 0 001 1h3v-5h6v5h3a1 1 0 001-1V10"/>
+                        </svg>
+                    </button>
+                    <button class="bk" onclick="goBack()" style="margin-left:6px">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="15 18 9 12 15 6" stroke-width="3"/>
                         </svg>
                     </button>
                     <div class="hdr-info">
