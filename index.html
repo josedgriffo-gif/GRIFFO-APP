@@ -430,6 +430,35 @@
                 font-weight: 500
             }
 
+            .fav-star {
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 4px;
+                font-size: 22px;
+                line-height: 1;
+                color: #ccc;
+                transition: color .2s
+            }
+
+            .fav-star.on {
+                color: #f5a623
+            }
+
+            .fav-bar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 8px
+            }
+
+            .fav-empty {
+                text-align: center;
+                color: var(--m);
+                padding: 40px 20px;
+                font-size: 14px
+            }
+
             .bl {
                 height: 4px;
                 background: linear-gradient(90deg,var(--d),var(--p),var(--a))
@@ -1179,6 +1208,17 @@
                                 <div class="od">Di&#225;metro de fuelles y topes</div>
                             </div>
                         </button>
+                        <button class="ob" onclick="go('favs')" id="btn-favs" style="display:none;border-left:3px solid #f5a623">
+                            <div class="oi">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="#f5a623" stroke="#f5a623" stroke-width="1.6">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="ot">Mis Favoritos</div>
+                                <div class="od">Productos guardados</div>
+                            </div>
+                        </button>
                     </div>
                 </div>
                 <div class="ft">
@@ -1186,7 +1226,7 @@
                         <div class="sd-d"></div>
                         <span class="sd-t">Cat&#225;logo conectado</span>
                     </div>
-                    <div class="ft-t">GRIFFO SRL &#183; Industria Argentina &#183; griffo.com.ar &#183; v1.0</div>
+                    <div class="ft-t">GRIFFO SRL &#183; Industria Argentina &#183; griffo.com.ar &#183; v1.1</div>
                 </div>
                 <div class="bl"></div>
             </div>
@@ -1230,7 +1270,7 @@
                     <a onclick="go('home')" style="font-size:12px;color:var(--m);cursor:pointer;font-weight:600">&#8592; Volver al inicio</a>
                 </div>
                 <div class="ft">
-                    <div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.0</div>
+                    <div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.1</div>
                 </div>
                 <div class="bl"></div>
             </div>
@@ -1278,7 +1318,7 @@
                     <a onclick="go('home')" style="font-size:12px;color:var(--m);cursor:pointer;font-weight:600">&#8592; Volver al inicio</a>
                 </div>
                 <div class="ft">
-                    <div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.0</div>
+                    <div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.1</div>
                 </div>
                 <div class="bl"></div>
             </div>
@@ -1308,7 +1348,7 @@
                 <div id="plate-vi"></div>
                 <div id="plate-res" class="res"></div>
                 <div class="ft">
-                    <div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.0</div>
+                    <div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.1</div>
                 </div>
                 <div class="bl"></div>
             </div>
@@ -1351,7 +1391,7 @@
                 </div>
                 <div id="vehi-res" class="res"></div>
                 <div class="ft">
-                    <div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.0</div>
+                    <div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.1</div>
                 </div>
                 <div class="bl"></div>
             </div>
@@ -1380,7 +1420,7 @@
                 </div>
                 <div id="code-res" class="res"></div>
                 <div class="ft">
-                    <div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.0</div>
+                    <div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.1</div>
                 </div>
                 <div class="bl"></div>
             </div>
@@ -1409,7 +1449,7 @@
                 </div>
                 <div id="kw-res" class="res"></div>
                 <div class="ft">
-                    <div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.0</div>
+                    <div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.1</div>
                 </div>
                 <div class="bl"></div>
             </div>
@@ -1448,7 +1488,29 @@
                     </div>
                 </div>
                 <div class="ft">
-                    <div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.0</div>
+                    <div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.1</div>
+                </div>
+                <div class="bl"></div>
+            </div>
+            <div id="s-favs" class="scr">
+                <div class="hdr">
+                    <div class="ov o1"></div>
+                    <div class="ov o2"></div>
+                    <button class="bk" onclick="go('home')">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 12l9-9 9 9"/>
+                            <path d="M5 10v10a1 1 0 001 1h3v-5h6v5h3a1 1 0 001-1V10"/>
+                        </svg>
+                    </button>
+                    <img class="logo" id="logo-favs" alt="Griffo">
+                    <div class="slo">Impulsamos Soluciones</div>
+                </div>
+                <div class="con">
+                    <h2 class="tit">Mis Favoritos</h2>
+                    <div id="favs-res"></div>
+                </div>
+                <div class="ft">
+                    <div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.1</div>
                 </div>
                 <div class="bl"></div>
             </div>
@@ -1469,7 +1531,7 @@
                 <div id="det-gallery" class="d-gallery"></div>
                 <div id="det-body" class="d-body"></div>
                 <div class="ft">
-                    <div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.0</div>
+                    <div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.1</div>
                 </div>
                 <div class="bl"></div>
             </div>
@@ -1495,7 +1557,7 @@
                     <div class="adm-ld">Cargando datos...</div>
                 </div>
                 <div class="ft">
-                    <div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.0</div>
+                    <div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.1</div>
                 </div>
                 <div class="bl"></div>
             </div>
@@ -1542,7 +1604,7 @@
             }
             function setLogos() {
                 var s = '/griffologoblancotransparente.png';
-                ['logo-main', 'logo-plate', 'logo-vehi', 'logo-code', 'logo-kw', 'logo-det', 'logo-login', 'logo-reg', 'logo-adm', 'logo-msr'].forEach(function(id) {
+                ['logo-main', 'logo-plate', 'logo-vehi', 'logo-code', 'logo-kw', 'logo-det', 'logo-login', 'logo-reg', 'logo-adm', 'logo-msr', 'logo-favs'].forEach(function(id) {
                     var el = document.getElementById(id);
                     if (el)
                         el.src = s;
@@ -1557,11 +1619,13 @@
             });
             var db = firebase.firestore();
             var ADMIN_EMAIL = 'josedgriffo@gmail.com';
+            var userFavs = {};
             firebase.auth().onAuthStateChanged(function(user) {
                 currentUser = user;
                 var bar = document.getElementById('usr-home');
                 var name = document.getElementById('usr-display');
                 var adm = document.getElementById('adm-home');
+                var btnFavs = document.getElementById('btn-favs');
                 if (user) {
                     bar.classList.add('on');
                     name.textContent = user.displayName || user.email;
@@ -1569,6 +1633,8 @@
                         adm.classList.add('on');
                     else
                         adm.classList.remove('on');
+                    btnFavs.style.display = '';
+                    loadFavs();
                     if (pendingGo) {
                         var dest = pendingGo;
                         pendingGo = null;
@@ -1578,10 +1644,12 @@
                     bar.classList.remove('on');
                     name.textContent = '';
                     adm.classList.remove('on');
+                    btnFavs.style.display = 'none';
+                    userFavs = {};
                 }
             });
             function go(s) {
-                if (['plate', 'vehicle', 'code', 'keyword', 'measures'].indexOf(s) >= 0 && !currentUser) {
+                if (['plate', 'vehicle', 'code', 'keyword', 'measures', 'favs'].indexOf(s) >= 0 && !currentUser) {
                     pendingGo = s;
                     s = 'login';
                 }
@@ -1596,6 +1664,8 @@
                 window.scrollTo(0, 0);
                 if (s === 'admin')
                     loadAdmin();
+                if (s === 'favs')
+                    renderFavs();
                 if (s === 'measures' && P)
                     fillMeasures();
                 if (s !== 'home' && s !== 'detail' && s !== 'login' && s !== 'register' && s !== 'admin' && !P)
@@ -1905,6 +1975,67 @@
                 a.download = 'griffo-analytics-' + new Date().toISOString().slice(0, 10) + '.csv';
                 a.click();
                 URL.revokeObjectURL(url);
+            }
+            async function loadFavs() {
+                if (!currentUser) return;
+                try {
+                    var doc = await db.collection('favorites').doc(currentUser.uid).get();
+                    if (doc.exists) {
+                        userFavs = doc.data().codes || {};
+                    } else {
+                        userFavs = {};
+                    }
+                } catch (e) {
+                    console.error('Error cargando favoritos:', e);
+                    userFavs = {};
+                }
+            }
+            async function toggleFav(code) {
+                if (!currentUser) return;
+                if (userFavs[code]) {
+                    delete userFavs[code];
+                } else {
+                    userFavs[code] = Date.now();
+                }
+                try {
+                    await db.collection('favorites').doc(currentUser.uid).set({ codes: userFavs });
+                } catch (e) {
+                    console.error('Error guardando favorito:', e);
+                }
+                updateFavStars(code);
+                track(userFavs[code] ? 'fav_add' : 'fav_remove', { code: code });
+            }
+            function isFav(code) {
+                return !!userFavs[code];
+            }
+            function favStarHtml(code, extraStyle) {
+                var on = isFav(code) ? ' on' : '';
+                return '<button class="fav-star' + on + '" data-fav="' + code + '" onclick="event.stopPropagation();toggleFav(\'' + code + '\')" title="Favorito" style="' + (extraStyle || '') + '">&#9733;</button>';
+            }
+            function updateFavStars(code) {
+                document.querySelectorAll('[data-fav="' + code + '"]').forEach(function(el) {
+                    if (isFav(code)) el.classList.add('on');
+                    else el.classList.remove('on');
+                });
+            }
+            function renderFavs() {
+                var el = document.getElementById('favs-res');
+                if (!P) {
+                    el.innerHTML = '<div class="fav-empty">Cargando productos...</div>';
+                    loadP().then(function() { renderFavs(); });
+                    return;
+                }
+                var codes = Object.keys(userFavs);
+                if (codes.length === 0) {
+                    el.innerHTML = '<div class="fav-empty">No ten\u00e9s productos guardados a\u00fan.<br><br>Toc\u00e1 la estrella &#9733; en cualquier producto para guardarlo aqu\u00ed.</div>';
+                    return;
+                }
+                var favProducts = P.filter(function(p) { return userFavs[p.code]; });
+                if (favProducts.length === 0) {
+                    el.innerHTML = '<div class="fav-empty">No se encontraron los productos guardados.</div>';
+                    return;
+                }
+                render('favs-res', favProducts, 'favs');
             }
             async function loadP() {
                 try {
@@ -2316,7 +2447,7 @@
                 items.forEach(function(p, i) {
                     h += '<div class="rc">';
                     h += '<div onclick="showDetail(' + i + ')">';
-                    h += '<div class="r-code">' + (p.code || '') + '</div>';
+                    h += '<div style="display:flex;justify-content:space-between;align-items:center"><div class="r-code">' + (p.code || '') + '</div>' + favStarHtml(p.code || '') + '</div>';
                     h += '<div class="r-desc">' + (p.product || '') + ' - ' + (p.description || '') + '</div>';
                     h += '<div class="r-cat">' + (p.category || '') + '</div>';
                     if (p.pictures && p.pictures.length > 0) {
@@ -2366,7 +2497,7 @@
                     });
                 }
                 gal.innerHTML = gh;
-                var h = '<div class="d-code">' + (p.code || '') + '</div>';
+                var h = '<div class="fav-bar"><div class="d-code">' + (p.code || '') + '</div>' + favStarHtml(p.code || '') + '</div>';
                 h += '<div class="d-prod">' + (p.product || '') + '</div>';
                 h += '<div class="d-desc">' + (p.description || '') + '</div>';
                 h += '<span class="d-cat">' + (p.category || '') + '</span>';
