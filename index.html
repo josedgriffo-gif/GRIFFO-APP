@@ -2112,7 +2112,7 @@
                 }
                 cnt.textContent = msrProducts.length + ' producto' + (msrProducts.length > 1 ? 's' : '');
                 var isTp = false;
-                var cols = [{k:'diamMayor',l:'Di\u00e1m. Mayor'},{k:'largo',l:'Largo'},{k:'diamMenor',l:'Di\u00e1m. Menor'},{k:'code',l:'C\u00f3digo'}];
+                var cols = [{k:'diamMenor',l:'Di\u00e1m. Menor'},{k:'diamMayor',l:'Di\u00e1m. Mayor'},{k:'largo',l:'Largo'},{k:'code',l:'C\u00f3digo'}];
                 var h = '<table class="msr-table"><thead><tr>';
                 cols.forEach(function(c) {
                     var cls = msrSortCol === c.k ? ' class="sorted"' : '';
