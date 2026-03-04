@@ -1725,6 +1725,12 @@
                 var cont = document.getElementById('adm-content');
                 cont.innerHTML = '<div class="adm-ld">Cargando datos...</div>';
                 try {
+                    if (!P) {
+                        var pr = await fetch('/api/products');
+                        var pd = await pr.json();
+                        P = pd.products;
+                        buildSearchIndex();
+                    }
                     var snap = await db.collection('analytics').get();
                     allAnalytics = [];
                     snap.forEach(function(doc) {
@@ -1823,6 +1829,30 @@
                     h += '</div>';
                 }
                 h += '<button class="adm-exp" onclick="exportCSV()">&#11015; Descargar Excel (CSV)</button>';
+                // Productos sin link MercadoLibre (códigos con -3xxxxx)
+                if (P && P.length > 0) {
+                    var sinMeli = P.filter(function(p) {
+                        var c = p.code || '';
+                        if (!c.match(/-3/)) return false;
+                        var tieneLink = false;
+                        if (p.links && p.links.length > 0) {
+                            p.links.forEach(function(l) {
+                                if (l.url || l.link) tieneLink = true;
+                            });
+                        }
+                        return !tieneLink;
+                    });
+                    h += '<div class="adm-sec"><div class="adm-sec-t">Sin link MercadoLibre (' + sinMeli.length + ')</div>';
+                    if (sinMeli.length === 0) {
+                        h += '<div class="adm-row"><span class="adm-row-l">Todos los productos -3xx tienen link \u2705</span></div>';
+                    } else {
+                        sinMeli.sort(function(a, b) { return (a.code || '').localeCompare(b.code || ''); });
+                        sinMeli.forEach(function(p) {
+                            h += '<div class="adm-row"><span class="adm-row-l">' + esc(p.code) + '</span><span class="adm-row-v">' + esc(p.product || '') + '</span></div>';
+                        });
+                    }
+                    h += '</div>';
+                }
                 document.getElementById('adm-content').innerHTML = h;
             }
             function countBy(arr, field) {
