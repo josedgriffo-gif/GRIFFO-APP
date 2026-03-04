@@ -1262,6 +1262,9 @@
                     </div>
                     <div id="login-err" class="auth-err"></div>
                     <button class="sb" onclick="emailLogin()">Ingresar</button>
+                    <div style="text-align:center;margin-top:8px">
+                        <a onclick="resetPassword()" style="font-size:12px;color:var(--m);cursor:pointer">&iquest;Olvidaste tu contrase&ntilde;a?</a>
+                    </div>
                     <div class="auth-link">
                         &#191;No ten&#233;s cuenta? <a onclick="go('register')">Registrate</a>
                     </div>
@@ -1706,6 +1709,23 @@
                         msg = 'Email inv\u00e1lido';
                     if (e.code === 'auth/too-many-requests')
                         msg = 'Demasiados intentos. Esper\u00e1 un momento';
+                    showErr('login-err', msg);
+                }
+            }
+            async function resetPassword() {
+                var email = document.getElementById('login-email').value.trim();
+                if (!email) {
+                    showErr('login-err', 'Ingres\u00e1 tu email para recuperar la contrase\u00f1a');
+                    return;
+                }
+                try {
+                    await firebase.auth().sendPasswordResetEmail(email);
+                    showErr('login-err', 'Te enviamos un email para restablecer tu contrase\u00f1a. Revis\u00e1 tu casilla.');
+                    document.getElementById('login-err').style.color = '#2e7d32';
+                } catch (e) {
+                    var msg = 'Error al enviar el email';
+                    if (e.code === 'auth/user-not-found') msg = 'No existe una cuenta con ese email';
+                    if (e.code === 'auth/invalid-email') msg = 'Email inv\u00e1lido';
                     showErr('login-err', msg);
                 }
             }
