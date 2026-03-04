@@ -2014,14 +2014,20 @@
             }
             function isFuelleDireccion(p) {
                 var d = ((p.product || '') + ' ' + (p.description || '') + ' ' + (p.category || '')).toLowerCase();
+                var c = (p.code || '');
+                if (d.indexOf('kit') >= 0 || c.match(/^[23]\d{2}-/)) return false;
                 return d.indexOf('fuelle') >= 0 && d.indexOf('semieje') < 0 && (d.indexOf('direcci') >= 0 || d.indexOf('cremallera') >= 0);
             }
             function isFuelleTransmision(p) {
                 var d = ((p.product || '') + ' ' + (p.description || '') + ' ' + (p.category || '')).toLowerCase();
+                var c = (p.code || '');
+                if (d.indexOf('kit') >= 0 || c.match(/^[23]\d{2}-/)) return false;
                 return d.indexOf('fuelle') >= 0 && (d.indexOf('semieje') >= 0 || d.indexOf('transmisi') >= 0 || d.indexOf('homocin') >= 0);
             }
             function isTope(p) {
                 var d = ((p.product || '') + ' ' + (p.description || '') + ' ' + (p.category || '')).toLowerCase();
+                var c = (p.code || '');
+                if (d.indexOf('kit') >= 0 || c.match(/^[23]\d{2}-/)) return false;
                 return d.indexOf('tope') >= 0;
             }
             function getMsrData(p) {
