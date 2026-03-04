@@ -1846,11 +1846,24 @@
                 });
                 var users = {};
                 d.forEach(function(r) {
-                    if (r.userEmail)
-                        users[r.userEmail] = {
-                            name: r.userName || r.userEmail,
-                            email: r.userEmail
-                        };
+                    if (r.userEmail) {
+                        if (!users[r.userEmail]) {
+                            users[r.userEmail] = {
+                                name: r.userName || r.userEmail,
+                                email: r.userEmail,
+                                searches: 0,
+                                views: 0,
+                                wa: 0,
+                                ml: 0,
+                                total: 0
+                            };
+                        }
+                        users[r.userEmail].total++;
+                        if (r.event === 'search') users[r.userEmail].searches++;
+                        else if (r.event === 'product_view') users[r.userEmail].views++;
+                        else if (r.event === 'whatsapp_click') users[r.userEmail].wa++;
+                        else if (r.event === 'mercadolibre_click') users[r.userEmail].ml++;
+                    }
                 });
                 var h = '';
                 h += '<div class="adm-cards">';
@@ -1904,10 +1917,22 @@
                     h += '</div>';
                 }
                 var uList = Object.values(users);
+                uList.sort(function(a, b) { return b.total - a.total; });
                 if (uList.length) {
                     h += '<div class="adm-sec"><div class="adm-sec-t">Usuarios registrados (' + uList.length + ')</div>';
                     uList.forEach(function(u) {
-                        h += '<div class="adm-row"><span class="adm-row-l">' + esc(u.name) + '</span><span class="adm-row-v">' + esc(u.email) + '</span></div>';
+                        h += '<div style="padding:10px 16px;border-bottom:1px solid #eee">';
+                        h += '<div style="display:flex;justify-content:space-between;align-items:center">';
+                        h += '<span style="font-weight:600;font-size:13px">' + esc(u.name) + '</span>';
+                        h += '<span style="font-size:11px;color:#888">' + esc(u.email) + '</span>';
+                        h += '</div>';
+                        h += '<div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">';
+                        h += '<span style="font-size:10px;background:#e3f2fd;padding:3px 8px;border-radius:10px">\ud83d\udd0d ' + u.searches + ' b\u00fasq.</span>';
+                        h += '<span style="font-size:10px;background:#e8f5e9;padding:3px 8px;border-radius:10px">\ud83d\udc41 ' + u.views + ' vistos</span>';
+                        h += '<span style="font-size:10px;background:#e8f5e9;padding:3px 8px;border-radius:10px">\ud83d\udce9 ' + u.wa + ' WA</span>';
+                        h += '<span style="font-size:10px;background:#fff8e1;padding:3px 8px;border-radius:10px">\ud83d\uded2 ' + u.ml + ' MeLi</span>';
+                        h += '<span style="font-size:10px;background:#f3e5f5;padding:3px 8px;border-radius:10px">\u2211 ' + u.total + ' total</span>';
+                        h += '</div></div>';
                     });
                     h += '</div>';
                 }
