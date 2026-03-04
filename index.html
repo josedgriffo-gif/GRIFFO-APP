@@ -2136,50 +2136,9 @@
                 msrSelectedIdx = i;
                 var m = msrProducts[i];
                 var p = m._product;
-                var preview = document.getElementById('msr-preview');
-                var img = document.getElementById('msr-preview-img');
-                var code = document.getElementById('msr-preview-code');
-                var desc = document.getElementById('msr-preview-desc');
-                code.textContent = p.code || '';
-                desc.textContent = (p.product || '') + ' - ' + (p.description || '');
-                if (p.pictures && p.pictures.length > 0) {
-                    var u = p.pictures[0].image_url || p.pictures[0].url || '';
-                    if (u) {
-                        img.src = u;
-                        img.style.display = 'block';
-                        lbImgs = [];
-                        p.pictures.forEach(function(pic) {
-                            var pu = pic.image_url || pic.url || '';
-                            if (pu) lbImgs.push(pu);
-                        });
-                    } else {
-                        img.style.display = 'none';
-                    }
-                } else {
-                    img.style.display = 'none';
-                }
-                preview.classList.add('on');
-                renderMsrTable();
-                track('product_view', {
-                    code: p.code || '',
-                    product: p.product || '',
-                    category: p.category || '',
-                    source: 'measures'
-                });
-            }
-            function openMsrLB() {
-                if (lbImgs.length > 0) openLB(0);
-            }
-            function goToMsrDetail() {
-                if (msrSelectedIdx < 0) return;
-                var p = msrProducts[msrSelectedIdx]._product;
-                var idx = RP.indexOf(p);
-                if (idx < 0) {
-                    RP = [p];
-                    idx = 0;
-                }
+                RP = [p];
                 BS = 'measures';
-                showDetail(idx);
+                showDetail(0);
             }
             function fillMeasures() {
                 if (!P) return;
