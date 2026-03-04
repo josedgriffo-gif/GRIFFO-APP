@@ -2013,43 +2013,45 @@
                 return null;
             }
             function isFuelleDireccion(p) {
-                var d = ((p.product || '') + ' ' + (p.description || '') + ' ' + (p.category || '')).toLowerCase();
-                var c = (p.code || '');
-                if (d.indexOf('kit') >= 0 || c.match(/^[23]\d{2}-/)) return false;
-                return d.indexOf('fuelle') >= 0 && d.indexOf('semieje') < 0 && (d.indexOf('direcci') >= 0 || d.indexOf('cremallera') >= 0);
+                var d = ((p.product || '') + ' ' + (p.description || '')).toLowerCase();
+                return d.indexOf('fuelle') >= 0 && d.indexOf('cremallera') >= 0;
             }
             function isFuelleTransmision(p) {
-                var d = ((p.product || '') + ' ' + (p.description || '') + ' ' + (p.category || '')).toLowerCase();
-                var c = (p.code || '');
-                if (d.indexOf('kit') >= 0 || c.match(/^[23]\d{2}-/)) return false;
-                return d.indexOf('fuelle') >= 0 && (d.indexOf('semieje') >= 0 || d.indexOf('transmisi') >= 0 || d.indexOf('homocin') >= 0);
+                var d = ((p.product || '') + ' ' + (p.description || '')).toLowerCase();
+                return d.indexOf('fuelle') >= 0 && d.indexOf('semieje') >= 0;
             }
             function getBaseCode(code) {
-                // Extraer código base: "253-32A" → "253", "105-12" → "105"
+                // "056-32A" → "056", "057-32" → "057"
                 var m = (code || '').match(/^(\d+)/);
                 return m ? m[1] : code;
             }
             function isTope(p) {
                 var d = ((p.product || '') + ' ' + (p.description || '') + ' ' + (p.category || '')).toLowerCase();
-                var c = (p.code || '');
-                if (d.indexOf('kit') >= 0 || c.match(/^[23]\d{2}-/)) return false;
-                return d.indexOf('tope') >= 0;
+                return d.indexOf('tope') >= 0 && d.indexOf('fuelle') < 0;
             }
             function getMsrData(p) {
+                // Para cremallera: "Diámetro Menor", "Diámetro Mayor", "LARGO"
+                // Para semieje: "DIÁMETRO INTERIOR DE BOCA MAYOR", "DIÁMETRO INTERIOR DE BOCA MENOR", "LARGO"
+                var diamMayor = getAttrValue(p, 'boca mayor') || getAttrValue(p, 'diámetro mayor') || getAttrValue(p, 'Diámetro Mayor');
+                var diamMenor = getAttrValue(p, 'boca menor') || getAttrValue(p, 'diámetro menor') || getAttrValue(p, 'Diámetro Menor');
+                var largo = getAttrValue(p, 'largo') || getAttrValue(p, 'LARGO');
+                var diamInt = getAttrValue(p, 'interno') || getAttrValue(p, 'interior');
+                var diamExt = getAttrValue(p, 'exterior');
+                var altura = getAttrValue(p, 'altura') || getAttrValue(p, 'alto');
                 return {
-                    diamMayor: getAttrValue(p, 'mayor'),
-                    diamMenor: getAttrValue(p, 'menor'),
-                    largo: getAttrValue(p, 'largo'),
-                    diamInterior: getAttrValue(p, 'interior'),
-                    diamExterior: getAttrValue(p, 'exterior'),
-                    altura: getAttrValue(p, 'altura') || getAttrValue(p, 'alto'),
+                    diamMayor: diamMayor,
+                    diamMenor: diamMenor,
+                    largo: largo,
+                    diamInterior: diamInt,
+                    diamExterior: diamExt,
+                    altura: altura,
                     code: p.code || '',
-                    _diamMayorN: getAttrNum(p, 'mayor'),
-                    _diamMenorN: getAttrNum(p, 'menor'),
-                    _largoN: getAttrNum(p, 'largo'),
-                    _diamInteriorN: getAttrNum(p, 'interior'),
-                    _diamExteriorN: getAttrNum(p, 'exterior'),
-                    _alturaN: getAttrNum(p, 'altura') || getAttrNum(p, 'alto'),
+                    _diamMayorN: parseFloat((diamMayor||'').replace(',','.')) || null,
+                    _diamMenorN: parseFloat((diamMenor||'').replace(',','.')) || null,
+                    _largoN: parseFloat((largo||'').replace(',','.')) || null,
+                    _diamInteriorN: parseFloat((diamInt||'').replace(',','.')) || null,
+                    _diamExteriorN: parseFloat((diamExt||'').replace(',','.')) || null,
+                    _alturaN: parseFloat((altura||'').replace(',','.')) || null,
                     _product: p
                 };
             }
