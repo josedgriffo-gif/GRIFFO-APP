@@ -2111,10 +2111,8 @@
                     return;
                 }
                 cnt.textContent = msrProducts.length + ' producto' + (msrProducts.length > 1 ? 's' : '');
-                var isTp = msrType === 'tope';
-                var cols = isTp
-                    ? [{k:'diamInterior',l:'Di\u00e1m. Int.'},{k:'diamExterior',l:'Di\u00e1m. Ext.'},{k:'altura',l:'Altura'},{k:'code',l:'C\u00f3digo'}]
-                    : [{k:'diamMayor',l:'Di\u00e1m. Mayor'},{k:'largo',l:'Largo'},{k:'diamMenor',l:'Di\u00e1m. Menor'},{k:'code',l:'C\u00f3digo'}];
+                var isTp = false;
+                var cols = [{k:'diamMayor',l:'Di\u00e1m. Mayor'},{k:'largo',l:'Largo'},{k:'diamMenor',l:'Di\u00e1m. Menor'},{k:'code',l:'C\u00f3digo'}];
                 var h = '<table class="msr-table"><thead><tr>';
                 cols.forEach(function(c) {
                     var cls = msrSortCol === c.k ? ' class="sorted"' : '';
