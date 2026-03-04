@@ -1947,7 +1947,7 @@
                         p.ean.forEach(function(e) {
                             t += ' ' + e;
                         });
-                    p._searchText = t.toLowerCase();
+                    p._searchText = norm(t);
                 });
             }
             function fillBrands() {
@@ -2283,8 +2283,11 @@
                     results: matches.length
                 });
             }
+            function norm(s) {
+                return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
             function searchKw() {
-                var k = document.getElementById('inp-kw').value.trim().toLowerCase();
+                var k = norm(document.getElementById('inp-kw').value.trim());
                 if (!k || !P)
                     return;
                 var matches = P.filter(function(p) {
