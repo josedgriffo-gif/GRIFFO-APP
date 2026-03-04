@@ -2024,6 +2024,11 @@
                 if (d.indexOf('kit') >= 0 || c.match(/^[23]\d{2}-/)) return false;
                 return d.indexOf('fuelle') >= 0 && (d.indexOf('semieje') >= 0 || d.indexOf('transmisi') >= 0 || d.indexOf('homocin') >= 0);
             }
+            function getBaseCode(code) {
+                // Extraer código base: "253-32A" → "253", "105-12" → "105"
+                var m = (code || '').match(/^(\d+)/);
+                return m ? m[1] : code;
+            }
             function isTope(p) {
                 var d = ((p.product || '') + ' ' + (p.description || '') + ' ' + (p.category || '')).toLowerCase();
                 var c = (p.code || '');
@@ -2051,13 +2056,26 @@
             function buildMsrTable() {
                 if (!P) return;
                 msrProducts = [];
-                P.forEach(function(p) {
-                    var match = false;
-                    if (msrType === 'direccion') match = isFuelleDireccion(p);
-                    else if (msrType === 'transmision') match = isFuelleTransmision(p);
-                    else if (msrType === 'tope') match = isTope(p);
-                    if (match) msrProducts.push(getMsrData(p));
-                });
+                if (msrType === 'transmision') {
+                    // Agrupar por código base, mostrar una sola fila por fuelle
+                    var seen = {};
+                    P.forEach(function(p) {
+                        if (!isFuelleTransmision(p)) return;
+                        var base = getBaseCode(p.code);
+                        if (seen[base]) return;
+                        seen[base] = true;
+                        var data = getMsrData(p);
+                        data.code = base;
+                        msrProducts.push(data);
+                    });
+                } else {
+                    P.forEach(function(p) {
+                        var match = false;
+                        if (msrType === 'direccion') match = isFuelleDireccion(p);
+                        else if (msrType === 'tope') match = isTope(p);
+                        if (match) msrProducts.push(getMsrData(p));
+                    });
+                }
                 renderMsrTable();
                 track('search', {
                     type: 'measures',
