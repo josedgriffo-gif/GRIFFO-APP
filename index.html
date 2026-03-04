@@ -2287,11 +2287,15 @@
                 return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
             }
             function searchKw() {
-                var k = norm(document.getElementById('inp-kw').value.trim());
-                if (!k || !P)
+                var raw = norm(document.getElementById('inp-kw').value.trim());
+                if (!raw || !P)
                     return;
+                var words = raw.split(/\s+/).filter(function(w) { return w.length > 0; });
                 var matches = P.filter(function(p) {
-                    return p._searchText && p._searchText.indexOf(k) >= 0;
+                    if (!p._searchText) return false;
+                    return words.every(function(w) {
+                        return p._searchText.indexOf(w) >= 0;
+                    });
                 });
                 render('kw-res', matches, 'keyword');
                 track('search', {
