@@ -792,11 +792,16 @@
                 var snap = await db.collection('analytics').get();
                 allAnalytics = [];
                 snap.forEach(function(doc) { allAnalytics.push(doc.data()); });
-                renderAdmin();
+                // Cargar PDVs junto con analytics
+                var pdvSnap = await db.collection('pdvs').get();
+                var pdvsList = [];
+                pdvSnap.forEach(function(doc) { var d = doc.data(); d.id = doc.id; pdvsList.push(d); });
+                renderAdmin(pdvsList);
             } catch(e) { cont.innerHTML = '<div class="adm-ld">Error al cargar: ' + e.message + '</div>'; }
         }
 
-        function renderAdmin() {
+        function renderAdmin(pdvsList) {
+            pdvsList = pdvsList || [];
             var d = allAnalytics;
             var searches = d.filter(function(r) { return r.event === 'search'; });
             var found = searches.filter(function(r) { return r.results > 0; });
@@ -884,20 +889,9 @@
                 h += meliH;
             }
             h += '<button class="adm-exp" onclick="exportCSV()">\u2B07 Descargar Excel (CSV)</button>';
-            document.getElementById('adm-content').innerHTML = h;
-            // Agregar sección PDVs al final
-            renderAdminPDVs();
-        }
-
-        async function renderAdminPDVs() {
-            var cont = document.getElementById('adm-content');
-            var pdvSnap = await db.collection('pdvs').get();
-            var pdvs = [];
-            pdvSnap.forEach(function(doc) { var d = doc.data(); d.id = doc.id; pdvs.push(d); });
-
-            var h = '<div class="adm-sec" style="margin-top:8px">';
-            h += '<div class="adm-sec-t">\uD83C\uDFEA Puntos de Venta (' + pdvs.length + ')</div>';
-            // Formulario para agregar nuevo PDV
+            // Sección PDVs
+            h += '<div class="adm-sec" style="margin-top:8px">';
+            h += '<div class="adm-sec-t">\uD83C\uDFEA Puntos de Venta (' + pdvsList.length + ')</div>';
             h += '<div class="pdv-form">';
             h += '<input id="pdv-new-nombre" placeholder="Nombre del PDV (ej: Nonno Autopartes)">';
             h += '<input id="pdv-new-celular" placeholder="Celular con c\u00f3digo de pa\u00eds (ej: 5491112345678)" type="tel">';
@@ -906,8 +900,7 @@
             h += '<button class="pdv-add-btn" onclick="addPDV()">\u2795 Agregar PDV</button>';
             h += '<div id="pdv-add-status" style="font-size:12px;color:var(--m);margin-top:6px;text-align:center"></div>';
             h += '</div>';
-            // Lista de PDVs
-            pdvs.forEach(function(pdv) {
+            pdvsList.forEach(function(pdv) {
                 var link = window.location.origin + '/?ref=' + pdv.id;
                 h += '<div class="pdv-card">';
                 h += '<div class="pdv-card-top">';
@@ -915,12 +908,12 @@
                 h += '<div style="flex:1"><div class="pdv-card-name">' + esc(pdv.nombre) + '</div><div class="pdv-card-phone">\uD83D\uDCDE ' + esc(pdv.celular) + '</div></div>';
                 h += '<button class="pdv-del-btn" onclick="deletePDV(\'' + pdv.id + '\',this)">\uD83D\uDDD1</button>';
                 h += '</div>';
-                h += '<div class="pdv-link-box" onclick="copyLink(\'' + esc(link) + '\',this)">' + link + '</div>';
+                h += '<div class="pdv-link-box">' + esc(link) + '</div>';
                 h += '<button class="pdv-copy-btn" onclick="copyLink(\'' + esc(link) + '\',this)">\uD83D\uDCCB Copiar link</button>';
                 h += '</div>';
             });
             h += '</div>';
-            cont.insertAdjacentHTML('beforeend', h);
+            document.getElementById('adm-content').innerHTML = h;
         }
 
         async function addPDV() {
