@@ -900,11 +900,26 @@
             h += '</div>';
             pdvsList.forEach(function(pdv) {
                 var link = window.location.origin + '/?ref=' + pdv.id;
+                // Estadísticas de este PDV
+                var pdvEvents = d.filter(function(r) { return r.pdvId === pdv.id; });
+                var pdvUsers = {};
+                pdvEvents.forEach(function(r) { if (r.userEmail) pdvUsers[r.userEmail] = 1; });
+                var pdvSearches = pdvEvents.filter(function(r) { return r.event === 'search'; }).length;
+                var pdvViews = pdvEvents.filter(function(r) { return r.event === 'product_view'; }).length;
+                var pdvWA = pdvEvents.filter(function(r) { return r.event === 'whatsapp_pdv_click'; }).length;
+                var pdvMec = Object.keys(pdvUsers).length;
                 h += '<div class="pdv-card">';
                 h += '<div class="pdv-card-top">';
                 if (pdv.logoUrl) h += '<img class="pdv-card-logo" src="' + esc(pdv.logoUrl) + '" onerror="this.style.display=\'none\'">';
                 h += '<div style="flex:1"><div class="pdv-card-name">' + esc(pdv.nombre) + '</div><div class="pdv-card-phone">\uD83D\uDCDE ' + esc(pdv.celular) + '</div></div>';
                 h += '<button class="pdv-del-btn" onclick="deletePDV(\'' + pdv.id + '\',this)">\uD83D\uDDD1</button>';
+                h += '</div>';
+                // Stats
+                h += '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">';
+                h += '<span style="font-size:10px;background:#e3f2fd;padding:3px 8px;border-radius:10px">\uD83D\uDD27 ' + pdvMec + ' mec\u00e1nicos</span>';
+                h += '<span style="font-size:10px;background:#e8f5e9;padding:3px 8px;border-radius:10px">\uD83D\uDD0D ' + pdvSearches + ' b\u00fasquedas</span>';
+                h += '<span style="font-size:10px;background:#e8f5e9;padding:3px 8px;border-radius:10px">\uD83D\uDC41 ' + pdvViews + ' vistos</span>';
+                h += '<span style="font-size:10px;background:#e0f7fa;padding:3px 8px;border-radius:10px">\uD83D\uDCE9 ' + pdvWA + ' WA a ' + esc(pdv.nombre) + '</span>';
                 h += '</div>';
                 h += '<div class="pdv-link-box">' + esc(link) + '</div>';
                 h += '<button class="pdv-copy-btn" onclick="copyLink(\'' + esc(link) + '\',this)">\uD83D\uDCCB Copiar link</button>';
