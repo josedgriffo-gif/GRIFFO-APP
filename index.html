@@ -567,6 +567,11 @@
                 loadFavs();
                 // Cargar PDV del usuario
                 await loadUserPDV(user.uid);
+                // Si vino con link ?ref= y ya estaba logueado, actualizar su pdvId
+                if (refPDVId && (!currentPDV || currentPDV.id !== refPDVId)) {
+                    await db.collection('users').doc(user.uid).set({ pdvId: refPDVId }, { merge: true });
+                    await loadUserPDV(user.uid);
+                }
                 if (pendingGo) { var dest = pendingGo; pendingGo = null; go(dest); }
             } else {
                 bar.classList.remove('on');
