@@ -749,7 +749,7 @@
                 h += '<button class="bw2 pdv" style="' + s + '" onclick="event.stopPropagation();trackWAPDV(\'' + ec + '\',\'' + ep + '\')">' + svgWA + esc(pdv.nombre) + '</button>';
             }
             // Botón proveedor propio
-            h += '<button class="bw2" style="' + s + '" onclick="event.stopPropagation();trackWA(\'' + ec + '\',\'' + ep + '\')">' + svgWA + 'Mi proveedor</button>';
+            h += '<button class="bw2" style="' + s + '" onclick="event.stopPropagation();trackWA(\'' + ec + '\',\'' + ep + '\')">' + svgWA + 'Otro contacto</button>';
             // Botón MeLi
             var meliUrl = '';
             if (p.links && p.links.length > 0) p.links.forEach(function(l) { if (l.url || l.link) meliUrl = l.url || l.link; });
@@ -768,7 +768,7 @@
             if (pdv) {
                 h += '<button class="bw2 pdv" onclick="trackWAPDV(\'' + ec + '\',\'' + ep + '\')">' + svgWA + esc(pdv.nombre) + '</button>';
             }
-            h += '<button class="bw2" onclick="trackWA(\'' + ec + '\',\'' + ep + '\')">' + svgWA + 'Mi proveedor</button>';
+            h += '<button class="bw2" onclick="trackWA(\'' + ec + '\',\'' + ep + '\')">' + svgWA + 'Otro contacto</button>';
             var meli = '';
             if (p.links && p.links.length > 0) p.links.forEach(function(l) { if (l.url || l.link) meli = l.url || l.link; });
             if (meli) h += '<button class="bm2" onclick="trackML(\'' + ec + '\',\'' + ep + '\',\'' + encodeURIComponent(meli) + '\')">Comprar en MercadoLibre</button>';
@@ -895,8 +895,6 @@
             h += '<div class="pdv-form">';
             h += '<input id="pdv-new-nombre" placeholder="Nombre del PDV (ej: Nonno Autopartes)">';
             h += '<input id="pdv-new-celular" placeholder="Celular con c\u00f3digo de pa\u00eds (ej: 5491112345678)" type="tel">';
-            h += '<div style="margin-bottom:8px"><label style="font-size:11px;color:var(--m);font-weight:700;display:block;margin-bottom:4px">LOGO DEL PDV (opcional)</label>';
-            h += '<input type="file" id="pdv-new-logo" accept="image/*" style="font-size:12px;padding:6px"></div>';
             h += '<button class="pdv-add-btn" onclick="addPDV()">\u2795 Agregar PDV</button>';
             h += '<div id="pdv-add-status" style="font-size:12px;color:var(--m);margin-top:6px;text-align:center"></div>';
             h += '</div>';
@@ -919,28 +917,15 @@
         async function addPDV() {
             var nombre = document.getElementById('pdv-new-nombre').value.trim();
             var celular = document.getElementById('pdv-new-celular').value.trim();
-            var logoFile = document.getElementById('pdv-new-logo').files[0];
             var status = document.getElementById('pdv-add-status');
             if (!nombre || !celular) { status.textContent = 'Complet\u00e1 nombre y celular'; status.style.color = '#E53E3E'; return; }
             status.textContent = 'Guardando...'; status.style.color = 'var(--m)';
             try {
                 var pdvData = { nombre: nombre, celular: celular, activo: true, creadoEn: new Date().toISOString() };
-                // Intentar subir logo — si falla, continuar sin logo
-                if (logoFile) {
-                    try {
-                        var ref = storage.ref('pdv-logos/' + Date.now() + '_' + logoFile.name);
-                        await ref.put(logoFile);
-                        pdvData.logoUrl = await ref.getDownloadURL();
-                    } catch(storageErr) {
-                        console.warn('Storage no disponible, guardando sin logo:', storageErr.message);
-                    }
-                }
                 await db.collection('pdvs').add(pdvData);
-                status.textContent = 'PDV agregado \u2705' + (pdvData.logoUrl ? '' : ' (sin logo — habilitá Storage en Firebase)');
-                status.style.color = '#27ae60';
+                status.textContent = 'PDV agregado \u2705'; status.style.color = '#27ae60';
                 document.getElementById('pdv-new-nombre').value = '';
                 document.getElementById('pdv-new-celular').value = '';
-                document.getElementById('pdv-new-logo').value = '';
                 setTimeout(function() { loadAdmin(); }, 800);
             } catch(e) { status.textContent = 'Error: ' + e.message; status.style.color = '#E53E3E'; }
         }
