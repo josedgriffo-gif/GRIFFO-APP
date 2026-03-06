@@ -925,18 +925,22 @@
             status.textContent = 'Guardando...'; status.style.color = 'var(--m)';
             try {
                 var pdvData = { nombre: nombre, celular: celular, activo: true, creadoEn: new Date().toISOString() };
-                // Subir logo si hay
+                // Intentar subir logo — si falla, continuar sin logo
                 if (logoFile) {
-                    var ref = storage.ref('pdv-logos/' + Date.now() + '_' + logoFile.name);
-                    await ref.put(logoFile);
-                    pdvData.logoUrl = await ref.getDownloadURL();
+                    try {
+                        var ref = storage.ref('pdv-logos/' + Date.now() + '_' + logoFile.name);
+                        await ref.put(logoFile);
+                        pdvData.logoUrl = await ref.getDownloadURL();
+                    } catch(storageErr) {
+                        console.warn('Storage no disponible, guardando sin logo:', storageErr.message);
+                    }
                 }
                 await db.collection('pdvs').add(pdvData);
-                status.textContent = 'PDV agregado \u2705'; status.style.color = '#27ae60';
+                status.textContent = 'PDV agregado \u2705' + (pdvData.logoUrl ? '' : ' (sin logo — habilitá Storage en Firebase)');
+                status.style.color = '#27ae60';
                 document.getElementById('pdv-new-nombre').value = '';
                 document.getElementById('pdv-new-celular').value = '';
                 document.getElementById('pdv-new-logo').value = '';
-                // Recargar sección PDVs
                 setTimeout(function() { loadAdmin(); }, 800);
             } catch(e) { status.textContent = 'Error: ' + e.message; status.style.color = '#E53E3E'; }
         }
