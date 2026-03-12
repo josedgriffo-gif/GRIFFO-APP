@@ -3,6 +3,16 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <!-- PWA Manifest e Íconos -->
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#1a365d">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title" content="GRIFFO">
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
         <title>GRIFFO APP</title>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
         <style>
@@ -237,7 +247,7 @@
                 </div>
                 <div class="ft">
                     <div class="sd"><div class="sd-d"></div><span class="sd-t">Cat&#225;logo conectado</span></div>
-                    <div class="ft-t">GRIFFO SRL &#183; Industria Argentina &#183; griffo.com.ar &#183; v1.8</div>
+                    <div class="ft-t">GRIFFO SRL &#183; Industria Argentina &#183; griffo.com.ar &#183; v1.9</div>
                 </div>
                 <div class="bl"></div>
             </div>
@@ -267,7 +277,7 @@
                     <div class="auth-link">&#191;No ten&#233;s cuenta? <a onclick="go('register')">Registrate</a></div>
                 </div>
                 <div style="text-align:center;margin-top:4px"><a onclick="go('home')" style="font-size:12px;color:var(--m);cursor:pointer;font-weight:600">&#8592; Volver al inicio</a></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.8</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.9</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -296,7 +306,7 @@
                     <div class="auth-link">&#191;Ya ten&#233;s cuenta? <a onclick="go('login')">Ingres&#225;</a></div>
                 </div>
                 <div style="text-align:center;margin-top:4px"><a onclick="go('home')" style="font-size:12px;color:var(--m);cursor:pointer;font-weight:600">&#8592; Volver al inicio</a></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.8</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.9</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -312,7 +322,7 @@
                 </div>
                 <div id="plate-vi"></div>
                 <div id="plate-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.8</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.9</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -329,7 +339,7 @@
                     <button class="sb" onclick="searchVehicle()">Buscar</button>
                 </div>
                 <div id="vehi-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.8</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.9</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -344,7 +354,7 @@
                     <button class="sb" onclick="searchCode()">Buscar</button>
                 </div>
                 <div id="code-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.8</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.9</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -359,7 +369,7 @@
                     <button class="sb" onclick="searchKw()">Buscar</button>
                 </div>
                 <div id="kw-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.8</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.9</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -386,7 +396,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.8</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.9</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -397,7 +407,7 @@
                     <div class="hdr-info"><img class="logo-s" id="logo-favs" alt="Griffo"><div class="slo-s">Impulsamos Soluciones</div></div>
                 </div>
                 <div class="ow"><h2 style="font-size:18px;font-weight:800;color:var(--t);margin-bottom:16px">Mis Favoritos</h2><div id="favs-res"></div></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.8</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.9</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -410,7 +420,7 @@
                 </div>
                 <div id="det-gallery" class="d-gallery"></div>
                 <div id="det-body" class="d-body"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.8</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.9</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -422,7 +432,7 @@
                 </div>
                 <div class="sa"><div class="st">Panel Administrador</div></div>
                 <div id="adm-content"><div class="adm-ld">Cargando datos...</div></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.8</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.9</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -514,10 +524,8 @@
             var ref = params.get('ref');
             if (ref) {
                 refPDVId = ref;
-                // Guardar en sessionStorage para que persista hasta que se registre
                 sessionStorage.setItem('griffo_ref', ref);
             } else {
-                // Intentar recuperar de sessionStorage (si ya navegó antes con el link)
                 var saved = sessionStorage.getItem('griffo_ref');
                 if (saved) refPDVId = saved;
             }
@@ -565,9 +573,7 @@
                 adm.classList.toggle('on', user.email === ADMIN_EMAIL);
                 btnFavs.style.display = '';
                 loadFavs();
-                // Cargar PDV del usuario
                 await loadUserPDV(user.uid);
-                // Si vino con link ?ref= y ya estaba logueado, actualizar su pdvId
                 if (refPDVId && (!currentPDV || currentPDV.id !== refPDVId)) {
                     await db.collection('users').doc(user.uid).set({ pdvId: refPDVId }, { merge: true });
                     await loadUserPDV(user.uid);
@@ -662,7 +668,6 @@
                 var cred = await firebase.auth().createUserWithEmailAndPassword(email, pass);
                 await cred.user.updateProfile({ displayName: name });
                 currentUser = firebase.auth().currentUser;
-                // Guardar en Firestore con pdvId si vino con ref
                 var userData = { displayName: name, email: email, createdAt: new Date().toISOString() };
                 if (refPDVId) userData.pdvId = refPDVId;
                 await db.collection('users').doc(cred.user.uid).set(userData, { merge: true });
@@ -684,7 +689,6 @@
             try {
                 var provider = new firebase.auth.GoogleAuthProvider();
                 var result = await firebase.auth().signInWithPopup(provider);
-                // Si es nuevo usuario y vino con ref, guardar pdvId
                 if (result.additionalUserInfo && result.additionalUserInfo.isNewUser && refPDVId) {
                     await db.collection('users').doc(result.user.uid).set({ pdvId: refPDVId }, { merge: true });
                 }
@@ -714,9 +718,6 @@
         // ============================================================
         function trackWA(code, product) {
             var c = decodeURIComponent(code), pr = decodeURIComponent(product);
-            var wppNum = '';
-            // Usar el proveedor del perfil del usuario (campo whatsapp en users)
-            // Este es el comportamiento original
             var msg = 'Hola! Vi en la app GRIFFO el producto ' + c + ' (' + pr + '). Ten\u00e9s disponibilidad y precio?';
             var url = 'https://wa.me/?text=' + encodeURIComponent(msg);
             track('whatsapp_click', { code: c, product: pr, tipo: 'proveedor' });
@@ -749,13 +750,10 @@
             var svgWA = '<svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.624-1.472A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-2.168 0-4.183-.655-5.863-1.776l-.42-.282-2.751.876.877-2.672-.294-.44A9.787 9.787 0 012.182 12 9.818 9.818 0 0112 2.182 9.818 9.818 0 0121.818 12 9.818 9.818 0 0112 21.818z"/></svg>';
             var ec = encodeURIComponent(p.code || '');
             var ep = encodeURIComponent(p.product || '');
-            // Botón PDV (solo si hay PDV)
             if (pdv) {
                 h += '<button class="bw2 pdv" style="' + s + '" onclick="event.stopPropagation();trackWAPDV(\'' + ec + '\',\'' + ep + '\')">' + svgWA + esc(pdv.nombre) + '</button>';
             }
-            // Botón proveedor propio
             h += '<button class="bw2" style="' + s + '" onclick="event.stopPropagation();trackWA(\'' + ec + '\',\'' + ep + '\')">' + svgWA + 'Mi agenda</button>';
-            // Botón MeLi
             var meliUrl = '';
             if (p.links && p.links.length > 0) p.links.forEach(function(l) { if (l.url || l.link) meliUrl = l.url || l.link; });
             if (meliUrl) {
@@ -797,7 +795,6 @@
                 var snap = await db.collection('analytics').get();
                 allAnalytics = [];
                 snap.forEach(function(doc) { allAnalytics.push(doc.data()); });
-                // Cargar PDVs junto con analytics
                 var pdvSnap = await db.collection('pdvs').get();
                 var pdvsList = [];
                 pdvSnap.forEach(function(doc) { var d = doc.data(); d.id = doc.id; pdvsList.push(d); });
@@ -856,7 +853,6 @@
             }
             var uList = Object.values(users);
             uList.sort(function(a,b) { return b.total - a.total; });
-            // Mapa pdvId -> nombre
             var pdvMap = {};
             pdvsList.forEach(function(pdv) { pdvMap[pdv.id] = pdv.nombre; });
             if (uList.length) {
@@ -886,12 +882,8 @@
                 });
                 h += '</tbody></table></div></div>';
             }
-            // ── CALIDAD DE DATOS ──
             if (P && P.length > 0) {
-
                 h += '<div class="adm-sec"><div class="adm-sec-t" style="color:var(--p);font-size:14px;border-bottom:2px solid var(--p);padding-bottom:6px;margin-bottom:12px">\uD83D\uDCCA Calidad de datos (' + P.length + ' productos)</div></div>';
-
-                // 1. Sin link MercadoLibre (solo -3xxx)
                 var sinMeli = P.filter(function(p) {
                     var c = p.code || '';
                     if (!c.match(/-3/)) return false;
@@ -900,33 +892,16 @@
                     return !tieneLink;
                 });
                 h += renderCalidad('🛒 Sin link MercadoLibre', sinMeli, 'Todos los productos -3xx tienen link ✅');
-
-                // 2. Sin fotos
-                var sinFotos = P.filter(function(p) {
-                    return !p.pictures || p.pictures.length === 0;
-                });
+                var sinFotos = P.filter(function(p) { return !p.pictures || p.pictures.length === 0; });
                 h += renderCalidad('📷 Sin fotos', sinFotos, 'Todos los productos tienen fotos ✅');
-
-                // 3. Sin atributos/medidas
-                var sinAtributos = P.filter(function(p) {
-                    return !p.attributes || p.attributes.length === 0;
-                });
+                var sinAtributos = P.filter(function(p) { return !p.attributes || p.attributes.length === 0; });
                 h += renderCalidad('📐 Sin atributos / medidas', sinAtributos, 'Todos los productos tienen atributos ✅');
-
-                // 4. Sin vehículos compatibles
-                var sinVehiculos = P.filter(function(p) {
-                    return !p.vehicles || p.vehicles.length === 0;
-                });
+                var sinVehiculos = P.filter(function(p) { return !p.vehicles || p.vehicles.length === 0; });
                 h += renderCalidad('🚗 Sin vehículos compatibles', sinVehiculos, 'Todos los productos tienen vehículos ✅');
-
-                // 5. Sin descripción
-                var sinDesc = P.filter(function(p) {
-                    return !p.description || p.description.trim() === '';
-                });
+                var sinDesc = P.filter(function(p) { return !p.description || p.description.trim() === ''; });
                 h += renderCalidad('📝 Sin descripción', sinDesc, 'Todos los productos tienen descripción ✅');
             }
             h += '<button class="adm-exp" onclick="exportCSV()">\u2B07 Descargar Excel (CSV)</button>';
-            // Sección PDVs
             h += '<div class="adm-sec" style="margin-top:8px">';
             h += '<div class="adm-sec-t">\uD83C\uDFEA Puntos de Venta (' + pdvsList.length + ')</div>';
             h += '<div class="pdv-form">';
@@ -937,7 +912,6 @@
             h += '</div>';
             pdvsList.forEach(function(pdv) {
                 var link = window.location.origin + '/?ref=' + pdv.id;
-                // Estadísticas de este PDV
                 var pdvEvents = d.filter(function(r) { return r.pdvId === pdv.id; });
                 var pdvUsers = {};
                 pdvEvents.forEach(function(r) { if (r.userEmail) pdvUsers[r.userEmail] = 1; });
@@ -951,7 +925,6 @@
                 h += '<div style="flex:1"><div class="pdv-card-name">' + esc(pdv.nombre) + '</div><div class="pdv-card-phone">\uD83D\uDCDE ' + esc(pdv.celular) + '</div></div>';
                 h += '<button class="pdv-del-btn" onclick="deletePDV(\'' + pdv.id + '\',this)">\uD83D\uDDD1</button>';
                 h += '</div>';
-                // Stats
                 h += '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">';
                 h += '<span style="font-size:10px;background:#e3f2fd;padding:3px 8px;border-radius:10px">\uD83D\uDD27 ' + pdvMec + ' mec\u00e1nicos</span>';
                 h += '<span style="font-size:10px;background:#e8f5e9;padding:3px 8px;border-radius:10px">\uD83D\uDD0D ' + pdvSearches + ' b\u00fasquedas</span>';
