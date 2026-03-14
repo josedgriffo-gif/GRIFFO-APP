@@ -163,13 +163,14 @@
             .msr-type-btn { flex: 1; min-width: 30%; padding: 12px 8px; border: 2px solid rgba(0,84,159,.12); border-radius: 12px; font-size: 12px; font-weight: 700; font-family: inherit; cursor: pointer; background: var(--c); color: var(--m); text-align: center; transition: all .2s }
             .msr-type-btn.active { border-color: var(--p); background: rgba(0,84,159,.06); color: var(--p) }
             .msr-type-btn:hover { border-color: var(--p) }
-            .msr-table-wrap { overflow-x: auto; margin-top: 12px; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,84,159,.08) }
-            .msr-table { width: 100%; border-collapse: collapse; background: var(--c); font-size: 12px }
-            .msr-table th { background: var(--p); color: #fff; padding: 10px 8px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; cursor: pointer; user-select: none; white-space: nowrap; position: relative }
+            .msr-table-wrap { overflow-x: auto; margin-top: 12px; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,84,159,.08); -webkit-overflow-scrolling: touch }
+            .msr-scroll-hint { font-size: 10px; color: var(--m); text-align: right; margin-top: 4px; opacity: .7 }
+            .msr-table { width: 100%; min-width: 280px; border-collapse: collapse; background: var(--c); font-size: 11px }
+            .msr-table th { background: var(--p); color: #fff; padding: 8px 6px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .3px; cursor: pointer; user-select: none; white-space: nowrap; position: relative }
             .msr-table th:hover { background: var(--d) }
-            .msr-table th .sort-arrow { margin-left: 3px; font-size: 9px; opacity: .5 }
+            .msr-table th .sort-arrow { margin-left: 2px; font-size: 8px; opacity: .5 }
             .msr-table th.sorted .sort-arrow { opacity: 1 }
-            .msr-table td { padding: 10px 8px; border-bottom: 1px solid rgba(0,84,159,.06); color: var(--t); font-weight: 500 }
+            .msr-table td { padding: 8px 6px; border-bottom: 1px solid rgba(0,84,159,.06); color: var(--t); font-weight: 500; white-space: nowrap }
             .msr-table tr { cursor: pointer; transition: background .15s }
             .msr-table tr:hover { background: rgba(0,84,159,.04) }
             .msr-table tr.selected { background: rgba(0,173,208,.1) }
@@ -247,7 +248,7 @@
                 </div>
                 <div class="ft">
                     <div class="sd"><div class="sd-d"></div><span class="sd-t">Cat&#225;logo conectado</span></div>
-                    <div class="ft-t">GRIFFO SRL &#183; Industria Argentina &#183; griffo.com.ar &#183; v1.10</div>
+                    <div class="ft-t">GRIFFO SRL &#183; Industria Argentina &#183; griffo.com.ar &#183; v1.11</div>
                 </div>
                 <div class="bl"></div>
             </div>
@@ -277,7 +278,7 @@
                     <div class="auth-link">&#191;No ten&#233;s cuenta? <a onclick="go('register')">Registrate</a></div>
                 </div>
                 <div style="text-align:center;margin-top:4px"><a onclick="go('home')" style="font-size:12px;color:var(--m);cursor:pointer;font-weight:600">&#8592; Volver al inicio</a></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.10</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.11</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -306,7 +307,7 @@
                     <div class="auth-link">&#191;Ya ten&#233;s cuenta? <a onclick="go('login')">Ingres&#225;</a></div>
                 </div>
                 <div style="text-align:center;margin-top:4px"><a onclick="go('home')" style="font-size:12px;color:var(--m);cursor:pointer;font-weight:600">&#8592; Volver al inicio</a></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.10</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.11</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -322,7 +323,7 @@
                 </div>
                 <div id="plate-vi"></div>
                 <div id="plate-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.10</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.11</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -339,7 +340,7 @@
                     <button class="sb" onclick="searchVehicle()">Buscar</button>
                 </div>
                 <div id="vehi-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.10</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.11</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -354,7 +355,7 @@
                     <button class="sb" onclick="searchCode()">Buscar</button>
                 </div>
                 <div id="code-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.10</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.11</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -369,7 +370,7 @@
                     <button class="sb" onclick="searchKw()">Buscar</button>
                 </div>
                 <div id="kw-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.10</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.11</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -387,6 +388,7 @@
                     </div>
                     <div id="msr-cnt" class="msr-cnt"></div>
                     <div id="msr-table-wrap" class="msr-table-wrap"></div>
+                    <div class="msr-scroll-hint">&#8592; desliz&#225; para ver c&#243;digo &#8594;</div>
                     <div id="msr-preview" class="msr-preview">
                         <img id="msr-preview-img" class="msr-preview-img" onclick="openMsrLB()">
                         <div class="msr-preview-info">
@@ -396,7 +398,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.10</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.11</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -407,7 +409,7 @@
                     <div class="hdr-info"><img class="logo-s" id="logo-favs" alt="Griffo"><div class="slo-s">Impulsamos Soluciones</div></div>
                 </div>
                 <div class="ow"><h2 style="font-size:18px;font-weight:800;color:var(--t);margin-bottom:16px">Mis Favoritos</h2><div id="favs-res"></div></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.10</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.11</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -420,7 +422,7 @@
                 </div>
                 <div id="det-gallery" class="d-gallery"></div>
                 <div id="det-body" class="d-body"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.10</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.11</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -432,7 +434,7 @@
                 </div>
                 <div class="sa"><div class="st">Panel Administrador</div></div>
                 <div id="adm-content"><div class="adm-ld">Cargando datos...</div></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.10</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.11</div></div>
                 <div class="bl"></div>
             </div>
 
