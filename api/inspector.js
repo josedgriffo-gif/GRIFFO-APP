@@ -194,6 +194,7 @@ function renderTable(){
         {k:'package_height',l:'package_height',g:'g-basic'},
         {k:'_pictures',l:'pictures (n)',g:'g-counts'},
         {k:'_links',l:'links (n)',g:'g-counts'},
+        {k:'_links_url',l:'links (url)',g:'g-counts'},
         {k:'_components',l:'components (n)',g:'g-counts'},
         {k:'_vehicles',l:'vehicles (n)',g:'g-counts'},
         {k:'_reference',l:'reference (n)',g:'g-counts'},
@@ -235,6 +236,8 @@ function renderTable(){
         h+=\`<td style="text-align:center">\${nv(p.package_height)}</td>\`;
         h+=\`<td style="text-align:center">\${cnt(p.pictures)}</td>\`;
         h+=\`<td style="text-align:center">\${cnt(p.links)}</td>\`;
+        const linkUrl = p.links && p.links.length > 0 ? (p.links[0].url || p.links[0].link || '') : '';
+        h+=\`<td style="max-width:200px;overflow:hidden;text-overflow:ellipsis">\${linkUrl ? \`<a href="\${linkUrl}" target="_blank" style="color:var(--a);font-size:9px">\${esc(linkUrl)}</a>\` : '<span class="nv">—</span>'}</td>\`;
         h+=\`<td style="text-align:center">\${cnt(p.components)}</td>\`;
         h+=\`<td style="text-align:center">\${cnt(p.vehicles)}</td>\`;
         h+=\`<td style="text-align:center">\${cnt(p.reference)}</td>\`;
@@ -264,6 +267,7 @@ function sortBy(col){
 }
 
 function getColVal(p,col){
+    if(col==='_links_url'){ return p.links&&p.links.length?(p.links[0].url||p.links[0].link||''):''; }
     if(col.startsWith('_')){ const k=col.slice(1); return p[k]?p[k].length:0; }
     return p[col];
 }
