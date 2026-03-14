@@ -10,6 +10,7 @@ module.exports = async (req, res) => {
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box }
         :root { --p: #00549F; --a: #00ADD0; --d: #005B82; --bg: #F0F4F8; --c: #FFF; --t: #0D1B2A; --m: #4A6175 }
+        html, body { overflow-x: auto; max-width: 100% }
         body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--t) }
         .header { background: linear-gradient(135deg, var(--d), var(--p)); padding: 14px 20px; color: #fff; display: flex; align-items: center; gap: 12px }
         .header h1 { font-size: 16px; font-weight: 800 }
@@ -29,7 +30,7 @@ module.exports = async (req, res) => {
         .table-wrap { overflow-x: scroll; -webkit-overflow-scrolling: touch; width: 100%; display: block }
         table { border-collapse: collapse; font-size: 11px; min-width: 3000px; width: max-content }
         thead { position: sticky; top: 49px; z-index: 99 }
-        th { background: var(--p); color: #fff; padding: 9px 7px; text-align: left; white-space: nowrap; font-size: 9px; font-weight: 700; text-transform: none; letter-spacing: .3px; cursor: pointer; user-select: none; border-right: 1px solid rgba(255,255,255,.15) }
+        th { background: var(--p); color: #fff; padding: 9px 7px; text-align: left; white-space: nowrap; font-size: 9px; font-weight: 700; text-transform: none; letter-spacing: .3px; cursor: pointer; user-select: none; border-right: 1px solid rgba(255,255,255,.15); min-width: 100px }
         th:hover { background: var(--d) }
         th.sorted { background: var(--d) }
         th.g-basic { background: #003A75 }
