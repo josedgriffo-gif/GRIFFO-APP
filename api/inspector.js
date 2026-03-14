@@ -26,8 +26,8 @@ module.exports = async (req, res) => {
         .stats { display: flex; gap: 12px; padding: 8px 14px; background: #e8f0fb; flex-wrap: wrap; font-size: 11px }
         .stat { color: var(--p); font-weight: 700 }
         .stat span { color: var(--m); font-weight: 500 }
-        .table-wrap { overflow-x: auto }
-        table { border-collapse: collapse; width: 100%; font-size: 11px }
+        .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch }
+        table { border-collapse: collapse; width: 100%; font-size: 11px; min-width: 2000px }
         thead { position: sticky; top: 49px; z-index: 99 }
         th { background: var(--p); color: #fff; padding: 9px 7px; text-align: left; white-space: nowrap; font-size: 9px; font-weight: 700; text-transform: none; letter-spacing: .3px; cursor: pointer; user-select: none; border-right: 1px solid rgba(255,255,255,.15) }
         th:hover { background: var(--d) }
