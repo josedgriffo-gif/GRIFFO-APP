@@ -1,8 +1,369 @@
-const fs = require('fs');
-const path = require('path');
-
 module.exports = async (req, res) => {
-    const html = fs.readFileSync(path.join(__dirname, '../inspectorspaceparts.html'), 'utf8');
-    res.setHeader('Content-Type', 'text/html');
-    res.send(html);
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.send(`<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRIFFO — Inspector de Catálogo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box }
+        :root { --p: #00549F; --a: #00ADD0; --d: #005B82; --bg: #F0F4F8; --c: #FFF; --t: #0D1B2A; --m: #4A6175 }
+        body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--t) }
+
+        .header { background: linear-gradient(135deg, var(--d), var(--p)); padding: 14px 20px; color: #fff; display: flex; align-items: center; gap: 12px }
+        .header h1 { font-size: 16px; font-weight: 800; letter-spacing: .5px }
+        .header p { font-size: 11px; opacity: .8; margin-top: 1px }
+        .header a { color: rgba(255,255,255,.7); font-size: 11px; font-weight: 600; text-decoration: none; margin-left: auto; white-space: nowrap }
+        .header a:hover { color: #fff }
+
+        .toolbar { background: var(--c); padding: 10px 14px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; border-bottom: 1px solid #e0e8f0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,84,159,.08) }
+        .toolbar input { padding: 7px 10px; border: 1.5px solid rgba(0,84,159,.2); border-radius: 8px; font-size: 12px; font-family: inherit; outline: none; width: 180px }
+        .toolbar input:focus { border-color: var(--p) }
+        .toolbar select { padding: 7px 10px; border: 1.5px solid rgba(0,84,159,.2); border-radius: 8px; font-size: 12px; font-family: inherit; outline: none; background: var(--c); cursor: pointer }
+        .btn { padding: 7px 14px; border: none; border-radius: 8px; font-size: 12px; font-weight: 700; font-family: inherit; cursor: pointer; white-space: nowrap }
+        .btn-primary { background: var(--p); color: #fff }
+        .btn-secondary { background: rgba(0,84,159,.1); color: var(--p) }
+        .btn:disabled { opacity: .5; cursor: not-allowed }
+
+        .stats { display: flex; gap: 12px; padding: 8px 14px; background: #e8f0fb; flex-wrap: wrap; font-size: 11px }
+        .stat { color: var(--p); font-weight: 700 }
+        .stat span { color: var(--m); font-weight: 500 }
+
+        .table-wrap { overflow-x: auto }
+        table { border-collapse: collapse; width: 100%; font-size: 11px; min-width: 900px }
+        thead { position: sticky; top: 49px; z-index: 99 }
+        th { background: var(--p); color: #fff; padding: 9px 7px; text-align: left; white-space: nowrap; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; cursor: pointer; user-select: none }
+        th:hover { background: var(--d) }
+        th.sorted { background: var(--d) }
+        td { padding: 7px; border-bottom: 1px solid #e8eef5; vertical-align: middle; max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+        tr:hover td { background: rgba(0,84,159,.04); cursor: pointer }
+        tr:nth-child(even) td { background: #fafcff }
+        tr:nth-child(even):hover td { background: rgba(0,84,159,.05) }
+
+        .code { color: var(--p); font-weight: 800; white-space: nowrap }
+        .tag { display: inline-block; padding: 2px 5px; border-radius: 4px; font-size: 9px; font-weight: 700 }
+        .tag-cat { background: rgba(0,173,208,.15); color: var(--a) }
+        .tag-ok { background: rgba(39,174,96,.15); color: #27ae60 }
+        .tag-no { background: rgba(0,0,0,.06); color: #aaa }
+        .tag-link { background: rgba(255,200,0,.25); color: #8a6000 }
+
+        .loading { text-align: center; padding: 60px; color: var(--m) }
+        .spinner { width: 36px; height: 36px; border: 4px solid rgba(0,84,159,.2); border-top-color: var(--p); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 14px }
+        @keyframes spin { to { transform: rotate(360deg) } }
+
+        /* Panel de detalle */
+        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,.35); z-index: 999; display: none }
+        .overlay.on { display: block }
+        .panel { position: fixed; right: 0; top: 0; width: min(480px, 100vw); height: 100vh; background: var(--c); z-index: 1000; display: none; flex-direction: column; box-shadow: -4px 0 24px rgba(0,0,0,.15) }
+        .panel.on { display: flex }
+        .panel-hdr { background: linear-gradient(135deg, var(--d), var(--p)); padding: 14px 16px; color: #fff; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0 }
+        .panel-hdr h2 { font-size: 22px; font-weight: 900 }
+        .panel-close { background: rgba(255,255,255,.2); border: none; color: #fff; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 16px }
+        .panel-body { padding: 16px; overflow-y: auto; flex: 1 }
+        .sec { margin-bottom: 16px }
+        .sec-t { font-size: 9px; font-weight: 700; color: var(--m); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid #eee }
+        .row { display: flex; gap: 8px; margin-bottom: 5px; font-size: 11px }
+        .rl { color: var(--m); font-weight: 600; min-width: 110px; flex-shrink: 0 }
+        .rv { color: var(--t); word-break: break-word }
+        .pimg { width: 100%; max-height: 150px; object-fit: contain; border-radius: 8px; border: 1px solid #eee; background: #f5f5f5; margin-bottom: 6px }
+        .pill { display: inline-block; padding: 3px 7px; border-radius: 10px; font-size: 10px; font-weight: 600; margin: 2px; background: rgba(0,84,159,.08); color: var(--p) }
+        pre { font-size: 9px; background: #f8fafc; padding: 8px; border-radius: 6px; overflow-x: auto; color: #555; line-height: 1.4 }
+
+        .footer { padding: 8px 14px; font-size: 10px; color: var(--m); border-top: 1px solid #e8eef5 }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div>
+        <h1>🔍 Inspector de Catálogo SpecParts</h1>
+        <p>GRIFFO SRL · Solo uso interno · v1.0</p>
+    </div>
+    <a href="/">← Volver a la app</a>
+</div>
+
+<div class="toolbar">
+    <button class="btn btn-primary" id="btn-load" onclick="loadCatalog()">▶ Cargar Catálogo</button>
+    <input type="text" id="search" placeholder="Buscar en toda la tabla..." oninput="filterTable()" disabled>
+    <select id="filter-cat" onchange="filterTable()" disabled><option value="">Todas las categorías</option></select>
+    <select id="filter-prod" onchange="filterTable()" disabled><option value="">Todos los tipos</option></select>
+    <select id="filter-attr" onchange="filterTable()" disabled><option value="">Filtrar por atributo...</option></select>
+    <button class="btn btn-secondary" id="btn-csv" onclick="exportCSV()" disabled>⬇ CSV</button>
+    <span id="status" style="font-size:10px;color:var(--m);margin-left:auto"></span>
+</div>
+
+<div id="stats" class="stats" style="display:none"></div>
+
+<div id="main">
+    <div class="loading">
+        <p style="color:var(--m);font-size:13px">Presioná <strong>Cargar Catálogo</strong> para comenzar</p>
+    </div>
+</div>
+
+<div class="overlay" id="overlay" onclick="closePanel()"></div>
+<div class="panel" id="panel">
+    <div class="panel-hdr">
+        <h2 id="panel-code"></h2>
+        <button class="panel-close" onclick="closePanel()">✕</button>
+    </div>
+    <div class="panel-body" id="panel-body"></div>
+</div>
+
+<script>
+let allProducts = [], filtered = [], sortCol = null, sortAsc = true;
+
+async function loadCatalog() {
+    const btn = document.getElementById('btn-load');
+    btn.disabled = true;
+    btn.textContent = '⏳ Cargando...';
+    document.getElementById('main').innerHTML = '<div class="loading"><div class="spinner"></div><p id="msg">Conectando...</p></div>';
+    document.getElementById('stats').style.display = 'none';
+    try {
+        setMsg('Cargando productos...');
+        const r = await fetch('/api/products');
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const d = await r.json();
+        allProducts = d.products || [];
+        if (allProducts.length === 0) throw new Error('No se recibieron productos');
+        setMsg(allProducts.length + ' productos cargados');
+        buildUI();
+    } catch(e) {
+        document.getElementById('main').innerHTML = '<div class="loading"><p style="color:#e53e3e">❌ Error: ' + e.message + '</p></div>';
+        btn.disabled = false;
+        btn.textContent = '▶ Cargar Catálogo';
+    }
+}
+
+function setMsg(m) {
+    const el = document.getElementById('msg');
+    if (el) el.textContent = m;
+    document.getElementById('status').textContent = m;
+}
+
+function buildUI() {
+    filtered = [...allProducts];
+
+    // Stats
+    const cats = [...new Set(allProducts.map(p => p.category).filter(Boolean))].sort();
+    const prods = [...new Set(allProducts.map(p => p.product).filter(Boolean))].sort();
+    const conLinks = allProducts.filter(p => p.links && p.links.length > 0).length;
+    const conFotos = allProducts.filter(p => p.pictures && p.pictures.length > 0).length;
+    const conAttr = allProducts.filter(p => p.attributes && p.attributes.length > 0).length;
+    const conVehi = allProducts.filter(p => p.vehicles && p.vehicles.length > 0).length;
+
+    document.getElementById('stats').innerHTML =
+        stat('Total', allProducts.length) + stat('Categorías', cats.length) + stat('Tipos', prods.length) +
+        stat('Con fotos', conFotos) + stat('Con atributos', conAttr) + stat('Con vehículos', conVehi) + stat('Con MeLi', conLinks);
+    document.getElementById('stats').style.display = 'flex';
+
+    // Filtros
+    fillSelect('filter-cat', cats);
+    fillSelect('filter-prod', prods);
+    const attrNames = [...new Set(allProducts.flatMap(p => (p.attributes||[]).map(a => a.name)).filter(Boolean))].sort();
+    fillSelect('filter-attr', attrNames);
+
+    ['search','filter-cat','filter-prod','filter-attr','btn-csv'].forEach(id => document.getElementById(id).disabled = false);
+    document.getElementById('btn-load').textContent = '↻ Recargar';
+    document.getElementById('btn-load').disabled = false;
+
+    renderTable();
+}
+
+function stat(label, val) { return \`<div class="stat">\${label}: <span>\${val}</span></div>\`; }
+function fillSelect(id, items) {
+    const sel = document.getElementById(id);
+    const first = sel.options[0].text;
+    sel.innerHTML = \`<option value="">\${first}</option>\`;
+    items.forEach(i => sel.innerHTML += \`<option value="\${esc(i)}">\${esc(i)}</option>\`);
+}
+
+function filterTable() {
+    const q = document.getElementById('search').value.toLowerCase().trim();
+    const cat = document.getElementById('filter-cat').value;
+    const prod = document.getElementById('filter-prod').value;
+    const attr = document.getElementById('filter-attr').value;
+    filtered = allProducts.filter(p => {
+        if (cat && p.category !== cat) return false;
+        if (prod && p.product !== prod) return false;
+        if (attr && !(p.attributes||[]).some(a => a.name === attr)) return false;
+        if (q) return q.split(' ').every(w => JSON.stringify(p).toLowerCase().includes(w));
+        return true;
+    });
+    renderTable();
+}
+
+function getAttr(p, ...names) {
+    if (!p.attributes) return '';
+    for (const name of names) {
+        const a = p.attributes.find(a => a.name && a.name.toLowerCase().includes(name.toLowerCase()));
+        if (a) return (a.value||'') + (a.unit ? ' ' + a.unit : '');
+    }
+    return '';
+}
+
+function sortBy(col) {
+    if (sortCol === col) sortAsc = !sortAsc; else { sortCol = col; sortAsc = true; }
+    filtered.sort((a, b) => {
+        let va = getVal(a, col), vb = getVal(b, col);
+        const na = parseFloat(va), nb = parseFloat(vb);
+        if (!isNaN(na) && !isNaN(nb)) return sortAsc ? na-nb : nb-na;
+        return sortAsc ? String(va).localeCompare(String(vb)) : String(vb).localeCompare(String(va));
+    });
+    renderTable();
+}
+
+function getVal(p, col) {
+    if (col === 'code') return p.code||'';
+    if (col === 'product') return p.product||'';
+    if (col === 'description') return p.description||'';
+    if (col === 'category') return p.category||'';
+    if (col === 'dm') return getAttr(p, 'menor', 'boca menor');
+    if (col === 'dM') return getAttr(p, 'mayor', 'boca mayor');
+    if (col === 'la') return getAttr(p, 'largo');
+    if (col === 'fotos') return p.pictures ? p.pictures.length : 0;
+    if (col === 'vehi') return p.vehicles ? p.vehicles.length : 0;
+    if (col === 'meli') return (p.links && p.links.length > 0) ? 1 : 0;
+    return '';
+}
+
+function renderTable() {
+    const q = document.getElementById('search').value.toLowerCase();
+    const cols = [
+        {k:'code', l:'Código'}, {k:'product', l:'Tipo producto'}, {k:'description', l:'Descripción'},
+        {k:'category', l:'Categoría'}, {k:'dm', l:'Diám. Menor'}, {k:'dM', l:'Diám. Mayor'},
+        {k:'la', l:'Largo'}, {k:'fotos', l:'Fotos'}, {k:'vehi', l:'Vehíc.'}, {k:'meli', l:'MeLi'}
+    ];
+
+    let h = '<div class="table-wrap"><table><thead><tr>';
+    cols.forEach(c => {
+        const arrow = sortCol === c.k ? (sortAsc ? ' ▲' : ' ▼') : '';
+        h += \`<th onclick="sortBy('\${c.k}')" \${sortCol===c.k?'class="sorted"':''}>\${c.l}\${arrow}</th>\`;
+    });
+    h += '<th>Atributos</th></tr></thead><tbody>';
+
+    const hl = txt => q && txt ? String(txt).replace(new RegExp(q.replace(/[.*+?^\${}()|[\\]\\\\]/g,'\\\\$&'),'gi'), m => \`<mark style="background:rgba(255,220,0,.5)">\${m}</mark>\`) : (txt||'');
+
+    filtered.forEach((p, i) => {
+        const dm = getAttr(p,'menor','boca menor');
+        const dM = getAttr(p,'mayor','boca mayor');
+        const la = getAttr(p,'largo');
+        const nF = p.pictures ? p.pictures.length : 0;
+        const nV = p.vehicles ? p.vehicles.length : 0;
+        const tieneLink = p.links && p.links.length > 0;
+        const attrs = (p.attributes||[]).map(a => \`<span class="pill">\${a.name}: \${a.value||''}\${a.unit?' '+a.unit:''}</span>\`).join('');
+
+        h += \`<tr onclick="showDetail(\${i})">
+            <td class="code">\${hl(p.code)}</td>
+            <td title="\${esc(p.product)}">\${hl(p.product)}</td>
+            <td title="\${esc(p.description)}">\${hl(p.description)}</td>
+            <td><span class="tag tag-cat">\${p.category||''}</span></td>
+            <td>\${dm}</td><td>\${dM}</td><td>\${la}</td>
+            <td style="text-align:center">\${nF > 0 ? \`<span class="tag tag-ok">📷 \${nF}</span>\` : '<span class="tag tag-no">—</span>'}</td>
+            <td style="text-align:center">\${nV > 0 ? \`<strong style="color:var(--p)">\${nV}</strong>\` : '<span class="tag tag-no">—</span>'}</td>
+            <td style="text-align:center">\${tieneLink ? '<span class="tag tag-link">✓ MeLi</span>' : '<span class="tag tag-no">—</span>'}</td>
+            <td style="max-width:300px;white-space:normal">\${attrs}</td>
+        </tr>\`;
+    });
+
+    h += '</tbody></table></div>';
+    h += \`<div class="footer">Mostrando \${filtered.length} de \${allProducts.length} productos · Clic en fila para ver detalle completo</div>\`;
+    document.getElementById('main').innerHTML = h;
+}
+
+function showDetail(i) {
+    const p = filtered[i];
+    if (!p) return;
+    document.getElementById('panel-code').textContent = p.code||'';
+    document.getElementById('overlay').classList.add('on');
+    document.getElementById('panel').classList.add('on');
+
+    let h = '';
+
+    // Info básica
+    h += sec('Información básica',
+        row('Código', \`<strong style="color:var(--p);font-size:14px">\${p.code||''}</strong>\`) +
+        row('Tipo producto', p.product) + row('Descripción', p.description) +
+        row('Categoría', p.category) + row('Slug', p.slug) +
+        row('EAN', p.ean ? p.ean.join(', ') : '')
+    );
+
+    // Fotos
+    if (p.pictures && p.pictures.length > 0) {
+        let imgs = '';
+        p.pictures.forEach(pic => {
+            const url = pic.image_url || pic.url || '';
+            if (url) imgs += \`<img class="pimg" src="\${url}" onerror="this.style.display='none'">\`;
+        });
+        h += sec('Fotos (' + p.pictures.length + ')', imgs);
+    }
+
+    // Atributos
+    if (p.attributes && p.attributes.length > 0) {
+        let atrs = '';
+        p.attributes.forEach(a => atrs += row(\`<code style="font-size:10px;background:#f0f4f8;padding:2px 4px;border-radius:3px">\${a.name||''}</code>\`, \`<strong>\${a.value||''}</strong>\${a.unit?' '+a.unit:''}\`));
+        h += sec('Atributos / Medidas', atrs);
+    }
+
+    // Links
+    if (p.links && p.links.length > 0) {
+        let links = '';
+        p.links.forEach(l => {
+            const url = l.url || l.link || '';
+            if (url) links += \`<div style="margin-bottom:4px"><a href="\${url}" target="_blank" style="color:var(--a);font-size:11px;word-break:break-all">\${url}</a></div>\`;
+        });
+        h += sec('Links MercadoLibre', links);
+    }
+
+    // Componentes
+    if (p.components && p.components.length > 0) {
+        let comps = '';
+        p.components.forEach(c => comps += \`<div style="margin-bottom:4px;font-size:11px"><span style="color:var(--p);font-weight:700">\${c.code||''}</span> — <span style="color:var(--m)">\${c.product||''}</span></div>\`);
+        h += sec('Componentes (' + p.components.length + ')', comps);
+    }
+
+    // Vehículos
+    if (p.vehicles && p.vehicles.length > 0) {
+        const byBrand = {};
+        p.vehicles.forEach(v => { const b = v.brand||'Otros'; if (!byBrand[b]) byBrand[b]=[]; byBrand[b].push(v); });
+        let vehs = '';
+        Object.keys(byBrand).sort().forEach(b => {
+            vehs += \`<div style="margin-bottom:8px"><div style="font-weight:700;font-size:11px">\${b}</div>\`;
+            byBrand[b].forEach(v => vehs += \`<div style="font-size:10px;color:var(--m);padding:1px 0 1px 8px">\${v.master_model||v.model||''} \${v.version||''} (\${v.sold_from_year}–\${v.sold_until_year})</div>\`);
+            vehs += '</div>';
+        });
+        h += sec('Vehículos compatibles (' + p.vehicles.length + ')', vehs);
+    }
+
+    // JSON raw
+    h += sec('JSON completo', \`<pre>\${JSON.stringify(p, null, 2)}</pre>\`);
+
+    document.getElementById('panel-body').innerHTML = h;
+}
+
+function sec(title, content) { return \`<div class="sec"><div class="sec-t">\${title}</div>\${content}</div>\`; }
+function row(label, value) { return \`<div class="row"><div class="rl">\${label}</div><div class="rv">\${value||'<span style="color:#ccc">—</span>'}</div></div>\`; }
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function closePanel() { document.getElementById('panel').classList.remove('on'); document.getElementById('overlay').classList.remove('on'); }
+
+function exportCSV() {
+    const rows = [['Código','Tipo producto','Descripción','Categoría','Diám. Menor','Diám. Mayor','Largo','Fotos','Vehículos','Tiene MeLi','Atributos','Vehículos lista']];
+    filtered.forEach(p => {
+        const dm = getAttr(p,'menor','boca menor'), dM = getAttr(p,'mayor','boca mayor'), la = getAttr(p,'largo');
+        const attrs = (p.attributes||[]).map(a => \`\${a.name}: \${a.value||''}\${a.unit?' '+a.unit:''}\`).join(' | ');
+        const vehs = (p.vehicles||[]).map(v => \`\${v.brand} \${v.master_model||v.model} \${v.version} (\${v.sold_from_year}-\${v.sold_until_year})\`).join(' | ');
+        rows.push([p.code||'',p.product||'',p.description||'',p.category||'',dm,dM,la,p.pictures?p.pictures.length:0,p.vehicles?p.vehicles.length:0,(p.links&&p.links.length>0)?'Sí':'No',attrs,vehs]);
+    });
+    const csv = rows.map(r => r.map(c => '"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\\n');
+    const blob = new Blob(['\\uFEFF'+csv], {type:'text/csv;charset=utf-8;'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'griffo-catalogo-'+new Date().toISOString().slice(0,10)+'.csv'; a.click();
+    URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>
+`);
 };
