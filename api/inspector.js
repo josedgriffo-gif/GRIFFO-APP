@@ -5,7 +5,7 @@ module.exports = async (req, res) => {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GRIFFO — Inspector SpecParts v3.0</title>
+    <title>GRIFFO — Inspector SpecParts v3.1</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box }
@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
         .stat { color: var(--p); font-weight: 700 }
         .stat span { color: var(--m); font-weight: 500 }
         /* TABLA CON SCROLL HORIZONTAL */
-        .wrap { width: 100%; overflow-x: auto; overflow-y: visible }
+        .wrap { width: 100%; overflow-x: scroll; overflow-y: visible } .wrap::-webkit-scrollbar { height: 12px } .wrap::-webkit-scrollbar-track { background: #e0e8f0 } .wrap::-webkit-scrollbar-thumb { background: var(--p); border-radius: 6px }
         table { border-collapse: collapse; font-size: 11px; white-space: nowrap }
         th { background: var(--p); color: #fff; padding: 9px 8px; text-align: left; font-size: 9px; font-weight: 700; border-right: 1px solid rgba(255,255,255,.15); min-width: 90px; cursor: pointer; user-select: none }
         th.g1 { background: #003A75 }
@@ -67,7 +67,7 @@ module.exports = async (req, res) => {
 </head>
 <body>
 <div class="header">
-    <div><h1>Inspector SpecParts — Todos los campos originales</h1><p>GRIFFO SRL · Solo uso interno · v3.0</p></div>
+    <div><h1>Inspector SpecParts — Todos los campos originales</h1><p>GRIFFO SRL · Solo uso interno · v3.1</p></div>
     <a href="/">← Volver a la app</a>
 </div>
 <div class="toolbar">
