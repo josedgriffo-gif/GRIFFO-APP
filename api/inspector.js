@@ -71,7 +71,7 @@ module.exports = async (req, res) => {
 <div class="header">
     <div>
         <h1>Inspector SpecParts — Todos los campos originales</h1>
-        <p>GRIFFO SRL · Solo uso interno · v2.1</p>
+        <p>GRIFFO SRL · Solo uso interno · v2.4</p>
     </div>
     <a href="/">← Volver a la app</a>
 </div>
