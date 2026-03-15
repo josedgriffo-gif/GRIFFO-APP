@@ -5,7 +5,7 @@ module.exports = async (req, res) => {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GRIFFO — Inspector SpecParts v3.1</title>
+    <title>GRIFFO — Inspector SpecParts v3.2</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box }
@@ -26,16 +26,19 @@ module.exports = async (req, res) => {
         .stats { display: flex; gap: 12px; padding: 8px 14px; background: #e8f0fb; flex-wrap: wrap; font-size: 11px }
         .stat { color: var(--p); font-weight: 700 }
         .stat span { color: var(--m); font-weight: 500 }
-        /* TABLA CON SCROLL HORIZONTAL */
-        .wrap { width: 100%; overflow-x: scroll; overflow-y: visible } .wrap::-webkit-scrollbar { height: 12px } .wrap::-webkit-scrollbar-track { background: #e0e8f0 } .wrap::-webkit-scrollbar-thumb { background: var(--p); border-radius: 6px }
-        table { border-collapse: collapse; font-size: 11px; white-space: nowrap }
-        th { background: var(--p); color: #fff; padding: 9px 8px; text-align: left; font-size: 9px; font-weight: 700; border-right: 1px solid rgba(255,255,255,.15); min-width: 90px; cursor: pointer; user-select: none }
+        /* SCROLL HORIZONTAL */
+        #main { width: 100%; overflow-x: scroll; overflow-y: visible }
+        #main::-webkit-scrollbar { height: 14px }
+        #main::-webkit-scrollbar-track { background: #e0e8f0 }
+        #main::-webkit-scrollbar-thumb { background: var(--p); border-radius: 6px }
+        table { border-collapse: collapse; font-size: 11px; white-space: nowrap; table-layout: auto }
+        th { background: var(--p); color: #fff; padding: 9px 8px; text-align: left; font-size: 9px; font-weight: 700; border-right: 1px solid rgba(255,255,255,.15); cursor: pointer; user-select: none; min-width: 90px }
         th.g1 { background: #003A75 }
         th.g2 { background: #005B82 }
         th.g3 { background: #00ADD0 }
         th.g4 { background: #007a9e }
         th:hover { opacity: .85 }
-        td { padding: 7px 8px; border-bottom: 1px solid #e8eef5; border-right: 1px solid #f0f4f8; max-width: 160px; overflow: hidden; text-overflow: ellipsis }
+        td { padding: 7px 8px; border-bottom: 1px solid #e8eef5; border-right: 1px solid #f0f4f8; max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
         tr:hover td { background: rgba(0,84,159,.04); cursor: pointer }
         tr:nth-child(even) td { background: #fafcff }
         .code { color: var(--p); font-weight: 800 }
@@ -43,7 +46,6 @@ module.exports = async (req, res) => {
         .f1 { color: #27ae60; font-weight: 700 }
         .f0 { color: #e53e3e; font-weight: 700 }
         .tcat { display: inline-block; padding: 2px 5px; border-radius: 4px; font-size: 9px; font-weight: 700; background: rgba(0,173,208,.15); color: var(--a) }
-        .tok { display: inline-block; padding: 2px 5px; border-radius: 4px; font-size: 9px; font-weight: 700; background: rgba(39,174,96,.15); color: #27ae60 }
         .loading { text-align: center; padding: 60px; color: var(--m) }
         .spin { width: 36px; height: 36px; border: 4px solid rgba(0,84,159,.2); border-top-color: var(--p); border-radius: 50%; animation: sp 1s linear infinite; margin: 0 auto 14px }
         @keyframes sp { to { transform: rotate(360deg) } }
@@ -67,7 +69,7 @@ module.exports = async (req, res) => {
 </head>
 <body>
 <div class="header">
-    <div><h1>Inspector SpecParts — Todos los campos originales</h1><p>GRIFFO SRL · Solo uso interno · v3.1</p></div>
+    <div><h1>Inspector SpecParts — Todos los campos originales</h1><p>GRIFFO SRL · Solo uso interno · v3.2</p></div>
     <a href="/">← Volver a la app</a>
 </div>
 <div class="toolbar">
@@ -80,6 +82,7 @@ module.exports = async (req, res) => {
 </div>
 <div id="stats" class="stats" style="display:none"></div>
 <div id="main"><div class="loading"><p style="color:var(--m)">Presioná <strong>Cargar</strong> para comenzar</p></div></div>
+<div class="ft" id="ft" style="display:none"></div>
 <div class="ov" id="ov" onclick="closePan()"></div>
 <div class="pan" id="pan">
     <div class="ph"><h2 id="pan-code"></h2><button class="pc" onclick="closePan()">✕</button></div>
@@ -172,7 +175,7 @@ const COLS=[
 ];
 
 function render(){
-    let h='<div class="wrap"><table><thead><tr>';
+    let h='<table><thead><tr>';
     COLS.forEach(c=>{
         const arrow=sc===c.k?(sa?' ▲':' ▼'):'';
         h+=\`<th class="\${c.g}" onclick="sortBy('\${c.k}')">\${c.l}\${arrow}</th>\`;
@@ -214,9 +217,10 @@ function render(){
         attrs.forEach(name=>{ const av=ga(p,name); h+=\`<td>\${av?e(av):'<span class="nv">—</span>'}</td>\`; });
         h+='</tr>';
     });
-    h+='</tbody></table></div>';
-    h+=\`<div class="ft">Mostrando \${filt.length} de \${all.length} productos · Clic en fila para ver detalle</div>\`;
+    h+='</tbody></table>';
     document.getElementById('main').innerHTML=h;
+    document.getElementById('ft').style.display='block';
+    document.getElementById('ft').textContent='Mostrando '+filt.length+' de '+all.length+' productos · Clic en fila para ver detalle';
 }
 
 function sortBy(col){
