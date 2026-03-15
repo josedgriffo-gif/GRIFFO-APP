@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
         .stat { color: var(--p); font-weight: 700 }
         .stat span { color: var(--m); font-weight: 500 }
         /* SCROLL HORIZONTAL */
-        #main { width: 100%; overflow-x: scroll; overflow-y: visible }
+        #main { width: 100%; overflow-x: scroll; overflow-y: auto; height: calc(100vh - 180px) }
         #main::-webkit-scrollbar { height: 14px }
         #main::-webkit-scrollbar-track { background: #e0e8f0 }
         #main::-webkit-scrollbar-thumb { background: var(--p); border-radius: 6px }
