@@ -29,7 +29,7 @@ module.exports = async (req, res) => {
         .stat span { color: var(--m); font-weight: 500 }
         .table-wrap { overflow-x: scroll; -webkit-overflow-scrolling: touch; width: 100%; display: block }
         table { border-collapse: collapse; font-size: 11px; min-width: 3000px; width: max-content }
-        thead { position: sticky; top: 49px; z-index: 99 }
+        thead { position: sticky; top: 0; z-index: 99 }
         th { background: var(--p); color: #fff; padding: 9px 7px; text-align: left; white-space: nowrap; font-size: 9px; font-weight: 700; text-transform: none; letter-spacing: .3px; cursor: pointer; user-select: none; border-right: 1px solid rgba(255,255,255,.15); min-width: 100px }
         th:hover { background: var(--d) }
         th.sorted { background: var(--d) }
