@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box }
         :root { --p: #00549F; --a: #00ADD0; --d: #005B82; --bg: #F0F4F8; --c: #FFF; --t: #0D1B2A; --m: #4A6175 }
-        html, body { overflow-x: auto; max-width: 100% }
+        html { overflow-x: auto } body { overflow-x: auto }
         body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--t) }
         .header { background: linear-gradient(135deg, var(--d), var(--p)); padding: 14px 20px; color: #fff; display: flex; align-items: center; gap: 12px }
         .header h1 { font-size: 16px; font-weight: 800 }
@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
         .stats { display: flex; gap: 12px; padding: 8px 14px; background: #e8f0fb; flex-wrap: wrap; font-size: 11px }
         .stat { color: var(--p); font-weight: 700 }
         .stat span { color: var(--m); font-weight: 500 }
-        .table-wrap { overflow-x: scroll; -webkit-overflow-scrolling: touch; width: 100%; display: block }
+        .table-wrap { overflow-x: scroll; -webkit-overflow-scrolling: touch }
         table { border-collapse: collapse; font-size: 11px; width: max-content; min-width: 3000px }
         thead { }
         th { background: var(--p); color: #fff; padding: 9px 7px; text-align: left; white-space: nowrap; font-size: 9px; font-weight: 700; text-transform: none; letter-spacing: .3px; cursor: pointer; user-select: none; border-right: 1px solid rgba(255,255,255,.15); min-width: 100px }
@@ -71,7 +71,7 @@ module.exports = async (req, res) => {
 <div class="header">
     <div>
         <h1>Inspector SpecParts — Todos los campos originales</h1>
-        <p>GRIFFO SRL · Solo uso interno · v2.5</p>
+        <p>GRIFFO SRL · Solo uso interno · v2.6</p>
     </div>
     <a href="/">← Volver a la app</a>
 </div>
