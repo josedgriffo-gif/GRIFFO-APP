@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-        <!-- PWA Manifest e Íconos -->
         <link rel="manifest" href="/manifest.json">
         <meta name="theme-color" content="#1a365d">
         <meta name="mobile-web-app-capable" content="yes">
@@ -98,8 +97,13 @@
             .d-vg-brand { font-size: 13px; font-weight: 700; color: var(--t); margin-bottom: 4px }
             .d-vg-item { font-size: 11.5px; color: var(--m); padding: 3px 0; border-bottom: 1px solid rgba(0,84,159,.04) }
             .d-acts { display: flex; gap: 10px; margin-top: 20px; position: sticky; bottom: 0; background: var(--bg); padding: 16px 0 8px; flex-wrap: wrap }
+            /* Botón WPP verde estándar */
             .bw2 { flex: 1; padding: 14px; border: none; border-radius: 12px; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; background: #25D366; color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 16px rgba(37,211,102,.3); min-width: 120px }
-            .bw2.pdv { background: #128C7E }
+            /* Botón WPP al PDV (verde oscuro) */
+            .bw2.pdv { background: #128C7E; box-shadow: 0 4px 16px rgba(18,140,126,.3) }
+            /* Botón web/ecommerce del PDV */
+            .bweb { flex: 1; padding: 14px; border: none; border-radius: 12px; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; background: var(--p); color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 16px rgba(0,84,159,.3); min-width: 120px }
+            /* Botón MercadoLibre */
             .bm2 { flex: 1; padding: 14px; border: none; border-radius: 12px; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; background: #FFE600; color: #333; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 16px rgba(255,230,0,.3); min-width: 120px }
             @keyframes pu { 0%,100% { opacity: 1 } 50% { opacity: .5 } }
             .auth-card { background: var(--c); border-radius: 16px; padding: 24px; margin: 24px 20px; box-shadow: 0 2px 16px rgba(0,84,159,.1) }
@@ -130,26 +134,44 @@
             .adm-row-v { color: var(--p); font-weight: 800; flex-shrink: 0 }
             .adm-exp { margin: 0 20px 20px; padding: 14px; border: none; border-radius: 12px; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; background: #27ae60; color: #fff; width: calc(100% - 40px) }
             .adm-ld { text-align: center; padding: 40px 20px; color: var(--m); font-size: 14px }
-            /* PDV Banner en home */
+
+            /* ===== PDV BANNER en home ===== */
             .pdv-banner { margin: 10px 20px 0; background: var(--c); border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; box-shadow: 0 2px 12px rgba(0,84,159,.08); border-left: 4px solid var(--a) }
             .pdv-banner-logo { width: 56px; height: 36px; object-fit: contain; border-radius: 6px; flex-shrink: 0 }
             .pdv-banner-txt { flex: 1 }
             .pdv-banner-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: var(--m); text-transform: uppercase }
             .pdv-banner-name { font-size: 13px; font-weight: 800; color: var(--t); margin-top: 1px }
-            /* PDV Form en admin */
-            .pdv-form { background: var(--c); border-radius: 14px; padding: 16px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,84,159,.06) }
+
+            /* ===== PDV ADMIN - Form ===== */
+            .pdv-admin-wrap { padding: 0 20px 20px }
+            .pdv-search-box { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; background: var(--c); border-radius: 12px; padding: 10px 14px; box-shadow: 0 2px 8px rgba(0,84,159,.06) }
+            .pdv-search-box input { flex: 1; border: none; outline: none; font-size: 14px; font-family: inherit; color: var(--t); background: transparent }
+            .pdv-search-box svg { width: 18px; height: 18px; stroke: var(--m); fill: none; stroke-width: 2; flex-shrink: 0 }
+            .pdv-form { background: var(--c); border-radius: 14px; padding: 16px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,84,159,.06) }
+            .pdv-form-title { font-size: 13px; font-weight: 800; color: var(--t); margin-bottom: 12px; text-transform: uppercase; letter-spacing: .5px }
             .pdv-form input { width: 100%; padding: 10px 12px; border: 1.5px solid rgba(0,84,159,.12); border-radius: 10px; font-size: 14px; font-family: inherit; color: var(--t); background: var(--bg); outline: none; margin-bottom: 8px }
             .pdv-form input:focus { border-color: var(--p) }
+            .pdv-form input.optional { border-style: dashed }
+            .pdv-form-hint { font-size: 10px; color: var(--m); margin-bottom: 8px; margin-top: -4px; padding-left: 2px }
             .pdv-add-btn { padding: 12px 20px; background: linear-gradient(135deg,var(--p),var(--d)); color: #fff; border: none; border-radius: 10px; font-size: 13px; font-weight: 700; font-family: inherit; cursor: pointer; width: 100% }
-            .pdv-card { background: var(--c); border-radius: 12px; padding: 14px 16px; margin-bottom: 8px; box-shadow: 0 2px 8px rgba(0,84,159,.06) }
+
+            /* ===== PDV CARD en admin ===== */
+            .pdv-card { background: var(--c); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,84,159,.06) }
+            .pdv-card.griffo-base { border: 2px solid var(--p); background: rgba(0,84,159,.03) }
             .pdv-card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px }
             .pdv-card-logo { width: 48px; height: 32px; object-fit: contain; border-radius: 6px; border: 1px solid #eee; flex-shrink: 0 }
+            .pdv-card-logo-placeholder { width: 48px; height: 32px; border-radius: 6px; border: 1px solid #eee; flex-shrink: 0; background: rgba(0,84,159,.06); display: flex; align-items: center; justify-content: center; font-size: 18px }
             .pdv-card-name { font-size: 14px; font-weight: 700; color: var(--t); flex: 1 }
+            .pdv-card-contact { font-size: 11px; color: var(--m); margin-top: 1px }
             .pdv-card-phone { font-size: 12px; color: var(--m) }
-            .pdv-link-box { background: var(--bg); border-radius: 8px; padding: 8px 12px; font-size: 11px; color: var(--p); font-weight: 600; word-break: break-all; cursor: pointer; margin-top: 4px }
-            .pdv-copy-btn { font-size: 11px; color: var(--a); background: none; border: none; font-family: inherit; font-weight: 700; cursor: pointer; margin-top: 4px; padding: 0 }
+            .pdv-card-web { font-size: 11px; color: var(--a); font-weight: 600; word-break: break-all; margin-top: 2px }
+            .pdv-link-box { background: var(--bg); border-radius: 8px; padding: 8px 12px; font-size: 11px; color: var(--p); font-weight: 600; word-break: break-all; margin-top: 6px }
+            .pdv-actions { display: flex; gap: 8px; margin-top: 8px }
+            .pdv-copy-btn { font-size: 11px; color: var(--a); background: none; border: none; font-family: inherit; font-weight: 700; cursor: pointer; padding: 0 }
             .pdv-del-btn { font-size: 11px; color: #E53E3E; background: none; border: none; font-family: inherit; font-weight: 700; cursor: pointer; padding: 0 }
-            /* LIGHTBOX */
+            .pdv-badge { font-size: 9px; font-weight: 800; letter-spacing: 1px; background: var(--p); color: #fff; padding: 2px 7px; border-radius: 6px; text-transform: uppercase }
+
+            /* ===== LIGHTBOX ===== */
             .lb { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,.92); z-index: 9999; display: none; align-items: center; justify-content: center; flex-direction: column }
             .lb.on { display: flex }
             .lb-img { max-width: 92%; max-height: 80vh; object-fit: contain; border-radius: 8px }
@@ -158,7 +180,8 @@
             .lb-prev { left: 12px }
             .lb-next { right: 12px }
             .lb-counter { color: rgba(255,255,255,.6); font-size: 12px; margin-top: 12px; font-weight: 600 }
-            /* MEDIDAS */
+
+            /* ===== MEDIDAS ===== */
             .msr-type { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap }
             .msr-type-btn { flex: 1; min-width: 30%; padding: 12px 8px; border: 2px solid rgba(0,84,159,.12); border-radius: 12px; font-size: 12px; font-weight: 700; font-family: inherit; cursor: pointer; background: var(--c); color: var(--m); text-align: center; transition: all .2s }
             .msr-type-btn.active { border-color: var(--p); background: rgba(0,84,159,.06); color: var(--p) }
@@ -248,7 +271,7 @@
                 </div>
                 <div class="ft">
                     <div class="sd"><div class="sd-d"></div><span class="sd-t">Cat&#225;logo conectado</span></div>
-                    <div class="ft-t">GRIFFO SRL &#183; Industria Argentina &#183; griffo.com.ar &#183; v1.11</div>
+                    <div class="ft-t">GRIFFO SRL &#183; Industria Argentina &#183; griffo.com.ar &#183; v2.0</div>
                 </div>
                 <div class="bl"></div>
             </div>
@@ -278,7 +301,7 @@
                     <div class="auth-link">&#191;No ten&#233;s cuenta? <a onclick="go('register')">Registrate</a></div>
                 </div>
                 <div style="text-align:center;margin-top:4px"><a onclick="go('home')" style="font-size:12px;color:var(--m);cursor:pointer;font-weight:600">&#8592; Volver al inicio</a></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.11</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.0</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -307,7 +330,7 @@
                     <div class="auth-link">&#191;Ya ten&#233;s cuenta? <a onclick="go('login')">Ingres&#225;</a></div>
                 </div>
                 <div style="text-align:center;margin-top:4px"><a onclick="go('home')" style="font-size:12px;color:var(--m);cursor:pointer;font-weight:600">&#8592; Volver al inicio</a></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.11</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.0</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -323,7 +346,7 @@
                 </div>
                 <div id="plate-vi"></div>
                 <div id="plate-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.11</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.0</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -340,7 +363,7 @@
                     <button class="sb" onclick="searchVehicle()">Buscar</button>
                 </div>
                 <div id="vehi-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.11</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.0</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -355,7 +378,7 @@
                     <button class="sb" onclick="searchCode()">Buscar</button>
                 </div>
                 <div id="code-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.11</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.0</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -370,7 +393,7 @@
                     <button class="sb" onclick="searchKw()">Buscar</button>
                 </div>
                 <div id="kw-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.11</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.0</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -398,7 +421,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.11</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.0</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -409,7 +432,7 @@
                     <div class="hdr-info"><img class="logo-s" id="logo-favs" alt="Griffo"><div class="slo-s">Impulsamos Soluciones</div></div>
                 </div>
                 <div class="ow"><h2 style="font-size:18px;font-weight:800;color:var(--t);margin-bottom:16px">Mis Favoritos</h2><div id="favs-res"></div></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.11</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.0</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -422,7 +445,7 @@
                 </div>
                 <div id="det-gallery" class="d-gallery"></div>
                 <div id="det-body" class="d-body"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.11</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.0</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -434,7 +457,7 @@
                 </div>
                 <div class="sa"><div class="st">Panel Administrador</div></div>
                 <div id="adm-content"><div class="adm-ld">Cargando datos...</div></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v1.11</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.0</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -462,13 +485,9 @@
         var lbImgs = [], lbIdx = 0;
         var userFavs = {};
         var allAnalytics = [];
-
-        // PDV actual del mecánico (se carga desde Firestore al login)
-        var currentPDV = null;
-
-        // PDV del link ?ref= (se carga al inicio, antes del login)
-        var refPDVId = null;
-        var refPDVData = null;
+        var currentPDV = null;   // PDV vinculado al usuario logueado
+        var refPDVId = null;     // ID del PDV del link ?ref=
+        var refPDVData = null;   // Datos del PDV del link ?ref=
 
         // ============================================================
         //  LOGOS
@@ -633,7 +652,7 @@
             var pass = document.getElementById('login-pass').value;
             if (!email || !pass) { showErr('login-err', 'Complet\u00e1 email y contrase\u00f1a'); return; }
             hideErr('login-err');
-            try { await firebase.auth().signInWithEmailAndPassword(email, pass); }
+            try { await firebase.auth().signInWithEmailAndPassword(email, pass); go('home'); }
             catch(e) {
                 var msg = 'Error al ingresar';
                 if (e.code === 'auth/user-not-found' || e.code === 'auth/wrong-password' || e.code === 'auth/invalid-credential') msg = 'Email o contrase\u00f1a incorrectos';
@@ -716,73 +735,122 @@
         }
 
         // ============================================================
-        //  WA y MELI — con soporte PDV
+        //  BOTONES DE ACCIÓN — Lógica v2.0
+        //
+        //  SIN PDV:
+        //    - WPP sin número (elige de contactos)
+        //    - MeLi (si tiene link)
+        //
+        //  CON PDV:
+        //    - WPP al número del PDV
+        //    - Web/ecommerce del PDV (si tiene ecommerceUrl)
+        //    - SIN MeLi, SIN "Mi agenda"
         // ============================================================
+
+        var svgWA_sm = '<svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.624-1.472A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-2.168 0-4.183-.655-5.863-1.776l-.42-.282-2.751.876.877-2.672-.294-.44A9.787 9.787 0 012.182 12 9.818 9.818 0 0112 2.182 9.818 9.818 0 0121.818 12 9.818 9.818 0 0112 21.818z"/></svg>';
+        var svgWA_lg = '<svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.624-1.472A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-2.168 0-4.183-.655-5.863-1.776l-.42-.282-2.751.876.877-2.672-.294-.44A9.787 9.787 0 012.182 12 9.818 9.818 0 0112 2.182 9.818 9.818 0 0121.818 12 9.818 9.818 0 0112 21.818z"/></svg>';
+        var svgWeb = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>';
+        var svgWebLg = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>';
+
+        function buildWAMsg(code, product) {
+            return 'Hola! Vi en la app GRIFFO el producto ' + code + ' (' + product + '). Ten\u00e9s disponibilidad y precio?';
+        }
+
+        // WPP sin número (versión GRIFFO / sin PDV)
         function trackWA(code, product) {
             var c = decodeURIComponent(code), pr = decodeURIComponent(product);
-            var msg = 'Hola! Vi en la app GRIFFO el producto ' + c + ' (' + pr + '). Ten\u00e9s disponibilidad y precio?';
+            var msg = buildWAMsg(c, pr);
             var url = 'https://wa.me/?text=' + encodeURIComponent(msg);
-            track('whatsapp_click', { code: c, product: pr, tipo: 'proveedor' });
+            track('whatsapp_click', { code: c, product: pr, tipo: 'sin_numero' });
             window.open(url, '_blank');
         }
 
+        // WPP al número del PDV
         function trackWAPDV(code, product) {
             var c = decodeURIComponent(code), pr = decodeURIComponent(product);
             var pdv = currentPDV || refPDVData;
             if (!pdv || !pdv.celular) { trackWA(code, product); return; }
-            var msg = 'Hola! Vi en la app GRIFFO el producto ' + c + ' (' + pr + '). Ten\u00e9s disponibilidad y precio?';
+            var msg = buildWAMsg(c, pr);
             var url = 'https://wa.me/' + pdv.celular.replace(/\D/g,'') + '?text=' + encodeURIComponent(msg);
             track('whatsapp_pdv_click', { code: c, product: pr, pdvId: pdv.id, pdvNombre: pdv.nombre });
             window.open(url, '_blank');
         }
 
+        // MercadoLibre
         function trackML(code, product, link) {
             var c = decodeURIComponent(code), pr = decodeURIComponent(product), l = decodeURIComponent(link);
             track('mercadolibre_click', { code: c, product: pr, link: l });
             window.open(l, '_blank');
         }
 
-        // ============================================================
-        //  HELPERS para botones de acción
-        // ============================================================
-        function getBotonesAccion(p, style) {
-            var s = style || 'font-size:11px;padding:10px;flex:1';
-            var h = '';
-            var pdv = currentPDV || refPDVData;
-            var svgWA = '<svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.624-1.472A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-2.168 0-4.183-.655-5.863-1.776l-.42-.282-2.751.876.877-2.672-.294-.44A9.787 9.787 0 012.182 12 9.818 9.818 0 0112 2.182 9.818 9.818 0 0121.818 12 9.818 9.818 0 0112 21.818z"/></svg>';
+        // Web / ecommerce del PDV
+        function trackWeb(code, product, url) {
+            var c = decodeURIComponent(code), pr = decodeURIComponent(product), u = decodeURIComponent(url);
+            track('web_pdv_click', { code: c, product: pr, url: u, pdvId: (currentPDV||refPDVData||{}).id });
+            window.open(u, '_blank');
+        }
+
+        // Obtener link MeLi del producto
+        function getMeliUrl(p) {
+            var url = '';
+            if (p.links && p.links.length > 0) p.links.forEach(function(l) { if (l.url || l.link) url = l.url || l.link; });
+            return url;
+        }
+
+        // ---- Botones para tarjetas de resultado ----
+        function getBotonesAccion(p) {
+            var s = 'font-size:11px;padding:10px;flex:1';
             var ec = encodeURIComponent(p.code || '');
             var ep = encodeURIComponent(p.product || '');
+            var pdv = currentPDV || refPDVData;
+            var h = '';
+
             if (pdv) {
-                h += '<button class="bw2 pdv" style="' + s + '" onclick="event.stopPropagation();trackWAPDV(\'' + ec + '\',\'' + ep + '\')">' + svgWA + esc(pdv.nombre) + '</button>';
-            }
-            h += '<button class="bw2" style="' + s + '" onclick="event.stopPropagation();trackWA(\'' + ec + '\',\'' + ep + '\')">' + svgWA + 'Mi agenda</button>';
-            var meliUrl = '';
-            if (p.links && p.links.length > 0) p.links.forEach(function(l) { if (l.url || l.link) meliUrl = l.url || l.link; });
-            if (meliUrl) {
-                h += '<button class="bm2" style="' + s + '" onclick="event.stopPropagation();trackML(\'' + ec + '\',\'' + ep + '\',\'' + encodeURIComponent(meliUrl) + '\')">MercadoLibre</button>';
+                // CON PDV: WPP al PDV + web si tiene
+                h += '<button class="bw2 pdv" style="' + s + '" onclick="event.stopPropagation();trackWAPDV(\'' + ec + '\',\'' + ep + '\')">' + svgWA_sm + esc(pdv.nombre) + '</button>';
+                if (pdv.ecommerceUrl) {
+                    var eu = encodeURIComponent(pdv.ecommerceUrl);
+                    h += '<button class="bweb" style="' + s + '" onclick="event.stopPropagation();trackWeb(\'' + ec + '\',\'' + ep + '\',\'' + eu + '\')">' + svgWeb + 'Web</button>';
+                }
+            } else {
+                // SIN PDV: WPP sin número + MeLi si tiene
+                h += '<button class="bw2" style="' + s + '" onclick="event.stopPropagation();trackWA(\'' + ec + '\',\'' + ep + '\')">' + svgWA_sm + 'WhatsApp</button>';
+                var meliUrl = getMeliUrl(p);
+                if (meliUrl) {
+                    h += '<button class="bm2" style="' + s + '" onclick="event.stopPropagation();trackML(\'' + ec + '\',\'' + ep + '\',\'' + encodeURIComponent(meliUrl) + '\')">MercadoLibre</button>';
+                }
             }
             return h;
         }
 
+        // ---- Botones para pantalla de detalle ----
         function getBotonesDetalle(p) {
-            var svgWA = '<svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.624-1.472A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-2.168 0-4.183-.655-5.863-1.776l-.42-.282-2.751.876.877-2.672-.294-.44A9.787 9.787 0 012.182 12 9.818 9.818 0 0112 2.182 9.818 9.818 0 0121.818 12 9.818 9.818 0 0112 21.818z"/></svg>';
-            var h = '<div class="d-acts">';
-            var pdv = currentPDV || refPDVData;
             var ec = encodeURIComponent(p.code || '');
             var ep = encodeURIComponent(p.product || '');
+            var pdv = currentPDV || refPDVData;
+            var h = '<div class="d-acts">';
+
             if (pdv) {
-                h += '<button class="bw2 pdv" onclick="trackWAPDV(\'' + ec + '\',\'' + ep + '\')">' + svgWA + esc(pdv.nombre) + '</button>';
+                // CON PDV: WPP al PDV + web si tiene
+                h += '<button class="bw2 pdv" onclick="trackWAPDV(\'' + ec + '\',\'' + ep + '\')">' + svgWA_lg + esc(pdv.nombre) + '</button>';
+                if (pdv.ecommerceUrl) {
+                    var eu = encodeURIComponent(pdv.ecommerceUrl);
+                    h += '<button class="bweb" onclick="trackWeb(\'' + ec + '\',\'' + ep + '\',\'' + eu + '\')">' + svgWebLg + 'Ver en web</button>';
+                }
+            } else {
+                // SIN PDV: WPP sin número + MeLi si tiene
+                h += '<button class="bw2" onclick="trackWA(\'' + ec + '\',\'' + ep + '\')">' + svgWA_lg + 'WhatsApp</button>';
+                var meliUrl = getMeliUrl(p);
+                if (meliUrl) {
+                    h += '<button class="bm2" onclick="trackML(\'' + ec + '\',\'' + ep + '\',\'' + encodeURIComponent(meliUrl) + '\')">Comprar en MercadoLibre</button>';
+                }
             }
-            h += '<button class="bw2" onclick="trackWA(\'' + ec + '\',\'' + ep + '\')">' + svgWA + 'Mi agenda</button>';
-            var meli = '';
-            if (p.links && p.links.length > 0) p.links.forEach(function(l) { if (l.url || l.link) meli = l.url || l.link; });
-            if (meli) h += '<button class="bm2" onclick="trackML(\'' + ec + '\',\'' + ep + '\',\'' + encodeURIComponent(meli) + '\')">Comprar en MercadoLibre</button>';
             h += '</div>';
             return h;
         }
 
         // ============================================================
-        //  ADMIN — incluye sección PDVs
+        //  ADMIN
         // ============================================================
         async function loadAdmin() {
             var cont = document.getElementById('adm-content');
@@ -800,6 +868,8 @@
                 var pdvSnap = await db.collection('pdvs').get();
                 var pdvsList = [];
                 pdvSnap.forEach(function(doc) { var d = doc.data(); d.id = doc.id; pdvsList.push(d); });
+                // Ordenar alfabéticamente por nombre
+                pdvsList.sort(function(a,b) { return (a.nombre||'').localeCompare(b.nombre||''); });
                 renderAdmin(pdvsList);
             } catch(e) { cont.innerHTML = '<div class="adm-ld">Error al cargar: ' + e.message + '</div>'; }
         }
@@ -813,6 +883,7 @@
             var views = d.filter(function(r) { return r.event === 'product_view'; });
             var wa = d.filter(function(r) { return r.event === 'whatsapp_click' || r.event === 'whatsapp_pdv_click'; });
             var ml = d.filter(function(r) { return r.event === 'mercadolibre_click'; });
+            var web = d.filter(function(r) { return r.event === 'web_pdv_click'; });
             var users = {};
             d.forEach(function(r) {
                 if (r.userEmail) {
@@ -824,17 +895,22 @@
                     else if (r.event === 'mercadolibre_click') users[r.userEmail].ml++;
                 }
             });
+
             var h = '';
+
+            // ---- Métricas ----
             h += '<div class="adm-cards">';
             h += '<div class="adm-c"><div class="adm-c-n">' + searches.length + '</div><div class="adm-c-l">B\u00fasquedas</div></div>';
             h += '<div class="adm-c"><div class="adm-c-n">' + found.length + '</div><div class="adm-c-l">Con resultado</div></div>';
             h += '<div class="adm-c"><div class="adm-c-n">' + notFound.length + '</div><div class="adm-c-l">Sin resultado</div></div>';
             h += '<div class="adm-c"><div class="adm-c-n">' + views.length + '</div><div class="adm-c-l">Productos vistos</div></div>';
             h += '<div class="adm-c"><div class="adm-c-n">' + wa.length + '</div><div class="adm-c-l">WhatsApp enviados</div></div>';
-            h += '<div class="adm-c"><div class="adm-c-n">' + ml.length + '</div><div class="adm-c-l">Clics MercadoLibre</div></div>';
+            h += '<div class="adm-c"><div class="adm-c-n">' + web.length + '</div><div class="adm-c-l">Clics Web PDV</div></div>';
             h += '<div class="adm-c"><div class="adm-c-n">' + Object.keys(users).length + '</div><div class="adm-c-l">Usuarios activos</div></div>';
-            h += '<div class="adm-c"><div class="adm-c-n">' + d.length + '</div><div class="adm-c-l">Eventos totales</div></div>';
+            h += '<div class="adm-c"><div class="adm-c-n">' + pdvsList.length + '</div><div class="adm-c-l">PDVs activos</div></div>';
             h += '</div>';
+
+            // ---- Top búsquedas ----
             var topSearch = countBy(searches, 'query');
             if (topSearch.length) {
                 h += '<div class="adm-sec"><div class="adm-sec-t">Top b\u00fasquedas</div>';
@@ -847,12 +923,16 @@
                 nfTerms.slice(0,10).forEach(function(r) { h += '<div class="adm-row"><span class="adm-row-l">' + esc(r.key) + '</span><span class="adm-row-v">' + r.count + '</span></div>'; });
                 h += '</div>';
             }
+
+            // ---- Top productos ----
             var topProd = countBy(views, 'code');
             if (topProd.length) {
                 h += '<div class="adm-sec"><div class="adm-sec-t">Productos m\u00e1s vistos</div>';
                 topProd.slice(0,10).forEach(function(r) { h += '<div class="adm-row"><span class="adm-row-l">' + esc(r.key) + '</span><span class="adm-row-v">' + r.count + '</span></div>'; });
                 h += '</div>';
             }
+
+            // ---- Tabla de usuarios ----
             var uList = Object.values(users);
             uList.sort(function(a,b) { return b.total - a.total; });
             var pdvMap = {};
@@ -866,7 +946,6 @@
                 h += '<th style="padding:8px 6px;text-align:center">\uD83D\uDD0D</th>';
                 h += '<th style="padding:8px 6px;text-align:center">\uD83D\uDC41</th>';
                 h += '<th style="padding:8px 6px;text-align:center">\uD83D\uDCE9WA</th>';
-                h += '<th style="padding:8px 6px;text-align:center">\uD83D\uDED2ML</th>';
                 h += '<th style="padding:8px 6px;text-align:center">\u2211</th>';
                 h += '</tr></thead><tbody>';
                 uList.forEach(function(u, i) {
@@ -878,87 +957,181 @@
                     h += '<td style="padding:8px 6px;text-align:center;color:var(--p);font-weight:700">' + u.searches + '</td>';
                     h += '<td style="padding:8px 6px;text-align:center;color:var(--p);font-weight:700">' + u.views + '</td>';
                     h += '<td style="padding:8px 6px;text-align:center;color:#25D366;font-weight:700">' + u.wa + '</td>';
-                    h += '<td style="padding:8px 6px;text-align:center;color:#b8860b;font-weight:700">' + u.ml + '</td>';
                     h += '<td style="padding:8px 6px;text-align:center;font-weight:800">' + u.total + '</td>';
                     h += '</tr>';
                 });
                 h += '</tbody></table></div></div>';
             }
+
+            // ---- Calidad de datos ----
             if (P && P.length > 0) {
                 h += '<div class="adm-sec"><div class="adm-sec-t" style="color:var(--p);font-size:14px;border-bottom:2px solid var(--p);padding-bottom:6px;margin-bottom:12px">\uD83D\uDCCA Calidad de datos (' + P.length + ' productos)</div></div>';
-                var sinMeli = P.filter(function(p) {
-                    var c = p.code || '';
-                    if (!c.match(/-3/)) return false;
-                    var tieneLink = false;
-                    if (p.links && p.links.length > 0) p.links.forEach(function(l) { if (l.url || l.link) tieneLink = true; });
-                    return !tieneLink;
-                });
-                h += renderCalidad('🛒 Sin link MercadoLibre', sinMeli, 'Todos los productos -3xx tienen link ✅');
+                var sinMeli = P.filter(function(p) { var c = p.code||''; if (!c.match(/-3/)) return false; return !getMeliUrl(p); });
+                h += renderCalidad('\uD83D\uDED2 Sin link MercadoLibre', sinMeli, 'Todos los productos -3xx tienen link \u2705');
                 var sinFotos = P.filter(function(p) { return !p.pictures || p.pictures.length === 0; });
-                h += renderCalidad('📷 Sin fotos', sinFotos, 'Todos los productos tienen fotos ✅');
+                h += renderCalidad('\uD83D\uDCF7 Sin fotos', sinFotos, 'Todos los productos tienen fotos \u2705');
                 var sinAtributos = P.filter(function(p) { return !p.attributes || p.attributes.length === 0; });
-                h += renderCalidad('📐 Sin atributos / medidas', sinAtributos, 'Todos los productos tienen atributos ✅');
+                h += renderCalidad('\uD83D\uDCB0 Sin atributos / medidas', sinAtributos, 'Todos los productos tienen atributos \u2705');
                 var sinVehiculos = P.filter(function(p) { return !p.vehicles || p.vehicles.length === 0; });
-                h += renderCalidad('🚗 Sin vehículos compatibles', sinVehiculos, 'Todos los productos tienen vehículos ✅');
+                h += renderCalidad('\uD83D\uDE97 Sin veh\u00edculos compatibles', sinVehiculos, 'Todos los productos tienen veh\u00edculos \u2705');
                 var sinDesc = P.filter(function(p) { return !p.description || p.description.trim() === ''; });
-                h += renderCalidad('📝 Sin descripción', sinDesc, 'Todos los productos tienen descripción ✅');
+                h += renderCalidad('\uD83D\uDCDD Sin descripci\u00f3n', sinDesc, 'Todos los productos tienen descripci\u00f3n \u2705');
             }
+
             h += '<button class="adm-exp" onclick="exportCSV()">\u2B07 Descargar Excel (CSV)</button>';
-            h += '<div class="adm-sec" style="margin-top:8px">';
-            h += '<div class="adm-sec-t">\uD83C\uDFEA Puntos de Venta (' + pdvsList.length + ')</div>';
+
+            // ---- Sección PDVs ----
+            h += '<div class="pdv-admin-wrap">';
+            h += '<div class="adm-sec-t" style="margin-bottom:12px">\uD83C\uDFEA Puntos de Venta (' + pdvsList.length + ')</div>';
+
+            // Formulario agregar PDV
             h += '<div class="pdv-form">';
-            h += '<input id="pdv-new-nombre" placeholder="Nombre del PDV (ej: Nonno Autopartes)">';
-            h += '<input id="pdv-new-celular" placeholder="Celular con c\u00f3digo de pa\u00eds (ej: 5491112345678)" type="tel">';
+            h += '<div class="pdv-form-title">+ Agregar PDV</div>';
+            h += '<input id="pdv-new-nombre" placeholder="Nombre del comercio (ej: Nonno Autopartes)">';
+            h += '<input id="pdv-new-contacto" placeholder="Nombre del contacto (quien autoriz\u00f3)">';
+            h += '<input id="pdv-new-celular" placeholder="Celular WhatsApp (ej: 5491112345678)" type="tel">';
+            h += '<input id="pdv-new-logo" class="optional" placeholder="URL del logo (opcional — clic derecho \u2192 copiar direcci\u00f3n de imagen)">';
+            h += '<div class="pdv-form-hint">El logo se obtiene haciendo clic derecho en la imagen del sitio del PDV \u2192 \u201cCopiar direcci\u00f3n de imagen\u201d</div>';
+            h += '<input id="pdv-new-ecommerce" class="optional" placeholder="URL web / e-commerce (opcional)">';
             h += '<button class="pdv-add-btn" onclick="addPDV()">\u2795 Agregar PDV</button>';
             h += '<div id="pdv-add-status" style="font-size:12px;color:var(--m);margin-top:6px;text-align:center"></div>';
             h += '</div>';
-            pdvsList.forEach(function(pdv) {
-                var link = window.location.origin + '/?ref=' + pdv.id;
-                var pdvEvents = d.filter(function(r) { return r.pdvId === pdv.id; });
-                var pdvUsers = {};
-                pdvEvents.forEach(function(r) { if (r.userEmail) pdvUsers[r.userEmail] = 1; });
-                var pdvSearches = pdvEvents.filter(function(r) { return r.event === 'search'; }).length;
-                var pdvViews = pdvEvents.filter(function(r) { return r.event === 'product_view'; }).length;
-                var pdvWA = pdvEvents.filter(function(r) { return r.event === 'whatsapp_pdv_click'; }).length;
-                var pdvMec = Object.keys(pdvUsers).length;
-                h += '<div class="pdv-card">';
-                h += '<div class="pdv-card-top">';
-                if (pdv.logoUrl) h += '<img class="pdv-card-logo" src="' + esc(pdv.logoUrl) + '" onerror="this.style.display=\'none\'">';
-                h += '<div style="flex:1"><div class="pdv-card-name">' + esc(pdv.nombre) + '</div><div class="pdv-card-phone">\uD83D\uDCDE ' + esc(pdv.celular) + '</div></div>';
-                h += '<button class="pdv-del-btn" onclick="deletePDV(\'' + pdv.id + '\',this)">\uD83D\uDDD1</button>';
-                h += '</div>';
-                h += '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">';
-                h += '<span style="font-size:10px;background:#e3f2fd;padding:3px 8px;border-radius:10px">\uD83D\uDD27 ' + pdvMec + ' mec\u00e1nicos</span>';
-                h += '<span style="font-size:10px;background:#e8f5e9;padding:3px 8px;border-radius:10px">\uD83D\uDD0D ' + pdvSearches + ' b\u00fasquedas</span>';
-                h += '<span style="font-size:10px;background:#e8f5e9;padding:3px 8px;border-radius:10px">\uD83D\uDC41 ' + pdvViews + ' vistos</span>';
-                h += '<span style="font-size:10px;background:#e0f7fa;padding:3px 8px;border-radius:10px">\uD83D\uDCE9 ' + pdvWA + ' WA a ' + esc(pdv.nombre) + '</span>';
-                h += '</div>';
-                h += '<div class="pdv-link-box">' + esc(link) + '</div>';
-                h += '<button class="pdv-copy-btn" onclick="copyLink(\'' + esc(link) + '\',this)">\uD83D\uDCCB Copiar link</button>';
-                h += '</div>';
-            });
+
+            // Buscador
+            h += '<div class="pdv-search-box">';
+            h += '<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>';
+            h += '<input type="text" id="pdv-buscar" placeholder="Buscar por nombre del comercio..." oninput="filtrarPDVs()" autocomplete="off">';
             h += '</div>';
+
+            // Tarjeta "Versión GRIFFO" fija al principio
+            h += renderPDVCardGriffo(d);
+
+            // Lista de PDVs
+            h += '<div id="pdv-lista">';
+            pdvsList.forEach(function(pdv) { h += renderPDVCard(pdv, d); });
+            h += '</div>';
+
+            h += '</div>'; // fin pdv-admin-wrap
+
             document.getElementById('adm-content').innerHTML = h;
+
+            // Guardar lista de PDVs para el filtro
+            window._pdvsListAdmin = pdvsList;
+            window._analyticsAdmin = d;
+        }
+
+        // Tarjeta especial "Versión GRIFFO" (sin ?ref=, sin botón borrar)
+        function renderPDVCardGriffo(d) {
+            var griffoEvents = d.filter(function(r) { return !r.pdvId; });
+            var griffoUsers = {};
+            griffoEvents.forEach(function(r) { if (r.userEmail) griffoUsers[r.userEmail] = 1; });
+            var griffoSearches = griffoEvents.filter(function(r) { return r.event === 'search'; }).length;
+            var griffoViews = griffoEvents.filter(function(r) { return r.event === 'product_view'; }).length;
+            var griffoWA = griffoEvents.filter(function(r) { return r.event === 'whatsapp_click'; }).length;
+            var h = '<div class="pdv-card griffo-base">';
+            h += '<div class="pdv-card-top">';
+            h += '<div class="pdv-card-logo-placeholder">🏭</div>';
+            h += '<div style="flex:1"><div class="pdv-card-name">Versi\u00f3n GRIFFO <span class="pdv-badge">base</span></div>';
+            h += '<div class="pdv-card-contact">Sin PDV — WPP sin n\u00famero + MercadoLibre</div></div>';
+            h += '</div>';
+            h += '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px">';
+            h += '<span style="font-size:10px;background:#e3f2fd;padding:3px 8px;border-radius:10px">\uD83D\uDD27 ' + Object.keys(griffoUsers).length + ' usuarios</span>';
+            h += '<span style="font-size:10px;background:#e8f5e9;padding:3px 8px;border-radius:10px">\uD83D\uDD0D ' + griffoSearches + ' b\u00fasquedas</span>';
+            h += '<span style="font-size:10px;background:#e8f5e9;padding:3px 8px;border-radius:10px">\uD83D\uDC41 ' + griffoViews + ' vistos</span>';
+            h += '<span style="font-size:10px;background:#fff3e0;padding:3px 8px;border-radius:10px">\uD83D\uDCE9 ' + griffoWA + ' WA</span>';
+            h += '</div>';
+            h += '<div style="font-size:11px;color:var(--m);margin-top:4px">' + window.location.origin + ' (URL base, sin par\u00e1metro)</div>';
+            h += '</div>';
+            return h;
+        }
+
+        // Tarjeta de PDV individual
+        function renderPDVCard(pdv, d) {
+            d = d || allAnalytics;
+            var link = window.location.origin + '/?ref=' + pdv.id;
+            var pdvEvents = d.filter(function(r) { return r.pdvId === pdv.id; });
+            var pdvUsers = {};
+            pdvEvents.forEach(function(r) { if (r.userEmail) pdvUsers[r.userEmail] = 1; });
+            var pdvSearches = pdvEvents.filter(function(r) { return r.event === 'search'; }).length;
+            var pdvViews = pdvEvents.filter(function(r) { return r.event === 'product_view'; }).length;
+            var pdvWA = pdvEvents.filter(function(r) { return r.event === 'whatsapp_pdv_click'; }).length;
+            var pdvWeb = pdvEvents.filter(function(r) { return r.event === 'web_pdv_click'; }).length;
+            var h = '<div class="pdv-card" id="pdvcard-' + pdv.id + '">';
+            h += '<div class="pdv-card-top">';
+            if (pdv.logoUrl) {
+                h += '<img class="pdv-card-logo" src="' + esc(pdv.logoUrl) + '" onerror="this.style.display=\'none\'">';
+            } else {
+                h += '<div class="pdv-card-logo-placeholder">\uD83C\uDFEA</div>';
+            }
+            h += '<div style="flex:1">';
+            h += '<div class="pdv-card-name">' + esc(pdv.nombre) + '</div>';
+            if (pdv.contacto) h += '<div class="pdv-card-contact">Contacto: ' + esc(pdv.contacto) + '</div>';
+            h += '<div class="pdv-card-phone">\uD83D\uDCDE ' + esc(pdv.celular) + '</div>';
+            if (pdv.ecommerceUrl) h += '<div class="pdv-card-web">\uD83C\uDF10 ' + esc(pdv.ecommerceUrl) + '</div>';
+            h += '</div>';
+            h += '<button class="pdv-del-btn" onclick="deletePDV(\'' + pdv.id + '\',this)">\uD83D\uDDD1</button>';
+            h += '</div>';
+            h += '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">';
+            h += '<span style="font-size:10px;background:#e3f2fd;padding:3px 8px;border-radius:10px">\uD83D\uDD27 ' + Object.keys(pdvUsers).length + ' mec\u00e1nicos</span>';
+            h += '<span style="font-size:10px;background:#e8f5e9;padding:3px 8px;border-radius:10px">\uD83D\uDD0D ' + pdvSearches + ' b\u00fasquedas</span>';
+            h += '<span style="font-size:10px;background:#e8f5e9;padding:3px 8px;border-radius:10px">\uD83D\uDC41 ' + pdvViews + ' vistos</span>';
+            h += '<span style="font-size:10px;background:#e0f7fa;padding:3px 8px;border-radius:10px">\uD83D\uDCE9 ' + pdvWA + ' WA</span>';
+            if (pdv.ecommerceUrl) h += '<span style="font-size:10px;background:#f3e5f5;padding:3px 8px;border-radius:10px">\uD83C\uDF10 ' + pdvWeb + ' web</span>';
+            h += '</div>';
+            h += '<div class="pdv-link-box">' + esc(link) + '</div>';
+            h += '<div class="pdv-actions">';
+            h += '<button class="pdv-copy-btn" onclick="copyLink(\'' + esc(link) + '\',this)">\uD83D\uDCCB Copiar link</button>';
+            h += '</div>';
+            h += '</div>';
+            return h;
+        }
+
+        // Filtrar PDVs por nombre
+        function filtrarPDVs() {
+            var q = (document.getElementById('pdv-buscar').value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+            var lista = window._pdvsListAdmin || [];
+            var d = window._analyticsAdmin || allAnalytics;
+            var filtered = q ? lista.filter(function(pdv) {
+                return norm(pdv.nombre || '').indexOf(q) >= 0;
+            }) : lista;
+            var h = '';
+            filtered.forEach(function(pdv) { h += renderPDVCard(pdv, d); });
+            document.getElementById('pdv-lista').innerHTML = h;
         }
 
         async function addPDV() {
             var nombre = document.getElementById('pdv-new-nombre').value.trim();
+            var contacto = document.getElementById('pdv-new-contacto').value.trim();
             var celular = document.getElementById('pdv-new-celular').value.trim();
+            var logoUrl = document.getElementById('pdv-new-logo').value.trim();
+            var ecommerceUrl = document.getElementById('pdv-new-ecommerce').value.trim();
             var status = document.getElementById('pdv-add-status');
-            if (!nombre || !celular) { status.textContent = 'Complet\u00e1 nombre y celular'; status.style.color = '#E53E3E'; return; }
+            if (!nombre) { status.textContent = 'Ingres\u00e1 el nombre del comercio'; status.style.color = '#E53E3E'; return; }
+            if (!celular) { status.textContent = 'Ingres\u00e1 el celular WhatsApp'; status.style.color = '#E53E3E'; return; }
             status.textContent = 'Guardando...'; status.style.color = 'var(--m)';
             try {
-                var pdvData = { nombre: nombre, celular: celular, activo: true, creadoEn: new Date().toISOString() };
+                var pdvData = {
+                    nombre: nombre,
+                    contacto: contacto || '',
+                    celular: celular,
+                    activo: true,
+                    creadoEn: new Date().toISOString()
+                };
+                if (logoUrl) pdvData.logoUrl = logoUrl;
+                if (ecommerceUrl) pdvData.ecommerceUrl = ecommerceUrl;
                 await db.collection('pdvs').add(pdvData);
                 status.textContent = 'PDV agregado \u2705'; status.style.color = '#27ae60';
                 document.getElementById('pdv-new-nombre').value = '';
+                document.getElementById('pdv-new-contacto').value = '';
                 document.getElementById('pdv-new-celular').value = '';
+                document.getElementById('pdv-new-logo').value = '';
+                document.getElementById('pdv-new-ecommerce').value = '';
                 setTimeout(function() { loadAdmin(); }, 800);
             } catch(e) { status.textContent = 'Error: ' + e.message; status.style.color = '#E53E3E'; }
         }
 
         async function deletePDV(id, btn) {
-            if (!confirm('¿Eliminar este PDV?')) return;
+            if (!confirm('\u00bfEliminar este PDV?')) return;
             try {
                 await db.collection('pdvs').doc(id).delete();
                 loadAdmin();
