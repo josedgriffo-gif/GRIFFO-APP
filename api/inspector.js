@@ -28,7 +28,7 @@ module.exports = async (req, res) => {
         .stat { color: var(--p); font-weight: 700 }
         .stat span { color: var(--m); font-weight: 500 }
         .table-wrap { overflow-x: scroll; -webkit-overflow-scrolling: touch; width: 100%; display: block }
-        table { border-collapse: collapse; font-size: 11px; min-width: 3000px; width: max-content }
+        table { border-collapse: collapse; font-size: 11px; width: max-content; min-width: 3000px }
         thead { }
         th { background: var(--p); color: #fff; padding: 9px 7px; text-align: left; white-space: nowrap; font-size: 9px; font-weight: 700; text-transform: none; letter-spacing: .3px; cursor: pointer; user-select: none; border-right: 1px solid rgba(255,255,255,.15); min-width: 100px }
         th:hover { background: var(--d) }
@@ -71,7 +71,7 @@ module.exports = async (req, res) => {
 <div class="header">
     <div>
         <h1>Inspector SpecParts — Todos los campos originales</h1>
-        <p>GRIFFO SRL · Solo uso interno · v2.4</p>
+        <p>GRIFFO SRL · Solo uso interno · v2.5</p>
     </div>
     <a href="/">← Volver a la app</a>
 </div>
