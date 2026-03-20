@@ -176,6 +176,8 @@
             .pdv-copy-btn { font-size: 11px; color: var(--a); background: none; border: none; font-family: inherit; font-weight: 700; cursor: pointer; padding: 0 }
             .pdv-del-btn { font-size: 11px; color: #E53E3E; background: none; border: none; font-family: inherit; font-weight: 700; cursor: pointer; padding: 0 }
             .pdv-edit-btn { font-size: 11px; color: var(--p); background: none; border: none; font-family: inherit; font-weight: 700; cursor: pointer; padding: 0 }
+            .pdv-use-btn { font-size: 11px; color: #fff; background: var(--a); border: none; font-family: inherit; font-weight: 700; cursor: pointer; padding: 4px 10px; border-radius: 6px }
+            .pdv-use-btn.active { background: #22C55E }
             .pdv-edit-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,.5); z-index: 9998; display: none; align-items: center; justify-content: center }
             .pdv-edit-overlay.on { display: flex }
             .pdv-edit-modal { background: var(--bg); border-radius: 16px; padding: 20px; width: 92%; max-width: 420px; max-height: 90vh; overflow-y: auto; box-shadow: 0 8px 40px rgba(0,0,0,.3) }
@@ -287,7 +289,7 @@
                 </div>
                 <div class="ft">
                     <div class="sd"><div class="sd-d"></div><span class="sd-t">Cat&#225;logo conectado</span></div>
-                    <div class="ft-t">GRIFFO SRL &#183; Industria Argentina &#183; griffo.com.ar &#183; v2.7</div>
+                    <div class="ft-t">GRIFFO SRL &#183; Industria Argentina &#183; griffo.com.ar &#183; v2.8</div>
                 </div>
                 <div class="bl"></div>
             </div>
@@ -306,7 +308,7 @@
                 <div class="auth-card">
                     <div class="auth-title">Iniciar Sesi&#243;n</div>
                     <button class="gb" onclick="googleLogin()">
-                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.87h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                         Continuar con Google
                     </button>
                     <div class="auth-sep">o con email</div>
@@ -318,7 +320,7 @@
                     <div class="auth-link">&#191;No ten&#233;s cuenta? <a onclick="go('register')">Registrate</a></div>
                 </div>
                 <div style="text-align:center;margin-top:4px"><a onclick="go('home')" style="font-size:12px;color:var(--m);cursor:pointer;font-weight:600">&#8592; Volver al inicio</a></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.7</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.8</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -336,7 +338,7 @@
                 <div class="auth-card">
                     <div class="auth-title">Registro</div>
                     <button class="gb" onclick="googleLogin()">
-                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.87h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                         Continuar con Google
                     </button>
                     <div class="auth-sep">o con email</div>
@@ -348,7 +350,7 @@
                     <div class="auth-link">&#191;Ya ten&#233;s cuenta? <a onclick="go('login')">Ingres&#225;</a></div>
                 </div>
                 <div style="text-align:center;margin-top:4px"><a onclick="go('home')" style="font-size:12px;color:var(--m);cursor:pointer;font-weight:600">&#8592; Volver al inicio</a></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.7</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.8</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -365,7 +367,7 @@
                 </div>
                 <div id="plate-vi"></div>
                 <div id="plate-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.7</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.8</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -383,7 +385,7 @@
                     <button class="sb" onclick="searchVehicle()">Buscar</button>
                 </div>
                 <div id="vehi-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.7</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.8</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -399,7 +401,7 @@
                     <button class="sb" onclick="searchCode()">Buscar</button>
                 </div>
                 <div id="code-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.7</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.8</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -415,7 +417,7 @@
                     <button class="sb" onclick="searchKw()">Buscar</button>
                 </div>
                 <div id="kw-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.7</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.8</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -444,7 +446,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.7</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.8</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -457,7 +459,7 @@
                 <div class="ow">
                     <div class="pdv-mini" id="pdv-mini-favs"><img class="pdv-mini-logo" src="" alt="" crossorigin="anonymous" onerror="this.style.display='none'"><div><div class="pdv-mini-label">Gentileza de</div><div class="pdv-mini-txt" data-pdv-name></div></div></div>
                     <h2 style="font-size:18px;font-weight:800;color:var(--t);margin-bottom:16px">Mis Favoritos</h2><div id="favs-res"></div></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.7</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.8</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -470,7 +472,7 @@
                 </div>
                 <div id="det-gallery" class="d-gallery"></div>
                 <div id="det-body" class="d-body"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.7</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.8</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -482,7 +484,7 @@
                 </div>
                 <div class="sa"><div class="st">Panel Administrador</div></div>
                 <div id="adm-content"><div class="adm-ld">Cargando datos...</div></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.7</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.8</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -807,7 +809,7 @@
         }
 
         // ============================================================
-        //  BOTONES DE ACCIÓN — Lógica v2.7
+        //  BOTONES DE ACCIÓN — Lógica v2.8
         //
         //  SIN PDV:
         //    - WPP sin número (elige de contactos)
@@ -1170,6 +1172,8 @@
             h += '<span style="font-size:10px;background:#fff3e0;padding:3px 8px;border-radius:10px">\uD83D\uDCE9 ' + griffoWA + ' WA</span>';
             h += '</div>';
             h += '<div style="font-size:11px;color:var(--m);margin-top:4px">' + window.location.origin + ' (URL base, sin par\u00e1metro)</div>';
+            var isActive = currentPDV === null && refPDVData === null;
+            h += '<div class="pdv-actions"><button class="pdv-use-btn' + (isActive ? ' active' : '') + '" onclick="usarPDV(null)">' + (isActive ? '\u2705 Activo' : '\uD83D\uDD04 Usar versi\u00f3n GRIFFO') + '</button></div>';
             h += '</div>';
             return h;
         }
@@ -1211,6 +1215,8 @@
             h += '<div class="pdv-actions">';
             h += '<button class="pdv-copy-btn" onclick="copyLink(\'' + esc(link) + '\',this)">\uD83D\uDCCB Copiar link</button>';
             h += '<button class="pdv-edit-btn" onclick="editPDV(\'' + pdv.id + '\')">&#9998; Editar</button>';
+            var isActive = (currentPDV && currentPDV.id === pdv.id) || (refPDVData && refPDVData.id === pdv.id && !currentPDV);
+            h += '<button class="pdv-use-btn' + (isActive ? ' active' : '') + '" onclick="usarPDV(\'' + pdv.id + '\')">' + (isActive ? '\u2705 Activo' : '\uD83D\uDD04 Usar') + '</button>';
             h += '</div>';
             h += '</div>';
             return h;
@@ -1258,6 +1264,34 @@
                 document.getElementById('pdv-new-ecommerce').value = '';
                 setTimeout(function() { loadAdmin(); }, 800);
             } catch(e) { status.textContent = 'Error: ' + e.message; status.style.color = '#E53E3E'; }
+        }
+
+        async function usarPDV(pdvId) {
+            if (!currentUser) return;
+            try {
+                if (pdvId) {
+                    await db.collection('users').doc(currentUser.uid).set({ pdvId: pdvId }, { merge: true });
+                    var pdvDoc = await db.collection('pdvs').doc(pdvId).get();
+                    if (pdvDoc.exists) {
+                        currentPDV = pdvDoc.data();
+                        currentPDV.id = pdvDoc.id;
+                        refPDVData = currentPDV;
+                        refPDVId = pdvId;
+                        sessionStorage.setItem('griffo_ref', pdvId);
+                    }
+                } else {
+                    await db.collection('users').doc(currentUser.uid).update({ pdvId: firebase.firestore.FieldValue.delete() });
+                    currentPDV = null;
+                    refPDVData = null;
+                    refPDVId = null;
+                    sessionStorage.removeItem('griffo_ref');
+                    document.getElementById('pdv-banner').style.display = 'none';
+                    var screens = ['plate','vehicle','code','keyword','measures','login','register','favs'];
+                    screens.forEach(function(s) { var mini = document.getElementById('pdv-mini-' + s); if (mini) mini.classList.remove('on'); });
+                }
+                if (currentPDV) showPDVBanner(currentPDV);
+                loadAdmin();
+            } catch(e) { alert('Error: ' + e.message); }
         }
 
         function editPDV(id) {
