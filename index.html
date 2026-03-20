@@ -175,6 +175,16 @@
             .pdv-actions { display: flex; gap: 8px; margin-top: 8px }
             .pdv-copy-btn { font-size: 11px; color: var(--a); background: none; border: none; font-family: inherit; font-weight: 700; cursor: pointer; padding: 0 }
             .pdv-del-btn { font-size: 11px; color: #E53E3E; background: none; border: none; font-family: inherit; font-weight: 700; cursor: pointer; padding: 0 }
+            .pdv-edit-btn { font-size: 11px; color: var(--p); background: none; border: none; font-family: inherit; font-weight: 700; cursor: pointer; padding: 0 }
+            .pdv-edit-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,.5); z-index: 9998; display: none; align-items: center; justify-content: center }
+            .pdv-edit-overlay.on { display: flex }
+            .pdv-edit-modal { background: var(--bg); border-radius: 16px; padding: 20px; width: 92%; max-width: 420px; max-height: 90vh; overflow-y: auto; box-shadow: 0 8px 40px rgba(0,0,0,.3) }
+            .pdv-edit-modal input { width: 100%; padding: 10px 12px; border: 1.5px solid rgba(0,84,159,.12); border-radius: 10px; font-size: 14px; font-family: inherit; color: var(--t); background: var(--c); outline: none; margin-bottom: 8px }
+            .pdv-edit-modal input:focus { border-color: var(--p) }
+            .pdv-edit-modal input.optional { border-style: dashed }
+            .pdv-edit-title { font-size: 15px; font-weight: 800; color: var(--t); margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between }
+            .pdv-edit-close { background: none; border: none; font-size: 22px; cursor: pointer; color: var(--m); padding: 0; line-height: 1 }
+            .pdv-edit-save { padding: 12px 20px; background: linear-gradient(135deg,var(--p),var(--d)); color: #fff; border: none; border-radius: 10px; font-size: 13px; font-weight: 700; font-family: inherit; cursor: pointer; width: 100%; margin-top: 4px }
             .pdv-badge { font-size: 9px; font-weight: 800; letter-spacing: 1px; background: var(--p); color: #fff; padding: 2px 7px; border-radius: 6px; text-transform: uppercase }
 
             /* ===== LIGHTBOX ===== */
@@ -277,7 +287,7 @@
                 </div>
                 <div class="ft">
                     <div class="sd"><div class="sd-d"></div><span class="sd-t">Cat&#225;logo conectado</span></div>
-                    <div class="ft-t">GRIFFO SRL &#183; Industria Argentina &#183; griffo.com.ar &#183; v2.6.1</div>
+                    <div class="ft-t">GRIFFO SRL &#183; Industria Argentina &#183; griffo.com.ar &#183; v2.7</div>
                 </div>
                 <div class="bl"></div>
             </div>
@@ -308,7 +318,7 @@
                     <div class="auth-link">&#191;No ten&#233;s cuenta? <a onclick="go('register')">Registrate</a></div>
                 </div>
                 <div style="text-align:center;margin-top:4px"><a onclick="go('home')" style="font-size:12px;color:var(--m);cursor:pointer;font-weight:600">&#8592; Volver al inicio</a></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.6.1</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.7</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -338,7 +348,7 @@
                     <div class="auth-link">&#191;Ya ten&#233;s cuenta? <a onclick="go('login')">Ingres&#225;</a></div>
                 </div>
                 <div style="text-align:center;margin-top:4px"><a onclick="go('home')" style="font-size:12px;color:var(--m);cursor:pointer;font-weight:600">&#8592; Volver al inicio</a></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.6.1</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.7</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -355,7 +365,7 @@
                 </div>
                 <div id="plate-vi"></div>
                 <div id="plate-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.6.1</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.7</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -373,7 +383,7 @@
                     <button class="sb" onclick="searchVehicle()">Buscar</button>
                 </div>
                 <div id="vehi-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.6.1</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.7</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -389,7 +399,7 @@
                     <button class="sb" onclick="searchCode()">Buscar</button>
                 </div>
                 <div id="code-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.6.1</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.7</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -405,7 +415,7 @@
                     <button class="sb" onclick="searchKw()">Buscar</button>
                 </div>
                 <div id="kw-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.6.1</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.7</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -434,7 +444,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.6.1</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.7</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -447,7 +457,7 @@
                 <div class="ow">
                     <div class="pdv-mini" id="pdv-mini-favs"><img class="pdv-mini-logo" src="" alt="" crossorigin="anonymous" onerror="this.style.display='none'"><div><div class="pdv-mini-label">Gentileza de</div><div class="pdv-mini-txt" data-pdv-name></div></div></div>
                     <h2 style="font-size:18px;font-weight:800;color:var(--t);margin-bottom:16px">Mis Favoritos</h2><div id="favs-res"></div></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.6.1</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.7</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -460,7 +470,7 @@
                 </div>
                 <div id="det-gallery" class="d-gallery"></div>
                 <div id="det-body" class="d-body"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.6.1</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.7</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -472,7 +482,7 @@
                 </div>
                 <div class="sa"><div class="st">Panel Administrador</div></div>
                 <div id="adm-content"><div class="adm-ld">Cargando datos...</div></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.6.1</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.7</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -485,6 +495,26 @@
             <img class="lb-img" id="lb-img">
             <button class="lb-nav lb-next" onclick="navLB(1,event)">&#8250;</button>
             <div class="lb-counter" id="lb-counter"></div>
+        </div>
+
+        <!-- MODAL EDITAR PDV -->
+        <div id="pdv-edit-overlay" class="pdv-edit-overlay" onclick="if(event.target===this)closeEditPDV()">
+            <div class="pdv-edit-modal">
+                <div class="pdv-edit-title"><span>&#9998; Editar PDV</span><button class="pdv-edit-close" onclick="closeEditPDV()">&#10005;</button></div>
+                <label style="font-size:10px;font-weight:700;color:var(--m);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;display:block">Nombre del comercio</label>
+                <input id="pdv-edit-nombre" placeholder="Nombre del comercio">
+                <label style="font-size:10px;font-weight:700;color:var(--m);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;display:block">Contacto</label>
+                <input id="pdv-edit-contacto" placeholder="Nombre del contacto">
+                <label style="font-size:10px;font-weight:700;color:var(--m);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;display:block">Celular WhatsApp</label>
+                <input id="pdv-edit-celular" placeholder="Celular WhatsApp" type="tel">
+                <label style="font-size:10px;font-weight:700;color:var(--m);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;display:block">URL del logo (opcional)</label>
+                <input id="pdv-edit-logo" class="optional" placeholder="URL del logo (opcional)">
+                <label style="font-size:10px;font-weight:700;color:var(--m);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;display:block">URL web / e-commerce (opcional)</label>
+                <input id="pdv-edit-ecommerce" class="optional" placeholder="URL web / e-commerce (opcional)">
+                <input type="hidden" id="pdv-edit-id">
+                <button class="pdv-edit-save" onclick="savePDV()">&#128190; Guardar cambios</button>
+                <div id="pdv-edit-status" style="font-size:12px;color:var(--m);margin-top:6px;text-align:center"></div>
+            </div>
         </div>
 
         <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
@@ -777,7 +807,7 @@
         }
 
         // ============================================================
-        //  BOTONES DE ACCIÓN — Lógica v2.6.1
+        //  BOTONES DE ACCIÓN — Lógica v2.7
         //
         //  SIN PDV:
         //    - WPP sin número (elige de contactos)
@@ -1180,6 +1210,7 @@
             h += '<div class="pdv-link-box">' + esc(link) + '</div>';
             h += '<div class="pdv-actions">';
             h += '<button class="pdv-copy-btn" onclick="copyLink(\'' + esc(link) + '\',this)">\uD83D\uDCCB Copiar link</button>';
+            h += '<button class="pdv-edit-btn" onclick="editPDV(\'' + pdv.id + '\')">&#9998; Editar</button>';
             h += '</div>';
             h += '</div>';
             return h;
@@ -1226,6 +1257,45 @@
                 document.getElementById('pdv-new-logo').value = '';
                 document.getElementById('pdv-new-ecommerce').value = '';
                 setTimeout(function() { loadAdmin(); }, 800);
+            } catch(e) { status.textContent = 'Error: ' + e.message; status.style.color = '#E53E3E'; }
+        }
+
+        function editPDV(id) {
+            var lista = window._pdvsListAdmin || [];
+            var pdv = lista.find(function(p) { return p.id === id; });
+            if (!pdv) { alert('PDV no encontrado'); return; }
+            document.getElementById('pdv-edit-id').value = id;
+            document.getElementById('pdv-edit-nombre').value = pdv.nombre || '';
+            document.getElementById('pdv-edit-contacto').value = pdv.contacto || '';
+            document.getElementById('pdv-edit-celular').value = pdv.celular || '';
+            document.getElementById('pdv-edit-logo').value = pdv.logoUrl || '';
+            document.getElementById('pdv-edit-ecommerce').value = pdv.ecommerceUrl || '';
+            document.getElementById('pdv-edit-status').textContent = '';
+            document.getElementById('pdv-edit-overlay').classList.add('on');
+        }
+
+        function closeEditPDV() {
+            document.getElementById('pdv-edit-overlay').classList.remove('on');
+        }
+
+        async function savePDV() {
+            var id = document.getElementById('pdv-edit-id').value;
+            var nombre = document.getElementById('pdv-edit-nombre').value.trim();
+            var contacto = document.getElementById('pdv-edit-contacto').value.trim();
+            var celular = document.getElementById('pdv-edit-celular').value.trim();
+            var logoUrl = document.getElementById('pdv-edit-logo').value.trim();
+            var ecommerceUrl = document.getElementById('pdv-edit-ecommerce').value.trim();
+            var status = document.getElementById('pdv-edit-status');
+            if (!nombre) { status.textContent = 'Ingres\u00e1 el nombre del comercio'; status.style.color = '#E53E3E'; return; }
+            if (!celular) { status.textContent = 'Ingres\u00e1 el celular WhatsApp'; status.style.color = '#E53E3E'; return; }
+            status.textContent = 'Guardando...'; status.style.color = 'var(--m)';
+            try {
+                var updateData = { nombre: nombre, contacto: contacto || '', celular: celular };
+                if (logoUrl) { updateData.logoUrl = logoUrl; } else { updateData.logoUrl = firebase.firestore.FieldValue.delete(); }
+                if (ecommerceUrl) { updateData.ecommerceUrl = ecommerceUrl; } else { updateData.ecommerceUrl = firebase.firestore.FieldValue.delete(); }
+                await db.collection('pdvs').doc(id).update(updateData);
+                status.textContent = 'Guardado \u2705'; status.style.color = '#27ae60';
+                setTimeout(function() { closeEditPDV(); loadAdmin(); }, 800);
             } catch(e) { status.textContent = 'Error: ' + e.message; status.style.color = '#E53E3E'; }
         }
 
