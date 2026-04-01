@@ -97,13 +97,9 @@
             .d-vg-brand { font-size: 13px; font-weight: 700; color: var(--t); margin-bottom: 4px }
             .d-vg-item { font-size: 11.5px; color: var(--m); padding: 3px 0; border-bottom: 1px solid rgba(0,84,159,.04) }
             .d-acts { display: flex; gap: 10px; margin-top: 20px; position: sticky; bottom: 0; background: var(--bg); padding: 16px 0 8px; flex-wrap: wrap }
-            /* Botón WPP verde estándar */
             .bw2 { flex: 1; padding: 14px; border: none; border-radius: 12px; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; background: #25D366; color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 16px rgba(37,211,102,.3); min-width: 120px }
-            /* Botón WPP al PDV (verde oscuro) */
             .bw2.pdv { background: #128C7E; box-shadow: 0 4px 16px rgba(18,140,126,.3) }
-            /* Botón web/ecommerce del PDV */
             .bweb { flex: 1; padding: 14px; border: none; border-radius: 12px; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; background: var(--p); color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 16px rgba(0,84,159,.3); min-width: 120px }
-            /* Botón MercadoLibre */
             .bm2 { flex: 1; padding: 14px; border: none; border-radius: 12px; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; background: #FFE600; color: #333; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 16px rgba(255,230,0,.3); min-width: 120px }
             @keyframes pu { 0%,100% { opacity: 1 } 50% { opacity: .5 } }
             .auth-card { background: var(--c); border-radius: 16px; padding: 24px; margin: 24px 20px; box-shadow: 0 2px 16px rgba(0,84,159,.1) }
@@ -115,6 +111,7 @@
             .auth-link { text-align: center; margin-top: 18px; font-size: 13px; color: var(--m) }
             .auth-link a { color: var(--p); font-weight: 700; text-decoration: none; cursor: pointer }
             .auth-err { color: #E53E3E; font-size: 12px; font-weight: 600; text-align: center; margin-top: 8px; display: none }
+            .auth-info { color: #2e7d32; font-size: 12px; font-weight: 600; text-align: center; margin-top: 8px; display: none; background: #e8f5e9; border-radius: 10px; padding: 12px }
             .usr-bar { display: none; align-items: center; justify-content: space-between; padding: 6px 16px; margin: 0 20px 2px; background: var(--c); border-radius: 10px; box-shadow: 0 1px 6px rgba(0,84,159,.04) }
             .usr-bar.on { display: flex }
             .usr-name { font-size: 11px; font-weight: 600; color: var(--p); display: flex; align-items: center; gap: 5px }
@@ -134,21 +131,16 @@
             .adm-row-v { color: var(--p); font-weight: 800; flex-shrink: 0 }
             .adm-exp { margin: 0 20px 20px; padding: 14px; border: none; border-radius: 12px; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; background: #27ae60; color: #fff; width: calc(100% - 40px) }
             .adm-ld { text-align: center; padding: 40px 20px; color: var(--m); font-size: 14px }
-
-            /* ===== PDV BANNER en home ===== */
             .pdv-banner { margin: 8px 20px 0; background: var(--c); border-radius: 12px; padding: 8px 14px; display: flex; align-items: center; gap: 10px; box-shadow: 0 2px 8px rgba(0,84,159,.06); border-left: 4px solid var(--a) }
             .pdv-banner-logo { width: 48px; height: 28px; object-fit: contain; border-radius: 4px; flex-shrink: 0 }
             .pdv-banner-txt { flex: 1 }
             .pdv-banner-label { font-size: 8px; font-weight: 700; letter-spacing: 1.5px; color: var(--m); text-transform: uppercase }
             .pdv-banner-name { font-size: 12px; font-weight: 800; color: var(--t); margin-top: 0 }
-            /* ===== PDV mini-banner para pantallas internas ===== */
             .pdv-mini { margin: 6px 20px 0; background: var(--c); border-radius: 10px; padding: 6px 12px; display: none; align-items: center; gap: 8px; box-shadow: 0 1px 6px rgba(0,84,159,.06); border-left: 3px solid var(--a) }
             .pdv-mini.on { display: flex }
             .pdv-mini-logo { width: 36px; height: 22px; object-fit: contain; border-radius: 3px; flex-shrink: 0 }
             .pdv-mini-txt { font-size: 10px; font-weight: 700; color: var(--t) }
             .pdv-mini-label { font-size: 8px; font-weight: 600; color: var(--m); text-transform: uppercase; letter-spacing: 1px }
-
-            /* ===== PDV ADMIN - Form ===== */
             .pdv-admin-wrap { padding: 0 20px 20px }
             .pdv-search-box { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; background: var(--c); border-radius: 12px; padding: 10px 14px; box-shadow: 0 2px 8px rgba(0,84,159,.06) }
             .pdv-search-box input { flex: 1; border: none; outline: none; font-size: 14px; font-family: inherit; color: var(--t); background: transparent }
@@ -160,8 +152,6 @@
             .pdv-form input.optional { border-style: dashed }
             .pdv-form-hint { font-size: 10px; color: var(--m); margin-bottom: 8px; margin-top: -4px; padding-left: 2px }
             .pdv-add-btn { padding: 12px 20px; background: linear-gradient(135deg,var(--p),var(--d)); color: #fff; border: none; border-radius: 10px; font-size: 13px; font-weight: 700; font-family: inherit; cursor: pointer; width: 100% }
-
-            /* ===== PDV CARD en admin ===== */
             .pdv-card { background: var(--c); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,84,159,.06) }
             .pdv-card.griffo-base { border: 2px solid var(--p); background: rgba(0,84,159,.03) }
             .pdv-card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px }
@@ -188,8 +178,6 @@
             .pdv-edit-close { background: none; border: none; font-size: 22px; cursor: pointer; color: var(--m); padding: 0; line-height: 1 }
             .pdv-edit-save { padding: 12px 20px; background: linear-gradient(135deg,var(--p),var(--d)); color: #fff; border: none; border-radius: 10px; font-size: 13px; font-weight: 700; font-family: inherit; cursor: pointer; width: 100%; margin-top: 4px }
             .pdv-badge { font-size: 9px; font-weight: 800; letter-spacing: 1px; background: var(--p); color: #fff; padding: 2px 7px; border-radius: 6px; text-transform: uppercase }
-
-            /* ===== LIGHTBOX ===== */
             .lb { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,.92); z-index: 9999; display: none; align-items: center; justify-content: center; flex-direction: column }
             .lb.on { display: flex }
             .lb-img { max-width: 92%; max-height: 80vh; object-fit: contain; border-radius: 8px }
@@ -198,8 +186,6 @@
             .lb-prev { left: 12px }
             .lb-next { right: 12px }
             .lb-counter { color: rgba(255,255,255,.6); font-size: 12px; margin-top: 12px; font-weight: 600 }
-
-            /* ===== MEDIDAS ===== */
             .msr-type { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap }
             .msr-type-btn { flex: 1; min-width: 30%; padding: 12px 8px; border: 2px solid rgba(0,84,159,.12); border-radius: 12px; font-size: 12px; font-weight: 700; font-family: inherit; cursor: pointer; background: var(--c); color: var(--m); text-align: center; transition: all .2s }
             .msr-type-btn.active { border-color: var(--p); background: rgba(0,84,159,.06); color: var(--p) }
@@ -241,7 +227,6 @@
                     </div>
                 </div>
 
-                <!-- Banner PDV (se muestra solo si viene con ?ref=) -->
                 <div id="pdv-banner" class="pdv-banner" style="display:none">
                     <img id="pdv-banner-logo" class="pdv-banner-logo" src="" alt="" crossorigin="anonymous" onerror="this.style.display='none'">
                     <div class="pdv-banner-txt">
@@ -289,7 +274,7 @@
                 </div>
                 <div class="ft">
                     <div class="sd"><div class="sd-d"></div><span class="sd-t">Cat&#225;logo conectado</span></div>
-                    <div class="ft-t">GRIFFO SRL &#183; Industria Argentina &#183; griffo.com.ar &#183; v2.8</div>
+                    <div class="ft-t">GRIFFO SRL &#183; Industria Argentina &#183; griffo.com.ar &#183; v2.9</div>
                 </div>
                 <div class="bl"></div>
             </div>
@@ -315,12 +300,13 @@
                     <div class="fld"><label>Email</label><input id="login-email" type="email" placeholder="tu@email.com"></div>
                     <div class="fld"><label>Contrase&#241;a</label><input id="login-pass" type="password" placeholder="Tu contrase&#241;a" onkeydown="if(event.key==='Enter')emailLogin()"></div>
                     <div id="login-err" class="auth-err"></div>
+                    <div id="login-verify-msg" class="auth-info"></div>
                     <button class="sb" onclick="emailLogin()">Ingresar</button>
                     <div style="text-align:center;margin-top:8px"><a onclick="resetPassword()" style="font-size:12px;color:var(--m);cursor:pointer">&#191;Olvidaste tu contrase&#241;a?</a></div>
                     <div class="auth-link">&#191;No ten&#233;s cuenta? <a onclick="go('register')">Registrate</a></div>
                 </div>
                 <div style="text-align:center;margin-top:4px"><a onclick="go('home')" style="font-size:12px;color:var(--m);cursor:pointer;font-weight:600">&#8592; Volver al inicio</a></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.8</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.9</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -346,11 +332,12 @@
                     <div class="fld"><label>Email</label><input id="reg-email" type="email" placeholder="tu@email.com"></div>
                     <div class="fld"><label>Contrase&#241;a</label><input id="reg-pass" type="password" placeholder="M&#237;nimo 6 caracteres" onkeydown="if(event.key==='Enter')emailRegister()"></div>
                     <div id="reg-err" class="auth-err"></div>
+                    <div id="reg-verify-msg" class="auth-info"></div>
                     <button class="sb" onclick="emailRegister()">Crear Cuenta</button>
                     <div class="auth-link">&#191;Ya ten&#233;s cuenta? <a onclick="go('login')">Ingres&#225;</a></div>
                 </div>
                 <div style="text-align:center;margin-top:4px"><a onclick="go('home')" style="font-size:12px;color:var(--m);cursor:pointer;font-weight:600">&#8592; Volver al inicio</a></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.8</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.9</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -367,7 +354,7 @@
                 </div>
                 <div id="plate-vi"></div>
                 <div id="plate-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.8</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.9</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -385,7 +372,7 @@
                     <button class="sb" onclick="searchVehicle()">Buscar</button>
                 </div>
                 <div id="vehi-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.8</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.9</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -401,7 +388,7 @@
                     <button class="sb" onclick="searchCode()">Buscar</button>
                 </div>
                 <div id="code-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.8</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.9</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -417,7 +404,7 @@
                     <button class="sb" onclick="searchKw()">Buscar</button>
                 </div>
                 <div id="kw-res" class="res"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.8</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.9</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -446,7 +433,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.8</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.9</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -459,7 +446,7 @@
                 <div class="ow">
                     <div class="pdv-mini" id="pdv-mini-favs"><img class="pdv-mini-logo" src="" alt="" crossorigin="anonymous" onerror="this.style.display='none'"><div><div class="pdv-mini-label">Gentileza de</div><div class="pdv-mini-txt" data-pdv-name></div></div></div>
                     <h2 style="font-size:18px;font-weight:800;color:var(--t);margin-bottom:16px">Mis Favoritos</h2><div id="favs-res"></div></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.8</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.9</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -472,7 +459,7 @@
                 </div>
                 <div id="det-gallery" class="d-gallery"></div>
                 <div id="det-body" class="d-body"></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.8</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.9</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -484,7 +471,7 @@
                 </div>
                 <div class="sa"><div class="st">Panel Administrador</div></div>
                 <div id="adm-content"><div class="adm-ld">Cargando datos...</div></div>
-                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.8</div></div>
+                <div class="ft"><div class="ft-t">GRIFFO SRL &#183; griffo.com.ar &#183; v2.9</div></div>
                 <div class="bl"></div>
             </div>
 
@@ -532,9 +519,9 @@
         var lbImgs = [], lbIdx = 0;
         var userFavs = {};
         var allAnalytics = [];
-        var currentPDV = null;   // PDV vinculado al usuario logueado
-        var refPDVId = null;     // ID del PDV del link ?ref=
-        var refPDVData = null;   // Datos del PDV del link ?ref=
+        var currentPDV = null;
+        var refPDVId = null;
+        var refPDVData = null;
 
         // ============================================================
         //  LOGOS
@@ -617,14 +604,9 @@
             var nameEl = document.getElementById('pdv-banner-name');
             var logoEl = document.getElementById('pdv-banner-logo');
             nameEl.textContent = pdv.nombre || '';
-            if (pdv.logoUrl) {
-                logoEl.src = pdv.logoUrl;
-                logoEl.style.display = '';
-            } else {
-                logoEl.style.display = 'none';
-            }
+            if (pdv.logoUrl) { logoEl.src = pdv.logoUrl; logoEl.style.display = ''; }
+            else { logoEl.style.display = 'none'; }
             banner.style.display = 'flex';
-            // Llenar mini-banners en pantallas internas
             var screens = ['plate','vehicle','code','keyword','measures','login','register','favs'];
             screens.forEach(function(s) {
                 var mini = document.getElementById('pdv-mini-' + s);
@@ -639,7 +621,7 @@
         }
 
         // ============================================================
-        //  AUTH STATE
+        //  AUTH STATE — v2.9: respeta emailVerified
         // ============================================================
         firebase.auth().onAuthStateChanged(async function(user) {
             currentUser = user;
@@ -647,7 +629,23 @@
             var nameEl = document.getElementById('usr-display');
             var adm = document.getElementById('adm-home');
             var btnFavs = document.getElementById('btn-favs');
+
             if (user) {
+                // Si es login con email y NO verificó, no dar acceso
+                var isEmailProvider = user.providerData.some(function(p) { return p.providerId === 'password'; });
+                if (isEmailProvider && !user.emailVerified && user.email !== ADMIN_EMAIL) {
+                    // Desloguear para que no quede "adentro"
+                    await firebase.auth().signOut();
+                    currentUser = null;
+                    bar.classList.remove('on');
+                    nameEl.textContent = '';
+                    adm.classList.remove('on');
+                    btnFavs.style.display = 'none';
+                    userFavs = {};
+                    currentPDV = null;
+                    return;
+                }
+
                 bar.classList.add('on');
                 nameEl.textContent = user.displayName || user.email;
                 adm.classList.toggle('on', user.email === ADMIN_EMAIL);
@@ -658,7 +656,6 @@
                     await db.collection('users').doc(user.uid).set({ pdvId: refPDVId }, { merge: true });
                     await loadUserPDV(user.uid);
                 }
-                // Refrescar banner PDV después del login
                 var pdvToShow = currentPDV || refPDVData;
                 if (pdvToShow) showPDVBanner(pdvToShow);
                 if (pendingGo) { var dest = pendingGo; pendingGo = null; go(dest); }
@@ -696,6 +693,9 @@
             document.querySelectorAll('.scr').forEach(function(e) { e.classList.remove('on'); });
             document.getElementById('s-' + s).classList.add('on');
             window.scrollTo(0, 0);
+            // Limpiar mensajes de verificación al navegar
+            if (s === 'login') { hideErr('login-err'); hideVerify('login-verify-msg'); }
+            if (s === 'register') { hideErr('reg-err'); hideVerify('reg-verify-msg'); }
             if (s === 'admin') loadAdmin();
             if (s === 'favs') renderFavs();
             if (s === 'measures' && P) fillMeasures();
@@ -704,23 +704,57 @@
         function goBack() { go(BS || 'home'); }
 
         // ============================================================
-        //  AUTH HELPERS
+        //  AUTH HELPERS — v2.9: verificación de email
         // ============================================================
-        function showErr(id, msg) { var el = document.getElementById(id); el.textContent = msg; el.style.display = 'block'; }
-        function hideErr(id) { document.getElementById(id).style.display = 'none'; }
+        function showErr(id, msg) { var el = document.getElementById(id); el.textContent = msg; el.style.display = 'block'; el.style.color = '#E53E3E'; }
+        function hideErr(id) { var el = document.getElementById(id); if (el) { el.style.display = 'none'; } }
+        function showVerify(id, msg) { var el = document.getElementById(id); if (el) { el.innerHTML = msg; el.style.display = 'block'; } }
+        function hideVerify(id) { var el = document.getElementById(id); if (el) { el.style.display = 'none'; } }
 
         async function emailLogin() {
             var email = document.getElementById('login-email').value.trim();
             var pass = document.getElementById('login-pass').value;
             if (!email || !pass) { showErr('login-err', 'Complet\u00e1 email y contrase\u00f1a'); return; }
             hideErr('login-err');
-            try { await firebase.auth().signInWithEmailAndPassword(email, pass); go('home'); }
-            catch(e) {
+            hideVerify('login-verify-msg');
+            try {
+                var cred = await firebase.auth().signInWithEmailAndPassword(email, pass);
+                // ===== v2.9: CHEQUEAR EMAIL VERIFICADO =====
+                if (!cred.user.emailVerified && cred.user.email !== ADMIN_EMAIL) {
+                    // No dejar entrar — mostrar mensaje con opción de reenviar
+                    await firebase.auth().signOut();
+                    showVerify('login-verify-msg',
+                        '\u2709\uFE0F Ten\u00e9s que verificar tu email antes de ingresar.<br><br>' +
+                        'Revis\u00e1 tu casilla de <b>' + email + '</b> (incluyendo spam).<br><br>' +
+                        '<a onclick="resendVerification(\'' + email + '\',\'' + pass + '\')" style="color:var(--p);font-weight:700;cursor:pointer;text-decoration:underline">Reenviar email de verificaci\u00f3n</a>'
+                    );
+                    return;
+                }
+                go('home');
+            } catch(e) {
                 var msg = 'Error al ingresar';
                 if (e.code === 'auth/user-not-found' || e.code === 'auth/wrong-password' || e.code === 'auth/invalid-credential') msg = 'Email o contrase\u00f1a incorrectos';
                 if (e.code === 'auth/invalid-email') msg = 'Email inv\u00e1lido';
                 if (e.code === 'auth/too-many-requests') msg = 'Demasiados intentos. Esper\u00e1 un momento';
                 showErr('login-err', msg);
+            }
+        }
+
+        // Reenviar email de verificación desde login
+        async function resendVerification(email, pass) {
+            try {
+                var cred = await firebase.auth().signInWithEmailAndPassword(email, pass);
+                await cred.user.sendEmailVerification();
+                await firebase.auth().signOut();
+                showVerify('login-verify-msg',
+                    '\u2705 Email reenviado a <b>' + email + '</b>.<br>Revis\u00e1 tu casilla (incluyendo spam) y hac\u00e9 click en el link para activar tu cuenta.'
+                );
+            } catch(e) {
+                if (e.code === 'auth/too-many-requests') {
+                    showErr('login-err', 'Demasiados intentos. Esper\u00e1 unos minutos antes de reenviar.');
+                } else {
+                    showErr('login-err', 'Error al reenviar: ' + e.message);
+                }
             }
         }
 
@@ -747,18 +781,32 @@
             if (!email) { showErr('reg-err', 'Ingres\u00e1 tu email'); return; }
             if (pass.length < 6) { showErr('reg-err', 'La contrase\u00f1a debe tener al menos 6 caracteres'); return; }
             hideErr('reg-err');
+            hideVerify('reg-verify-msg');
             try {
                 var cred = await firebase.auth().createUserWithEmailAndPassword(email, pass);
                 await cred.user.updateProfile({ displayName: name });
-                currentUser = firebase.auth().currentUser;
+
+                // ===== v2.9: ENVIAR EMAIL DE VERIFICACIÓN =====
+                await cred.user.sendEmailVerification();
+
+                // Guardar datos del usuario en Firestore
                 var userData = { displayName: name, email: email, createdAt: new Date().toISOString() };
                 if (refPDVId) userData.pdvId = refPDVId;
                 await db.collection('users').doc(cred.user.uid).set(userData, { merge: true });
-                if (refPDVId) await loadUserPDV(cred.user.uid);
-                document.getElementById('usr-home').classList.add('on');
-                document.getElementById('usr-display').textContent = name;
-                if (pendingGo) { var dest = pendingGo; pendingGo = null; go(dest); }
-                else go('home');
+
+                // Desloguear — NO dar acceso hasta que verifique
+                await firebase.auth().signOut();
+
+                // Mostrar mensaje de verificación
+                showVerify('reg-verify-msg',
+                    '\u2709\uFE0F \u00a1Cuenta creada! Te enviamos un email de verificaci\u00f3n a <b>' + email + '</b>.<br><br>' +
+                    'Revis\u00e1 tu casilla (incluyendo spam), hac\u00e9 click en el link y despu\u00e9s volv\u00e9 a ingresar.'
+                );
+
+                // Ocultar formulario de registro y mostrar link a login
+                document.querySelector('#s-register .sb').style.display = 'none';
+                document.querySelector('#s-register .auth-link').innerHTML = '<a onclick="go(\'login\')" style="color:var(--p);font-weight:700;cursor:pointer">Ya verifiqu\u00e9 mi email \u2192 Ingresar</a>';
+
             } catch(e) {
                 var msg = 'Error al registrar';
                 if (e.code === 'auth/email-already-in-use') msg = 'Ese email ya est\u00e1 registrado';
@@ -778,7 +826,6 @@
                 go('home');
             } catch(e) {
                 if (e.code === 'auth/popup-blocked' || e.code === 'auth/cancelled-popup-request') {
-                    // Fallback a redirect si popup bloqueado
                     try { await firebase.auth().signInWithRedirect(provider); }
                     catch(e2) { console.error('Google login error:', e2); }
                 } else if (e.code !== 'auth/popup-closed-by-user') {
@@ -787,9 +834,15 @@
             }
         }
 
-
-
-        function logout() { firebase.auth().signOut(); pendingGo = null; currentPDV = null; go('home'); }
+        function logout() {
+            firebase.auth().signOut();
+            pendingGo = null;
+            currentPDV = null;
+            // Restaurar botón de registro si se ocultó
+            var regBtn = document.querySelector('#s-register .sb');
+            if (regBtn) regBtn.style.display = '';
+            go('home');
+        }
 
         // ============================================================
         //  ANALYTICS
@@ -809,118 +862,47 @@
         }
 
         // ============================================================
-        //  BOTONES DE ACCIÓN — Lógica v2.8
-        //
-        //  SIN PDV:
-        //    - WPP sin número (elige de contactos)
-        //    - MeLi (si tiene link)
-        //
-        //  CON PDV:
-        //    - WPP al número del PDV
-        //    - Web/ecommerce del PDV (si tiene ecommerceUrl)
-        //    - SIN MeLi, SIN "Mi agenda"
+        //  BOTONES DE ACCIÓN — Lógica v2.9
         // ============================================================
-
         var svgWA_sm = '<svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.624-1.472A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-2.168 0-4.183-.655-5.863-1.776l-.42-.282-2.751.876.877-2.672-.294-.44A9.787 9.787 0 012.182 12 9.818 9.818 0 0112 2.182 9.818 9.818 0 0121.818 12 9.818 9.818 0 0112 21.818z"/></svg>';
         var svgWA_lg = '<svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.624-1.472A11.932 11.932 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-2.168 0-4.183-.655-5.863-1.776l-.42-.282-2.751.876.877-2.672-.294-.44A9.787 9.787 0 012.182 12 9.818 9.818 0 0112 2.182 9.818 9.818 0 0121.818 12 9.818 9.818 0 0112 21.818z"/></svg>';
         var svgWeb = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>';
         var svgWebLg = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>';
 
-        function buildWAMsg(code, product) {
-            return 'Hola! Vi en la app GRIFFO el producto ' + code + ' (' + product + '). Ten\u00e9s disponibilidad y precio?';
-        }
+        function buildWAMsg(code, product) { return 'Hola! Vi en la app GRIFFO el producto ' + code + ' (' + product + '). Ten\u00e9s disponibilidad y precio?'; }
+        function trackWA(code, product) { var c = decodeURIComponent(code), pr = decodeURIComponent(product); var msg = buildWAMsg(c, pr); var url = 'https://wa.me/?text=' + encodeURIComponent(msg); track('whatsapp_click', { code: c, product: pr, tipo: 'sin_numero' }); window.open(url, '_blank'); }
+        function trackWAPDV(code, product) { var c = decodeURIComponent(code), pr = decodeURIComponent(product); var pdv = currentPDV || refPDVData; if (!pdv || !pdv.celular) { trackWA(code, product); return; } var msg = buildWAMsg(c, pr); var url = 'https://wa.me/' + pdv.celular.replace(/\D/g,'') + '?text=' + encodeURIComponent(msg); track('whatsapp_pdv_click', { code: c, product: pr, pdvId: pdv.id, pdvNombre: pdv.nombre }); window.open(url, '_blank'); }
+        function trackML(code, product, link) { var c = decodeURIComponent(code), pr = decodeURIComponent(product), l = decodeURIComponent(link); track('mercadolibre_click', { code: c, product: pr, link: l }); window.open(l, '_blank'); }
+        function trackWeb(code, product, url) { var c = decodeURIComponent(code), pr = decodeURIComponent(product), u = decodeURIComponent(url); track('web_pdv_click', { code: c, product: pr, url: u, pdvId: (currentPDV||refPDVData||{}).id }); window.open(u, '_blank'); }
+        function getMeliUrl(p) { var url = ''; if (p.links && p.links.length > 0) p.links.forEach(function(l) { if (l.url || l.link) url = l.url || l.link; }); return url; }
 
-        // WPP sin número (versión GRIFFO / sin PDV)
-        function trackWA(code, product) {
-            var c = decodeURIComponent(code), pr = decodeURIComponent(product);
-            var msg = buildWAMsg(c, pr);
-            var url = 'https://wa.me/?text=' + encodeURIComponent(msg);
-            track('whatsapp_click', { code: c, product: pr, tipo: 'sin_numero' });
-            window.open(url, '_blank');
-        }
-
-        // WPP al número del PDV
-        function trackWAPDV(code, product) {
-            var c = decodeURIComponent(code), pr = decodeURIComponent(product);
-            var pdv = currentPDV || refPDVData;
-            if (!pdv || !pdv.celular) { trackWA(code, product); return; }
-            var msg = buildWAMsg(c, pr);
-            var url = 'https://wa.me/' + pdv.celular.replace(/\D/g,'') + '?text=' + encodeURIComponent(msg);
-            track('whatsapp_pdv_click', { code: c, product: pr, pdvId: pdv.id, pdvNombre: pdv.nombre });
-            window.open(url, '_blank');
-        }
-
-        // MercadoLibre
-        function trackML(code, product, link) {
-            var c = decodeURIComponent(code), pr = decodeURIComponent(product), l = decodeURIComponent(link);
-            track('mercadolibre_click', { code: c, product: pr, link: l });
-            window.open(l, '_blank');
-        }
-
-        // Web / ecommerce del PDV
-        function trackWeb(code, product, url) {
-            var c = decodeURIComponent(code), pr = decodeURIComponent(product), u = decodeURIComponent(url);
-            track('web_pdv_click', { code: c, product: pr, url: u, pdvId: (currentPDV||refPDVData||{}).id });
-            window.open(u, '_blank');
-        }
-
-        // Obtener link MeLi del producto
-        function getMeliUrl(p) {
-            var url = '';
-            if (p.links && p.links.length > 0) p.links.forEach(function(l) { if (l.url || l.link) url = l.url || l.link; });
-            return url;
-        }
-
-        // ---- Botones para tarjetas de resultado ----
         function getBotonesAccion(p) {
             var s = 'font-size:11px;padding:10px;flex:1';
-            var ec = encodeURIComponent(p.code || '');
-            var ep = encodeURIComponent(p.product || '');
-            var pdv = currentPDV || refPDVData;
-            var h = '';
-
+            var ec = encodeURIComponent(p.code || ''); var ep = encodeURIComponent(p.product || '');
+            var pdv = currentPDV || refPDVData; var h = '';
             if (pdv) {
-                // CON PDV: WPP al PDV + web si tiene
                 h += '<button class="bw2 pdv" style="' + s + '" onclick="event.stopPropagation();trackWAPDV(\'' + ec + '\',\'' + ep + '\')">' + svgWA_sm + esc(pdv.nombre) + '</button>';
-                if (pdv.ecommerceUrl) {
-                    var eu = encodeURIComponent(pdv.ecommerceUrl);
-                    h += '<button class="bweb" style="' + s + '" onclick="event.stopPropagation();trackWeb(\'' + ec + '\',\'' + ep + '\',\'' + eu + '\')">' + svgWeb + 'Web</button>';
-                }
+                if (pdv.ecommerceUrl) { var eu = encodeURIComponent(pdv.ecommerceUrl); h += '<button class="bweb" style="' + s + '" onclick="event.stopPropagation();trackWeb(\'' + ec + '\',\'' + ep + '\',\'' + eu + '\')">' + svgWeb + 'Web</button>'; }
             } else {
-                // SIN PDV: WPP sin número + MeLi si tiene
                 h += '<button class="bw2" style="' + s + '" onclick="event.stopPropagation();trackWA(\'' + ec + '\',\'' + ep + '\')">' + svgWA_sm + 'WhatsApp</button>';
                 var meliUrl = getMeliUrl(p);
-                if (meliUrl) {
-                    h += '<button class="bm2" style="' + s + '" onclick="event.stopPropagation();trackML(\'' + ec + '\',\'' + ep + '\',\'' + encodeURIComponent(meliUrl) + '\')">MercadoLibre</button>';
-                }
+                if (meliUrl) { h += '<button class="bm2" style="' + s + '" onclick="event.stopPropagation();trackML(\'' + ec + '\',\'' + ep + '\',\'' + encodeURIComponent(meliUrl) + '\')">MercadoLibre</button>'; }
             }
             return h;
         }
 
-        // ---- Botones para pantalla de detalle ----
         function getBotonesDetalle(p) {
-            var ec = encodeURIComponent(p.code || '');
-            var ep = encodeURIComponent(p.product || '');
-            var pdv = currentPDV || refPDVData;
-            var h = '<div class="d-acts">';
-
+            var ec = encodeURIComponent(p.code || ''); var ep = encodeURIComponent(p.product || '');
+            var pdv = currentPDV || refPDVData; var h = '<div class="d-acts">';
             if (pdv) {
-                // CON PDV: WPP al PDV + web si tiene
                 h += '<button class="bw2 pdv" onclick="trackWAPDV(\'' + ec + '\',\'' + ep + '\')">' + svgWA_lg + esc(pdv.nombre) + '</button>';
-                if (pdv.ecommerceUrl) {
-                    var eu = encodeURIComponent(pdv.ecommerceUrl);
-                    h += '<button class="bweb" onclick="trackWeb(\'' + ec + '\',\'' + ep + '\',\'' + eu + '\')">' + svgWebLg + 'Ver en web</button>';
-                }
+                if (pdv.ecommerceUrl) { var eu = encodeURIComponent(pdv.ecommerceUrl); h += '<button class="bweb" onclick="trackWeb(\'' + ec + '\',\'' + ep + '\',\'' + eu + '\')">' + svgWebLg + 'Ver en web</button>'; }
             } else {
-                // SIN PDV: WPP sin número + MeLi si tiene
                 h += '<button class="bw2" onclick="trackWA(\'' + ec + '\',\'' + ep + '\')">' + svgWA_lg + 'WhatsApp</button>';
                 var meliUrl = getMeliUrl(p);
-                if (meliUrl) {
-                    h += '<button class="bm2" onclick="trackML(\'' + ec + '\',\'' + ep + '\',\'' + encodeURIComponent(meliUrl) + '\')">Comprar en MercadoLibre</button>';
-                }
+                if (meliUrl) { h += '<button class="bm2" onclick="trackML(\'' + ec + '\',\'' + ep + '\',\'' + encodeURIComponent(meliUrl) + '\')">Comprar en MercadoLibre</button>'; }
             }
-            h += '</div>';
-            return h;
+            h += '</div>'; return h;
         }
 
         // ============================================================
@@ -930,19 +912,13 @@
             var cont = document.getElementById('adm-content');
             cont.innerHTML = '<div class="adm-ld">Cargando datos...</div>';
             try {
-                if (!P) {
-                    var pr = await fetch('/api/products');
-                    var pd = await pr.json();
-                    P = pd.products;
-                    buildSearchIndex();
-                }
+                if (!P) { var pr = await fetch('/api/products'); var pd = await pr.json(); P = pd.products; buildSearchIndex(); }
                 var snap = await db.collection('analytics').get();
                 allAnalytics = [];
                 snap.forEach(function(doc) { allAnalytics.push(doc.data()); });
                 var pdvSnap = await db.collection('pdvs').get();
                 var pdvsList = [];
                 pdvSnap.forEach(function(doc) { var d = doc.data(); d.id = doc.id; pdvsList.push(d); });
-                // Ordenar alfabéticamente por nombre
                 pdvsList.sort(function(a,b) { return (a.nombre||'').localeCompare(b.nombre||''); });
                 renderAdmin(pdvsList);
             } catch(e) { cont.innerHTML = '<div class="adm-ld">Error al cargar: ' + e.message + '</div>'; }
@@ -961,8 +937,7 @@
             var users = {};
             d.forEach(function(r) {
                 if (r.userEmail) {
-                    var ctx = r.pdvId || '_directo';
-                    var key = r.userEmail + '|' + ctx;
+                    var ctx = r.pdvId || '_directo'; var key = r.userEmail + '|' + ctx;
                     if (!users[key]) users[key] = { name: r.userName || r.userEmail, email: r.userEmail, searches: 0, views: 0, wa: 0, ml: 0, web: 0, total: 0, pdvId: r.pdvId || '', lastDate: '' };
                     if (r.timestamp && r.timestamp > users[key].lastDate) users[key].lastDate = r.timestamp;
                     users[key].total++;
@@ -973,10 +948,7 @@
                     else if (r.event === 'web_pdv_click') users[key].web++;
                 }
             });
-
             var h = '';
-
-            // ---- Métricas ----
             h += '<div class="adm-cards">';
             h += '<div class="adm-c"><div class="adm-c-n">' + searches.length + '</div><div class="adm-c-l">B\u00fasquedas</div></div>';
             h += '<div class="adm-c"><div class="adm-c-n">' + found.length + '</div><div class="adm-c-l">Con resultado</div></div>';
@@ -987,48 +959,21 @@
             h += '<div class="adm-c"><div class="adm-c-n">' + Object.keys(users).length + '</div><div class="adm-c-l">Usuarios activos</div></div>';
             h += '<div class="adm-c"><div class="adm-c-n">' + pdvsList.length + '</div><div class="adm-c-l">PDVs activos</div></div>';
             h += '</div>';
-
-            // ---- Top búsquedas ----
             var topSearch = countBy(searches, 'query');
-            if (topSearch.length) {
-                h += '<div class="adm-sec"><div class="adm-sec-t">Top b\u00fasquedas</div>';
-                topSearch.slice(0,10).forEach(function(r) { h += '<div class="adm-row"><span class="adm-row-l">' + esc(r.key) + '</span><span class="adm-row-v">' + r.count + '</span></div>'; });
-                h += '</div>';
-            }
-            if (notFound.length) {
-                var nfTerms = countBy(notFound, 'query');
-                h += '<div class="adm-sec"><div class="adm-sec-t">Buscaron y NO encontraron</div>';
-                nfTerms.slice(0,10).forEach(function(r) { h += '<div class="adm-row"><span class="adm-row-l">' + esc(r.key) + '</span><span class="adm-row-v">' + r.count + '</span></div>'; });
-                h += '</div>';
-            }
-
-            // ---- Top productos ----
+            if (topSearch.length) { h += '<div class="adm-sec"><div class="adm-sec-t">Top b\u00fasquedas</div>'; topSearch.slice(0,10).forEach(function(r) { h += '<div class="adm-row"><span class="adm-row-l">' + esc(r.key) + '</span><span class="adm-row-v">' + r.count + '</span></div>'; }); h += '</div>'; }
+            if (notFound.length) { var nfTerms = countBy(notFound, 'query'); h += '<div class="adm-sec"><div class="adm-sec-t">Buscaron y NO encontraron</div>'; nfTerms.slice(0,10).forEach(function(r) { h += '<div class="adm-row"><span class="adm-row-l">' + esc(r.key) + '</span><span class="adm-row-v">' + r.count + '</span></div>'; }); h += '</div>'; }
             var topProd = countBy(views, 'code');
-            if (topProd.length) {
-                h += '<div class="adm-sec"><div class="adm-sec-t">Productos m\u00e1s vistos</div>';
-                topProd.slice(0,10).forEach(function(r) { h += '<div class="adm-row"><span class="adm-row-l">' + esc(r.key) + '</span><span class="adm-row-v">' + r.count + '</span></div>'; });
-                h += '</div>';
-            }
-
-            // ---- Tabla de usuarios ----
+            if (topProd.length) { h += '<div class="adm-sec"><div class="adm-sec-t">Productos m\u00e1s vistos</div>'; topProd.slice(0,10).forEach(function(r) { h += '<div class="adm-row"><span class="adm-row-l">' + esc(r.key) + '</span><span class="adm-row-v">' + r.count + '</span></div>'; }); h += '</div>'; }
             var uList = Object.values(users);
             uList.sort(function(a,b) { return b.total - a.total; });
             var pdvMap = {};
             pdvsList.forEach(function(pdv) { pdvMap[pdv.id] = pdv.nombre; });
-            // Guardar datos para ordenamiento
-            window._uList = uList;
-            window._pdvMap = pdvMap;
-            window._uSortCol = 'total';
-            window._uSortAsc = false;
+            window._uList = uList; window._pdvMap = pdvMap; window._uSortCol = 'total'; window._uSortAsc = false;
             if (uList.length) {
-                var uniqueEmails = {};
-                uList.forEach(function(u) { uniqueEmails[u.email] = 1; });
-                var uniqueCount = Object.keys(uniqueEmails).length;
+                var uniqueEmails = {}; uList.forEach(function(u) { uniqueEmails[u.email] = 1; }); var uniqueCount = Object.keys(uniqueEmails).length;
                 h += '<div class="adm-sec"><div class="adm-sec-t">Usuarios registrados (' + uniqueCount + ' personas, ' + uList.length + ' registros)</div>';
                 h += '<div id="users-table-wrap" style="overflow-x:auto"></div></div>';
             }
-
-            // ---- Calidad de datos ----
             if (P && P.length > 0) {
                 h += '<div class="adm-sec"><div class="adm-sec-t" style="color:var(--p);font-size:14px;border-bottom:2px solid var(--p);padding-bottom:6px;margin-bottom:12px">\uD83D\uDCCA Calidad de datos (' + P.length + ' productos)</div></div>';
                 var sinMeli = P.filter(function(p) { var c = p.code||''; if (!c.match(/-3/)) return false; return !getMeliUrl(p); });
@@ -1042,99 +987,41 @@
                 var sinDesc = P.filter(function(p) { return !p.description || p.description.trim() === ''; });
                 h += renderCalidad('\uD83D\uDCDD Sin descripci\u00f3n', sinDesc, 'Todos los productos tienen descripci\u00f3n \u2705');
             }
-
             h += '<button class="adm-exp" onclick="exportCSV()">\u2B07 Descargar Excel (CSV)</button>';
-
-            // ---- Sección PDVs ----
             h += '<div class="pdv-admin-wrap">';
             h += '<div class="adm-sec-t" style="margin-bottom:12px">\uD83C\uDFEA Puntos de Venta (' + pdvsList.length + ')</div>';
-
-            // Formulario agregar PDV
-            h += '<div class="pdv-form">';
-            h += '<div class="pdv-form-title">+ Agregar PDV</div>';
+            h += '<div class="pdv-form"><div class="pdv-form-title">+ Agregar PDV</div>';
             h += '<input id="pdv-new-nombre" placeholder="Nombre del comercio (ej: Nonno Autopartes)">';
             h += '<input id="pdv-new-contacto" placeholder="Nombre del contacto (quien autoriz\u00f3)">';
             h += '<input id="pdv-new-celular" placeholder="Celular WhatsApp (ej: 5491112345678)" type="tel">';
-            h += '<input id="pdv-new-logo" class="optional" placeholder="URL del logo (opcional — clic derecho \u2192 copiar direcci\u00f3n de imagen)">';
+            h += '<input id="pdv-new-logo" class="optional" placeholder="URL del logo (opcional \u2014 clic derecho \u2192 copiar direcci\u00f3n de imagen)">';
             h += '<div class="pdv-form-hint">El logo se obtiene haciendo clic derecho en la imagen del sitio del PDV \u2192 \u201cCopiar direcci\u00f3n de imagen\u201d</div>';
             h += '<input id="pdv-new-ecommerce" class="optional" placeholder="URL web / e-commerce (opcional)">';
             h += '<button class="pdv-add-btn" onclick="addPDV()">\u2795 Agregar PDV</button>';
-            h += '<div id="pdv-add-status" style="font-size:12px;color:var(--m);margin-top:6px;text-align:center"></div>';
-            h += '</div>';
-
-            // Buscador
-            h += '<div class="pdv-search-box">';
-            h += '<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>';
-            h += '<input type="text" id="pdv-buscar" placeholder="Buscar por nombre del comercio..." oninput="filtrarPDVs()" autocomplete="off">';
-            h += '</div>';
-
-            // Tarjeta "Versión GRIFFO" fija al principio
+            h += '<div id="pdv-add-status" style="font-size:12px;color:var(--m);margin-top:6px;text-align:center"></div></div>';
+            h += '<div class="pdv-search-box"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>';
+            h += '<input type="text" id="pdv-buscar" placeholder="Buscar por nombre del comercio..." oninput="filtrarPDVs()" autocomplete="off"></div>';
             h += renderPDVCardGriffo(d);
-
-            // Lista de PDVs
-            h += '<div id="pdv-lista">';
-            pdvsList.forEach(function(pdv) { h += renderPDVCard(pdv, d); });
+            h += '<div id="pdv-lista">'; pdvsList.forEach(function(pdv) { h += renderPDVCard(pdv, d); }); h += '</div>';
             h += '</div>';
-
-            h += '</div>'; // fin pdv-admin-wrap
-
             document.getElementById('adm-content').innerHTML = h;
-
-            // Guardar lista de PDVs para el filtro
-            window._pdvsListAdmin = pdvsList;
-            window._analyticsAdmin = d;
-            // Renderizar tabla de usuarios con ordenamiento
+            window._pdvsListAdmin = pdvsList; window._analyticsAdmin = d;
             if (window._uList && window._uList.length) renderUsersTable();
         }
 
-        function sortUsers(col) {
-            if (window._uSortCol === col) window._uSortAsc = !window._uSortAsc;
-            else { window._uSortCol = col; window._uSortAsc = (col === 'name' || col === 'pdv'); }
-            renderUsersTable();
-        }
+        function sortUsers(col) { if (window._uSortCol === col) window._uSortAsc = !window._uSortAsc; else { window._uSortCol = col; window._uSortAsc = (col === 'name' || col === 'pdv'); } renderUsersTable(); }
 
         function renderUsersTable() {
-            var wrap = document.getElementById('users-table-wrap');
-            if (!wrap) return;
-            var uList = window._uList.slice();
-            var pdvMap = window._pdvMap;
-            var col = window._uSortCol, asc = window._uSortAsc;
-            uList.sort(function(a,b) {
-                var va, vb;
-                if (col === 'name') { va = (a.name||'').toLowerCase(); vb = (b.name||'').toLowerCase(); }
-                else if (col === 'pdv') { va = (pdvMap[a.pdvId]||'zzz').toLowerCase(); vb = (pdvMap[b.pdvId]||'zzz').toLowerCase(); }
-                else if (col === 'lastDate') { va = a.lastDate||''; vb = b.lastDate||''; }
-                else { va = a[col]||0; vb = b[col]||0; }
-                if (typeof va === 'string') return asc ? va.localeCompare(vb) : vb.localeCompare(va);
-                return asc ? va-vb : vb-va;
-            });
-            var cols = [
-                {k:'name',l:'Usuario'},
-                {k:'pdv',l:'PDV'},
-                {k:'searches',l:'Busq.'},
-                {k:'views',l:'Vistos'},
-                {k:'wa',l:'WA'},
-                {k:'web',l:'Web'},
-                {k:'ml',l:'MeLi'},
-                {k:'lastDate',l:'\u00daltima'},
-                {k:'total',l:'Total'}
-            ];
-            var h = '<table style="width:100%;border-collapse:collapse;font-size:10px;background:#fff;border-radius:10px;overflow:hidden">';
-            h += '<thead><tr style="background:var(--p);color:#fff">';
-            cols.forEach(function(c) {
-                var align = c.k === 'name' ? 'left' : 'center';
-                var arrow = window._uSortCol === c.k ? (window._uSortAsc ? ' \u25B2' : ' \u25BC') : '';
-                h += '<th style="padding:6px 4px;text-align:'+align+';font-weight:700;cursor:pointer;font-size:9px;white-space:nowrap" onclick="sortUsers(\''+c.k+'\')">' + c.l + arrow + '</th>';
-            });
+            var wrap = document.getElementById('users-table-wrap'); if (!wrap) return;
+            var uList = window._uList.slice(); var pdvMap = window._pdvMap; var col = window._uSortCol, asc = window._uSortAsc;
+            uList.sort(function(a,b) { var va, vb; if (col === 'name') { va = (a.name||'').toLowerCase(); vb = (b.name||'').toLowerCase(); } else if (col === 'pdv') { va = (pdvMap[a.pdvId]||'zzz').toLowerCase(); vb = (pdvMap[b.pdvId]||'zzz').toLowerCase(); } else if (col === 'lastDate') { va = a.lastDate||''; vb = b.lastDate||''; } else { va = a[col]||0; vb = b[col]||0; } if (typeof va === 'string') return asc ? va.localeCompare(vb) : vb.localeCompare(va); return asc ? va-vb : vb-va; });
+            var cols = [{k:'name',l:'Usuario'},{k:'pdv',l:'PDV'},{k:'searches',l:'Busq.'},{k:'views',l:'Vistos'},{k:'wa',l:'WA'},{k:'web',l:'Web'},{k:'ml',l:'MeLi'},{k:'lastDate',l:'\u00daltima'},{k:'total',l:'Total'}];
+            var h = '<table style="width:100%;border-collapse:collapse;font-size:10px;background:#fff;border-radius:10px;overflow:hidden"><thead><tr style="background:var(--p);color:#fff">';
+            cols.forEach(function(c) { var align = c.k === 'name' ? 'left' : 'center'; var arrow = window._uSortCol === c.k ? (window._uSortAsc ? ' \u25B2' : ' \u25BC') : ''; h += '<th style="padding:6px 4px;text-align:'+align+';font-weight:700;cursor:pointer;font-size:9px;white-space:nowrap" onclick="sortUsers(\''+c.k+'\')">' + c.l + arrow + '</th>'; });
             h += '</tr></thead><tbody>';
             uList.forEach(function(u, i) {
-                var bg = i % 2 === 0 ? '#fff' : '#f8fafc';
-                var pdvNombre = u.pdvId ? (pdvMap[u.pdvId] || '\u274C elim.') : 'Directo';
-                var lastStr = '-';
-                if (u.lastDate) {
-                    var d = new Date(u.lastDate);
-                    lastStr = d.getDate() + '/' + (d.getMonth()+1);
-                }
+                var bg = i % 2 === 0 ? '#fff' : '#f8fafc'; var pdvNombre = u.pdvId ? (pdvMap[u.pdvId] || '\u274C elim.') : 'Directo';
+                var lastStr = '-'; if (u.lastDate) { var d = new Date(u.lastDate); lastStr = d.getDate() + '/' + (d.getMonth()+1); }
                 h += '<tr style="background:' + bg + ';border-bottom:1px solid #eee">';
                 h += '<td style="padding:6px 8px"><div style="font-weight:600;color:var(--t)">' + esc(u.name) + '</div><div style="color:#888;font-size:9px">' + esc(u.email) + '</div></td>';
                 h += '<td style="padding:6px 4px;text-align:center;color:var(--a);font-weight:700;font-size:9px">' + esc(pdvNombre) + '</td>';
@@ -1144,66 +1031,48 @@
                 h += '<td style="padding:6px 4px;text-align:center;color:var(--a);font-weight:700">' + u.web + '</td>';
                 h += '<td style="padding:6px 4px;text-align:center;color:#FFB300;font-weight:700">' + u.ml + '</td>';
                 h += '<td style="padding:6px 4px;text-align:center;color:var(--m);font-size:9px">' + lastStr + '</td>';
-                h += '<td style="padding:6px 4px;text-align:center;font-weight:800">' + u.total + '</td>';
-                h += '</tr>';
+                h += '<td style="padding:6px 4px;text-align:center;font-weight:800">' + u.total + '</td></tr>';
             });
-            h += '</tbody></table>';
-            wrap.innerHTML = h;
+            h += '</tbody></table>'; wrap.innerHTML = h;
         }
 
-        // Tarjeta especial "Versión GRIFFO" (sin ?ref=, sin botón borrar)
         function renderPDVCardGriffo(d) {
-            var griffoEvents = d.filter(function(r) { return !r.pdvId; });
-            var griffoUsers = {};
+            var griffoEvents = d.filter(function(r) { return !r.pdvId; }); var griffoUsers = {};
             griffoEvents.forEach(function(r) { if (r.userEmail) griffoUsers[r.userEmail] = 1; });
             var griffoSearches = griffoEvents.filter(function(r) { return r.event === 'search'; }).length;
             var griffoViews = griffoEvents.filter(function(r) { return r.event === 'product_view'; }).length;
             var griffoWA = griffoEvents.filter(function(r) { return r.event === 'whatsapp_click'; }).length;
-            var h = '<div class="pdv-card griffo-base">';
-            h += '<div class="pdv-card-top">';
-            h += '<div class="pdv-card-logo-placeholder">🏭</div>';
+            var h = '<div class="pdv-card griffo-base"><div class="pdv-card-top">';
+            h += '<div class="pdv-card-logo-placeholder">\uD83C\uDFED</div>';
             h += '<div style="flex:1"><div class="pdv-card-name">Versi\u00f3n GRIFFO <span class="pdv-badge">base</span></div>';
-            h += '<div class="pdv-card-contact">Sin PDV — WPP sin n\u00famero + MercadoLibre</div></div>';
-            h += '</div>';
+            h += '<div class="pdv-card-contact">Sin PDV \u2014 WPP sin n\u00famero + MercadoLibre</div></div></div>';
             h += '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px">';
             h += '<span style="font-size:10px;background:#e3f2fd;padding:3px 8px;border-radius:10px">\uD83D\uDD27 ' + Object.keys(griffoUsers).length + ' usuarios</span>';
             h += '<span style="font-size:10px;background:#e8f5e9;padding:3px 8px;border-radius:10px">\uD83D\uDD0D ' + griffoSearches + ' b\u00fasquedas</span>';
             h += '<span style="font-size:10px;background:#e8f5e9;padding:3px 8px;border-radius:10px">\uD83D\uDC41 ' + griffoViews + ' vistos</span>';
-            h += '<span style="font-size:10px;background:#fff3e0;padding:3px 8px;border-radius:10px">\uD83D\uDCE9 ' + griffoWA + ' WA</span>';
-            h += '</div>';
+            h += '<span style="font-size:10px;background:#fff3e0;padding:3px 8px;border-radius:10px">\uD83D\uDCE9 ' + griffoWA + ' WA</span></div>';
             h += '<div style="font-size:11px;color:var(--m);margin-top:4px">' + window.location.origin + ' (URL base, sin par\u00e1metro)</div>';
             var isActive = currentPDV === null && refPDVData === null;
-            h += '<div class="pdv-actions"><button class="pdv-use-btn' + (isActive ? ' active' : '') + '" onclick="usarPDV(null)">' + (isActive ? '\u2705 Activo' : '\uD83D\uDD04 Usar versi\u00f3n GRIFFO') + '</button></div>';
-            h += '</div>';
+            h += '<div class="pdv-actions"><button class="pdv-use-btn' + (isActive ? ' active' : '') + '" onclick="usarPDV(null)">' + (isActive ? '\u2705 Activo' : '\uD83D\uDD04 Usar versi\u00f3n GRIFFO') + '</button></div></div>';
             return h;
         }
 
-        // Tarjeta de PDV individual
         function renderPDVCard(pdv, d) {
-            d = d || allAnalytics;
-            var link = window.location.origin + '/?ref=' + pdv.id;
-            var pdvEvents = d.filter(function(r) { return r.pdvId === pdv.id; });
-            var pdvUsers = {};
+            d = d || allAnalytics; var link = window.location.origin + '/?ref=' + pdv.id;
+            var pdvEvents = d.filter(function(r) { return r.pdvId === pdv.id; }); var pdvUsers = {};
             pdvEvents.forEach(function(r) { if (r.userEmail) pdvUsers[r.userEmail] = 1; });
             var pdvSearches = pdvEvents.filter(function(r) { return r.event === 'search'; }).length;
             var pdvViews = pdvEvents.filter(function(r) { return r.event === 'product_view'; }).length;
             var pdvWA = pdvEvents.filter(function(r) { return r.event === 'whatsapp_pdv_click'; }).length;
             var pdvWeb = pdvEvents.filter(function(r) { return r.event === 'web_pdv_click'; }).length;
-            var h = '<div class="pdv-card" id="pdvcard-' + pdv.id + '">';
-            h += '<div class="pdv-card-top">';
-            if (pdv.logoUrl) {
-                h += '<img class="pdv-card-logo" src="' + esc(pdv.logoUrl) + '" onerror="this.style.display=\'none\'">';
-            } else {
-                h += '<div class="pdv-card-logo-placeholder">\uD83C\uDFEA</div>';
-            }
-            h += '<div style="flex:1">';
-            h += '<div class="pdv-card-name">' + esc(pdv.nombre) + '</div>';
+            var h = '<div class="pdv-card" id="pdvcard-' + pdv.id + '"><div class="pdv-card-top">';
+            if (pdv.logoUrl) { h += '<img class="pdv-card-logo" src="' + esc(pdv.logoUrl) + '" onerror="this.style.display=\'none\'">'; }
+            else { h += '<div class="pdv-card-logo-placeholder">\uD83C\uDFEA</div>'; }
+            h += '<div style="flex:1"><div class="pdv-card-name">' + esc(pdv.nombre) + '</div>';
             if (pdv.contacto) h += '<div class="pdv-card-contact">Contacto: ' + esc(pdv.contacto) + '</div>';
             h += '<div class="pdv-card-phone">\uD83D\uDCDE ' + esc(pdv.celular) + '</div>';
             if (pdv.ecommerceUrl) h += '<div class="pdv-card-web">\uD83C\uDF10 ' + esc(pdv.ecommerceUrl) + '</div>';
-            h += '</div>';
-            h += '<button class="pdv-del-btn" onclick="deletePDV(\'' + pdv.id + '\',this)">\uD83D\uDDD1</button>';
-            h += '</div>';
+            h += '</div><button class="pdv-del-btn" onclick="deletePDV(\'' + pdv.id + '\',this)">\uD83D\uDDD1</button></div>';
             h += '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">';
             h += '<span style="font-size:10px;background:#e3f2fd;padding:3px 8px;border-radius:10px">\uD83D\uDD27 ' + Object.keys(pdvUsers).length + ' mec\u00e1nicos</span>';
             h += '<span style="font-size:10px;background:#e8f5e9;padding:3px 8px;border-radius:10px">\uD83D\uDD0D ' + pdvSearches + ' b\u00fasquedas</span>';
@@ -1217,51 +1086,29 @@
             h += '<button class="pdv-edit-btn" onclick="editPDV(\'' + pdv.id + '\')">&#9998; Editar</button>';
             var isActive = (currentPDV && currentPDV.id === pdv.id) || (refPDVData && refPDVData.id === pdv.id && !currentPDV);
             h += '<button class="pdv-use-btn' + (isActive ? ' active' : '') + '" onclick="usarPDV(\'' + pdv.id + '\')">' + (isActive ? '\u2705 Activo' : '\uD83D\uDD04 Usar') + '</button>';
-            h += '</div>';
-            h += '</div>';
-            return h;
+            h += '</div></div>'; return h;
         }
 
-        // Filtrar PDVs por nombre
         function filtrarPDVs() {
             var q = (document.getElementById('pdv-buscar').value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-            var lista = window._pdvsListAdmin || [];
-            var d = window._analyticsAdmin || allAnalytics;
-            var filtered = q ? lista.filter(function(pdv) {
-                return norm(pdv.nombre || '').indexOf(q) >= 0;
-            }) : lista;
-            var h = '';
-            filtered.forEach(function(pdv) { h += renderPDVCard(pdv, d); });
-            document.getElementById('pdv-lista').innerHTML = h;
+            var lista = window._pdvsListAdmin || []; var d = window._analyticsAdmin || allAnalytics;
+            var filtered = q ? lista.filter(function(pdv) { return norm(pdv.nombre || '').indexOf(q) >= 0; }) : lista;
+            var h = ''; filtered.forEach(function(pdv) { h += renderPDVCard(pdv, d); }); document.getElementById('pdv-lista').innerHTML = h;
         }
 
         async function addPDV() {
-            var nombre = document.getElementById('pdv-new-nombre').value.trim();
-            var contacto = document.getElementById('pdv-new-contacto').value.trim();
-            var celular = document.getElementById('pdv-new-celular').value.trim();
-            var logoUrl = document.getElementById('pdv-new-logo').value.trim();
-            var ecommerceUrl = document.getElementById('pdv-new-ecommerce').value.trim();
-            var status = document.getElementById('pdv-add-status');
+            var nombre = document.getElementById('pdv-new-nombre').value.trim(); var contacto = document.getElementById('pdv-new-contacto').value.trim();
+            var celular = document.getElementById('pdv-new-celular').value.trim(); var logoUrl = document.getElementById('pdv-new-logo').value.trim();
+            var ecommerceUrl = document.getElementById('pdv-new-ecommerce').value.trim(); var status = document.getElementById('pdv-add-status');
             if (!nombre) { status.textContent = 'Ingres\u00e1 el nombre del comercio'; status.style.color = '#E53E3E'; return; }
             if (!celular) { status.textContent = 'Ingres\u00e1 el celular WhatsApp'; status.style.color = '#E53E3E'; return; }
             status.textContent = 'Guardando...'; status.style.color = 'var(--m)';
             try {
-                var pdvData = {
-                    nombre: nombre,
-                    contacto: contacto || '',
-                    celular: celular,
-                    activo: true,
-                    creadoEn: new Date().toISOString()
-                };
-                if (logoUrl) pdvData.logoUrl = logoUrl;
-                if (ecommerceUrl) pdvData.ecommerceUrl = ecommerceUrl;
+                var pdvData = { nombre: nombre, contacto: contacto || '', celular: celular, activo: true, creadoEn: new Date().toISOString() };
+                if (logoUrl) pdvData.logoUrl = logoUrl; if (ecommerceUrl) pdvData.ecommerceUrl = ecommerceUrl;
                 await db.collection('pdvs').add(pdvData);
                 status.textContent = 'PDV agregado \u2705'; status.style.color = '#27ae60';
-                document.getElementById('pdv-new-nombre').value = '';
-                document.getElementById('pdv-new-contacto').value = '';
-                document.getElementById('pdv-new-celular').value = '';
-                document.getElementById('pdv-new-logo').value = '';
-                document.getElementById('pdv-new-ecommerce').value = '';
+                ['pdv-new-nombre','pdv-new-contacto','pdv-new-celular','pdv-new-logo','pdv-new-ecommerce'].forEach(function(id) { document.getElementById(id).value = ''; });
                 setTimeout(function() { loadAdmin(); }, 800);
             } catch(e) { status.textContent = 'Error: ' + e.message; status.style.color = '#E53E3E'; }
         }
@@ -1272,22 +1119,12 @@
                 if (pdvId) {
                     await db.collection('users').doc(currentUser.uid).set({ pdvId: pdvId }, { merge: true });
                     var pdvDoc = await db.collection('pdvs').doc(pdvId).get();
-                    if (pdvDoc.exists) {
-                        currentPDV = pdvDoc.data();
-                        currentPDV.id = pdvDoc.id;
-                        refPDVData = currentPDV;
-                        refPDVId = pdvId;
-                        sessionStorage.setItem('griffo_ref', pdvId);
-                    }
+                    if (pdvDoc.exists) { currentPDV = pdvDoc.data(); currentPDV.id = pdvDoc.id; refPDVData = currentPDV; refPDVId = pdvId; sessionStorage.setItem('griffo_ref', pdvId); }
                 } else {
                     await db.collection('users').doc(currentUser.uid).update({ pdvId: firebase.firestore.FieldValue.delete() });
-                    currentPDV = null;
-                    refPDVData = null;
-                    refPDVId = null;
-                    sessionStorage.removeItem('griffo_ref');
+                    currentPDV = null; refPDVData = null; refPDVId = null; sessionStorage.removeItem('griffo_ref');
                     document.getElementById('pdv-banner').style.display = 'none';
-                    var screens = ['plate','vehicle','code','keyword','measures','login','register','favs'];
-                    screens.forEach(function(s) { var mini = document.getElementById('pdv-mini-' + s); if (mini) mini.classList.remove('on'); });
+                    ['plate','vehicle','code','keyword','measures','login','register','favs'].forEach(function(s) { var mini = document.getElementById('pdv-mini-' + s); if (mini) mini.classList.remove('on'); });
                 }
                 if (currentPDV) showPDVBanner(currentPDV);
                 loadAdmin();
@@ -1295,8 +1132,7 @@
         }
 
         function editPDV(id) {
-            var lista = window._pdvsListAdmin || [];
-            var pdv = lista.find(function(p) { return p.id === id; });
+            var lista = window._pdvsListAdmin || []; var pdv = lista.find(function(p) { return p.id === id; });
             if (!pdv) { alert('PDV no encontrado'); return; }
             document.getElementById('pdv-edit-id').value = id;
             document.getElementById('pdv-edit-nombre').value = pdv.nombre || '';
@@ -1308,18 +1144,13 @@
             document.getElementById('pdv-edit-overlay').classList.add('on');
         }
 
-        function closeEditPDV() {
-            document.getElementById('pdv-edit-overlay').classList.remove('on');
-        }
+        function closeEditPDV() { document.getElementById('pdv-edit-overlay').classList.remove('on'); }
 
         async function savePDV() {
             var id = document.getElementById('pdv-edit-id').value;
-            var nombre = document.getElementById('pdv-edit-nombre').value.trim();
-            var contacto = document.getElementById('pdv-edit-contacto').value.trim();
-            var celular = document.getElementById('pdv-edit-celular').value.trim();
-            var logoUrl = document.getElementById('pdv-edit-logo').value.trim();
-            var ecommerceUrl = document.getElementById('pdv-edit-ecommerce').value.trim();
-            var status = document.getElementById('pdv-edit-status');
+            var nombre = document.getElementById('pdv-edit-nombre').value.trim(); var contacto = document.getElementById('pdv-edit-contacto').value.trim();
+            var celular = document.getElementById('pdv-edit-celular').value.trim(); var logoUrl = document.getElementById('pdv-edit-logo').value.trim();
+            var ecommerceUrl = document.getElementById('pdv-edit-ecommerce').value.trim(); var status = document.getElementById('pdv-edit-status');
             if (!nombre) { status.textContent = 'Ingres\u00e1 el nombre del comercio'; status.style.color = '#E53E3E'; return; }
             if (!celular) { status.textContent = 'Ingres\u00e1 el celular WhatsApp'; status.style.color = '#E53E3E'; return; }
             status.textContent = 'Guardando...'; status.style.color = 'var(--m)';
@@ -1333,92 +1164,39 @@
             } catch(e) { status.textContent = 'Error: ' + e.message; status.style.color = '#E53E3E'; }
         }
 
-        async function deletePDV(id, btn) {
-            if (!confirm('\u00bfEliminar este PDV?')) return;
-            try {
-                await db.collection('pdvs').doc(id).delete();
-                loadAdmin();
-            } catch(e) { alert('Error al eliminar: ' + e.message); }
-        }
+        async function deletePDV(id, btn) { if (!confirm('\u00bfEliminar este PDV?')) return; try { await db.collection('pdvs').doc(id).delete(); loadAdmin(); } catch(e) { alert('Error al eliminar: ' + e.message); } }
 
-        function copyLink(link, btn) {
-            navigator.clipboard.writeText(link).then(function() {
-                var orig = btn.textContent;
-                btn.textContent = '\u2705 Link copiado!';
-                setTimeout(function() { btn.textContent = orig; }, 2000);
-            }).catch(function() {
-                prompt('Copi\u00e1 este link:', link);
-            });
-        }
+        function copyLink(link, btn) { navigator.clipboard.writeText(link).then(function() { var orig = btn.textContent; btn.textContent = '\u2705 Link copiado!'; setTimeout(function() { btn.textContent = orig; }, 2000); }).catch(function() { prompt('Copi\u00e1 este link:', link); }); }
 
         // ============================================================
         //  UTILS
         // ============================================================
         function renderCalidad(titulo, lista, msgOk) {
             var h = '<div class="adm-sec"><div class="adm-sec-t">' + titulo + ' (' + lista.length + ')</div>';
-            if (lista.length === 0) {
-                h += '<div class="adm-row"><span class="adm-row-l">' + msgOk + '</span></div>';
-            } else {
-                lista.sort(function(a,b) { return (a.code||'').localeCompare(b.code||''); });
-                lista.forEach(function(p) {
-                    h += '<div class="adm-row"><span class="adm-row-l">' + esc(p.code) + '</span><span class="adm-row-v" style="font-size:10px;color:var(--m)">' + esc(p.product||'') + '</span></div>';
-                });
-            }
-            h += '</div>';
-            return h;
+            if (lista.length === 0) { h += '<div class="adm-row"><span class="adm-row-l">' + msgOk + '</span></div>'; }
+            else { lista.sort(function(a,b) { return (a.code||'').localeCompare(b.code||''); }); lista.forEach(function(p) { h += '<div class="adm-row"><span class="adm-row-l">' + esc(p.code) + '</span><span class="adm-row-v" style="font-size:10px;color:var(--m)">' + esc(p.product||'') + '</span></div>'; }); }
+            h += '</div>'; return h;
         }
-
-        function countBy(arr, field) {
-            var m = {};
-            arr.forEach(function(r) { var k = r[field] || '(vac\u00edo)'; m[k] = (m[k]||0)+1; });
-            var a = [];
-            for (var k in m) a.push({ key: k, count: m[k] });
-            a.sort(function(x,y) { return y.count - x.count; });
-            return a;
-        }
+        function countBy(arr, field) { var m = {}; arr.forEach(function(r) { var k = r[field] || '(vac\u00edo)'; m[k] = (m[k]||0)+1; }); var a = []; for (var k in m) a.push({ key: k, count: m[k] }); a.sort(function(x,y) { return y.count - x.count; }); return a; }
         function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
         function exportCSV() {
             var rows = [['Fecha','Evento','Usuario','Email','Tipo B\u00fasqueda','Query','Producto','C\u00f3digo','Resultados','Link','PDV']];
-            allAnalytics.forEach(function(r) {
-                rows.push([r.timestamp||'',r.event||'',r.userName||'',r.userEmail||'',r.type||'',r.query||'',r.product||'',r.code||'',r.results!==undefined?r.results:'',r.link||'',r.pdvId||'']);
-            });
+            allAnalytics.forEach(function(r) { rows.push([r.timestamp||'',r.event||'',r.userName||'',r.userEmail||'',r.type||'',r.query||'',r.product||'',r.code||'',r.results!==undefined?r.results:'',r.link||'',r.pdvId||'']); });
             var csv = rows.map(function(r) { return r.map(function(c) { return '"' + String(c).replace(/"/g,'""') + '"'; }).join(','); }).join('\n');
             var blob = new Blob(['\uFEFF'+csv], { type: 'text/csv;charset=utf-8;' });
-            var url = URL.createObjectURL(blob);
-            var a = document.createElement('a');
-            a.href = url; a.download = 'griffo-analytics-' + new Date().toISOString().slice(0,10) + '.csv';
-            a.click(); URL.revokeObjectURL(url);
+            var url = URL.createObjectURL(blob); var a = document.createElement('a');
+            a.href = url; a.download = 'griffo-analytics-' + new Date().toISOString().slice(0,10) + '.csv'; a.click(); URL.revokeObjectURL(url);
         }
 
         // ============================================================
         //  FAVORITOS
         // ============================================================
-        async function loadFavs() {
-            if (!currentUser) return;
-            try {
-                var doc = await db.collection('favorites').doc(currentUser.uid).get();
-                userFavs = doc.exists ? (doc.data().codes || {}) : {};
-            } catch(e) { console.error('Error cargando favoritos:', e); userFavs = {}; }
-        }
-        async function toggleFav(code) {
-            if (!currentUser) return;
-            if (userFavs[code]) delete userFavs[code]; else userFavs[code] = Date.now();
-            try { await db.collection('favorites').doc(currentUser.uid).set({ codes: userFavs }); }
-            catch(e) { console.error('Error guardando favorito:', e); }
-            updateFavStars(code);
-            track(userFavs[code] ? 'fav_add' : 'fav_remove', { code: code });
-        }
+        async function loadFavs() { if (!currentUser) return; try { var doc = await db.collection('favorites').doc(currentUser.uid).get(); userFavs = doc.exists ? (doc.data().codes || {}) : {}; } catch(e) { console.error('Error cargando favoritos:', e); userFavs = {}; } }
+        async function toggleFav(code) { if (!currentUser) return; if (userFavs[code]) delete userFavs[code]; else userFavs[code] = Date.now(); try { await db.collection('favorites').doc(currentUser.uid).set({ codes: userFavs }); } catch(e) { console.error('Error guardando favorito:', e); } updateFavStars(code); track(userFavs[code] ? 'fav_add' : 'fav_remove', { code: code }); }
         function isFav(code) { return !!userFavs[code]; }
-        function favStarHtml(code, extraStyle) {
-            var on = isFav(code) ? ' on' : '';
-            return '<button class="fav-star' + on + '" data-fav="' + code + '" onclick="event.stopPropagation();toggleFav(\'' + code + '\')" title="Favorito" style="' + (extraStyle||'') + '">&#9733;</button>';
-        }
-        function updateFavStars(code) {
-            document.querySelectorAll('[data-fav="' + code + '"]').forEach(function(el) {
-                if (isFav(code)) el.classList.add('on'); else el.classList.remove('on');
-            });
-        }
+        function favStarHtml(code, extraStyle) { var on = isFav(code) ? ' on' : ''; return '<button class="fav-star' + on + '" data-fav="' + code + '" onclick="event.stopPropagation();toggleFav(\'' + code + '\')" title="Favorito" style="' + (extraStyle||'') + '">&#9733;</button>'; }
+        function updateFavStars(code) { document.querySelectorAll('[data-fav="' + code + '"]').forEach(function(el) { if (isFav(code)) el.classList.add('on'); else el.classList.remove('on'); }); }
         function renderFavs() {
             var el = document.getElementById('favs-res');
             if (!P) { el.innerHTML = '<div class="fav-empty">Cargando productos...</div>'; loadP().then(function() { renderFavs(); }); return; }
@@ -1432,16 +1210,7 @@
         // ============================================================
         //  PRODUCTOS
         // ============================================================
-        async function loadP() {
-            try {
-                var r = await fetch('/api/products');
-                var d = await r.json();
-                P = d.products;
-                buildSearchIndex();
-                fillBrands();
-                fillMeasures();
-            } catch(e) { console.error(e); }
-        }
+        async function loadP() { try { var r = await fetch('/api/products'); var d = await r.json(); P = d.products; buildSearchIndex(); fillBrands(); fillMeasures(); } catch(e) { console.error(e); } }
 
         function buildSearchIndex() {
             if (!P) return;
@@ -1458,32 +1227,24 @@
         }
 
         function fillBrands() {
-            var ex = { 'AGRALE': 1, 'IVECO': 1, 'UNIVERSAL': 1 };
-            var br = {};
+            var ex = { 'AGRALE': 1, 'IVECO': 1, 'UNIVERSAL': 1 }; var br = {};
             P.forEach(function(p) { if (p.vehicles) p.vehicles.forEach(function(v) { if (v.brand && !ex[v.brand]) br[v.brand] = 1; }); });
-            var s = document.getElementById('sel-brand');
-            s.innerHTML = '<option value="">Seleccion\u00e1 marca</option>';
+            var s = document.getElementById('sel-brand'); s.innerHTML = '<option value="">Seleccion\u00e1 marca</option>';
             Object.keys(br).sort().forEach(function(b) { s.innerHTML += '<option value="' + b + '">' + b + '</option>'; });
         }
 
         function onBrand() {
-            var b = document.getElementById('sel-brand').value;
-            var ms = {};
+            var b = document.getElementById('sel-brand').value; var ms = {};
             P.forEach(function(p) { if (p.vehicles) p.vehicles.forEach(function(v) { if (v.brand === b && v.master_model) ms[v.master_model] = 1; }); });
-            var s = document.getElementById('sel-model');
-            s.disabled = !b;
-            s.innerHTML = '<option value="">Seleccion\u00e1 modelo</option>';
+            var s = document.getElementById('sel-model'); s.disabled = !b; s.innerHTML = '<option value="">Seleccion\u00e1 modelo</option>';
             Object.keys(ms).sort().forEach(function(m) { s.innerHTML += '<option value="' + m + '">' + m + '</option>'; });
-            document.getElementById('sel-year').disabled = true;
-            document.getElementById('sel-year').innerHTML = '<option value="">Primero eleg\u00ed modelo</option>';
+            document.getElementById('sel-year').disabled = true; document.getElementById('sel-year').innerHTML = '<option value="">Primero eleg\u00ed modelo</option>';
         }
 
         function onModel() {
             var b = document.getElementById('sel-brand').value, m = document.getElementById('sel-model').value, ys = {};
             P.forEach(function(p) { if (p.vehicles) p.vehicles.forEach(function(v) { if (v.brand === b && v.master_model === m) { for (var y = v.sold_from_year; y <= v.sold_until_year; y++) ys[y] = 1; } }); });
-            var s = document.getElementById('sel-year');
-            s.disabled = !m;
-            s.innerHTML = '<option value="">Seleccion\u00e1 a\u00f1o (opcional)</option>';
+            var s = document.getElementById('sel-year'); s.disabled = !m; s.innerHTML = '<option value="">Seleccion\u00e1 a\u00f1o (opcional)</option>';
             Object.keys(ys).sort(function(a,b) { return b-a; }).forEach(function(y) { s.innerHTML += '<option value="' + y + '">' + y + '</option>'; });
         }
 
@@ -1491,151 +1252,55 @@
         //  BÚSQUEDA POR MEDIDAS
         // ============================================================
         var msrType = 'direccion', msrProducts = [], msrSelectedIdx = -1, msrSortCol = null, msrSortAsc = true;
-
-        function setMsrType(type) {
-            msrType = type;
-            document.getElementById('msr-dir').classList.toggle('active', type==='direccion');
-            document.getElementById('msr-trans').classList.toggle('active', type==='transmision');
-            document.getElementById('msr-tope').classList.toggle('active', type==='tope');
-            msrSelectedIdx = -1;
-            document.getElementById('msr-preview').classList.remove('on');
-            msrSortCol = null; msrSortAsc = true;
-            buildMsrTable();
-        }
-
-        function getAttrValue(p, nameContains) {
-            if (!p.attributes) return '';
-            var lc = nameContains.toLowerCase();
-            for (var i = 0; i < p.attributes.length; i++) {
-                var n = (p.attributes[i].name||'').toLowerCase();
-                if (n.indexOf(lc) >= 0) { var v = p.attributes[i].value||''; var u = p.attributes[i].unit||''; return u ? v+' '+u : v; }
-            }
-            return '';
-        }
-
+        function setMsrType(type) { msrType = type; document.getElementById('msr-dir').classList.toggle('active', type==='direccion'); document.getElementById('msr-trans').classList.toggle('active', type==='transmision'); document.getElementById('msr-tope').classList.toggle('active', type==='tope'); msrSelectedIdx = -1; document.getElementById('msr-preview').classList.remove('on'); msrSortCol = null; msrSortAsc = true; buildMsrTable(); }
+        function getAttrValue(p, nameContains) { if (!p.attributes) return ''; var lc = nameContains.toLowerCase(); for (var i = 0; i < p.attributes.length; i++) { var n = (p.attributes[i].name||'').toLowerCase(); if (n.indexOf(lc) >= 0) { var v = p.attributes[i].value||''; var u = p.attributes[i].unit||''; return u ? v+' '+u : v; } } return ''; }
         function isFuelleDireccion(p) { var d = ((p.product||'')+' '+(p.description||'')).toLowerCase(); return d.indexOf('fuelle')>=0 && d.indexOf('cremallera')>=0; }
         function isFuelleTransmision(p) { var d = ((p.product||'')+' '+(p.description||'')).toLowerCase(); return d.indexOf('fuelle')>=0 && d.indexOf('semieje')>=0; }
         function getBaseCode(code) { var m = (code||'').match(/^(\d+)/); return m ? m[1] : code; }
         function isTope(p) { var d = ((p.product||'')+' '+(p.description||'')+' '+(p.category||'')).toLowerCase(); return d.indexOf('tope')>=0 && d.indexOf('fuelle')<0; }
-
         function getMsrData(p) {
-            var diamMayor = getAttrValue(p,'boca mayor') || getAttrValue(p,'di\u00e1metro mayor');
-            var diamMenor = getAttrValue(p,'boca menor') || getAttrValue(p,'di\u00e1metro menor');
-            var largo = getAttrValue(p,'largo');
-            return {
-                diamMayor: diamMayor, diamMenor: diamMenor, largo: largo, code: p.code||'',
-                _diamMayorN: parseFloat((diamMayor||'').replace(',','.'))||null,
-                _diamMenorN: parseFloat((diamMenor||'').replace(',','.'))||null,
-                _largoN: parseFloat((largo||'').replace(',','.'))||null,
-                _product: p
-            };
+            var diamMayor = getAttrValue(p,'boca mayor') || getAttrValue(p,'di\u00e1metro mayor'); var diamMenor = getAttrValue(p,'boca menor') || getAttrValue(p,'di\u00e1metro menor'); var largo = getAttrValue(p,'largo');
+            return { diamMayor: diamMayor, diamMenor: diamMenor, largo: largo, code: p.code||'', _diamMayorN: parseFloat((diamMayor||'').replace(',','.'))||null, _diamMenorN: parseFloat((diamMenor||'').replace(',','.'))||null, _largoN: parseFloat((largo||'').replace(',','.'))||null, _product: p };
         }
-
         function buildMsrTable() {
-            if (!P) return;
-            msrProducts = [];
-            if (msrType === 'transmision') {
-                var seen = {};
-                P.forEach(function(p) {
-                    if (!isFuelleTransmision(p)) return;
-                    var base = getBaseCode(p.code);
-                    if (seen[base]) return;
-                    seen[base] = true;
-                    var data = getMsrData(p); data.code = base; msrProducts.push(data);
-                });
-            } else {
-                P.forEach(function(p) {
-                    var match = (msrType==='direccion') ? isFuelleDireccion(p) : isTope(p);
-                    if (match) msrProducts.push(getMsrData(p));
-                });
-            }
-            renderMsrTable();
-            track('search', { type: 'measures', query: msrType, results: msrProducts.length });
+            if (!P) return; msrProducts = [];
+            if (msrType === 'transmision') { var seen = {}; P.forEach(function(p) { if (!isFuelleTransmision(p)) return; var base = getBaseCode(p.code); if (seen[base]) return; seen[base] = true; var data = getMsrData(p); data.code = base; msrProducts.push(data); }); }
+            else { P.forEach(function(p) { var match = (msrType==='direccion') ? isFuelleDireccion(p) : isTope(p); if (match) msrProducts.push(getMsrData(p)); }); }
+            renderMsrTable(); track('search', { type: 'measures', query: msrType, results: msrProducts.length });
         }
-
-        function sortMsr(col) {
-            if (msrSortCol === col) msrSortAsc = !msrSortAsc; else { msrSortCol = col; msrSortAsc = true; }
-            msrProducts.sort(function(a,b) {
-                var va = a['_'+col+'N'], vb = b['_'+col+'N'];
-                if (col==='code') { va = a.code; vb = b.code; }
-                if (va===null||va===undefined) va = msrSortAsc ? 99999 : -99999;
-                if (vb===null||vb===undefined) vb = msrSortAsc ? 99999 : -99999;
-                if (typeof va==='string') return msrSortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
-                return msrSortAsc ? va-vb : vb-va;
-            });
-            renderMsrTable();
-        }
-
+        function sortMsr(col) { if (msrSortCol === col) msrSortAsc = !msrSortAsc; else { msrSortCol = col; msrSortAsc = true; } msrProducts.sort(function(a,b) { var va = a['_'+col+'N'], vb = b['_'+col+'N']; if (col==='code') { va = a.code; vb = b.code; } if (va===null||va===undefined) va = msrSortAsc ? 99999 : -99999; if (vb===null||vb===undefined) vb = msrSortAsc ? 99999 : -99999; if (typeof va==='string') return msrSortAsc ? va.localeCompare(vb) : vb.localeCompare(va); return msrSortAsc ? va-vb : vb-va; }); renderMsrTable(); }
         function renderMsrTable() {
-            var wrap = document.getElementById('msr-table-wrap');
-            var cnt = document.getElementById('msr-cnt');
+            var wrap = document.getElementById('msr-table-wrap'); var cnt = document.getElementById('msr-cnt');
             if (msrProducts.length === 0) { wrap.innerHTML = '<div style="padding:20px;text-align:center;color:var(--m);font-size:13px">No se encontraron productos</div>'; cnt.textContent = ''; return; }
             cnt.textContent = msrProducts.length + ' producto' + (msrProducts.length>1?'s':'');
             var cols = [{k:'diamMenor',l:'Di\u00e1m. Menor'},{k:'diamMayor',l:'Di\u00e1m. Mayor'},{k:'largo',l:'Largo'},{k:'code',l:'C\u00f3digo'}];
             var h = '<table class="msr-table"><thead><tr>';
-            cols.forEach(function(c) {
-                var cls = msrSortCol===c.k ? ' class="sorted"' : '';
-                var arrow = msrSortCol===c.k ? (msrSortAsc?'\u25B2':'\u25BC') : '\u25B2';
-                h += '<th'+cls+' onclick="sortMsr(\''+c.k+'\')">'+c.l+'<span class="sort-arrow">'+arrow+'</span></th>';
-            });
+            cols.forEach(function(c) { var cls = msrSortCol===c.k ? ' class="sorted"' : ''; var arrow = msrSortCol===c.k ? (msrSortAsc?'\u25B2':'\u25BC') : '\u25B2'; h += '<th'+cls+' onclick="sortMsr(\''+c.k+'\')">'+c.l+'<span class="sort-arrow">'+arrow+'</span></th>'; });
             h += '</tr></thead><tbody>';
             msrProducts.forEach(function(m,i) {
-                var sel = i===msrSelectedIdx ? ' class="selected"' : '';
-                h += '<tr'+sel+' onclick="selectMsr('+i+')">';
-                cols.forEach(function(c) {
-                    var cls = c.k==='code' ? ' class="code-cell"' : '';
-                    var val = m[c.k] || '-';
-                    // Formatear medidas a 1 decimal para alinear
-                    if (c.k !== 'code' && val !== '-') {
-                        var num = parseFloat(String(val).replace(',','.'));
-                        if (!isNaN(num)) {
-                            var unit = String(val).replace(/[\d.,\s]/g,'').trim();
-                            val = num.toFixed(1) + (unit ? ' ' + unit : '');
-                        }
-                    }
-                    h += '<td'+cls+'>'+val+'</td>';
-                });
+                var sel = i===msrSelectedIdx ? ' class="selected"' : ''; h += '<tr'+sel+' onclick="selectMsr('+i+')">';
+                cols.forEach(function(c) { var cls = c.k==='code' ? ' class="code-cell"' : ''; var val = m[c.k] || '-';
+                    if (c.k !== 'code' && val !== '-') { var num = parseFloat(String(val).replace(',','.')); if (!isNaN(num)) { var unit = String(val).replace(/[\d.,\s]/g,'').trim(); val = num.toFixed(1) + (unit ? ' ' + unit : ''); } }
+                    h += '<td'+cls+'>'+val+'</td>'; });
                 h += '</tr>';
             });
-            h += '</tbody></table>';
-            wrap.innerHTML = h;
+            h += '</tbody></table>'; wrap.innerHTML = h;
         }
-
-        function selectMsr(i) {
-            msrSelectedIdx = i;
-            var m = msrProducts[i];
-            RP = [m._product]; BS = 'measures';
-            showDetail(0);
-        }
-
+        function selectMsr(i) { msrSelectedIdx = i; var m = msrProducts[i]; RP = [m._product]; BS = 'measures'; showDetail(0); }
         function fillMeasures() { if (!P) return; buildMsrTable(); }
 
         // ============================================================
         //  BÚSQUEDAS
         // ============================================================
         async function searchPlate() {
-            var pl = document.getElementById('inp-plate').value.trim().toUpperCase();
-            if (!pl) return;
-            document.getElementById('plate-vi').innerHTML = '';
-            document.getElementById('plate-res').innerHTML = '<div class="ld">Buscando veh\u00edculo...</div>';
+            var pl = document.getElementById('inp-plate').value.trim().toUpperCase(); if (!pl) return;
+            document.getElementById('plate-vi').innerHTML = ''; document.getElementById('plate-res').innerHTML = '<div class="ld">Buscando veh\u00edculo...</div>';
             try {
-                var r = await fetch('/api/plate?plate=' + encodeURIComponent(pl));
-                var v = await r.json();
+                var r = await fetch('/api/plate?plate=' + encodeURIComponent(pl)); var v = await r.json();
                 if (v.error) { document.getElementById('plate-res').innerHTML = '<div class="nr">No se encontr\u00f3 veh\u00edculo para esa patente</div>'; return; }
                 document.getElementById('plate-vi').innerHTML = '<div class="vi"><h3>' + (v.brand||'') + ' ' + (v.master_model||v.model||'') + '</h3><p>' + (v.version||'') + ' (' + (v.sold_from_year||'') + ')</p></div>';
-                if (!P) {
-                    document.getElementById('plate-res').innerHTML = '<div class="ld">Cargando cat\u00e1logo...</div>';
-                    var pr = await fetch('/api/products'); var pd = await pr.json(); P = pd.products; buildSearchIndex(); fillBrands(); fillMeasures();
-                }
-                var matches = P.filter(function(p) {
-                    if (!p.vehicles) return false;
-                    return p.vehicles.some(function(pv) {
-                        if (pv.brand !== v.brand) return false;
-                        if (v.master_model && pv.master_model === v.master_model) return true;
-                        if (v.model && pv.model === v.model) return true;
-                        return false;
-                    });
-                });
+                if (!P) { document.getElementById('plate-res').innerHTML = '<div class="ld">Cargando cat\u00e1logo...</div>'; var pr = await fetch('/api/products'); var pd = await pr.json(); P = pd.products; buildSearchIndex(); fillBrands(); fillMeasures(); }
+                var matches = P.filter(function(p) { if (!p.vehicles) return false; return p.vehicles.some(function(pv) { if (pv.brand !== v.brand) return false; if (v.master_model && pv.master_model === v.master_model) return true; if (v.model && pv.model === v.model) return true; return false; }); });
                 render('plate-res', matches, 'plate');
                 track('search', { type: 'plate', query: pl, brand: v.brand||'', model: v.master_model||v.model||'', results: matches.length });
             } catch(e) { document.getElementById('plate-res').innerHTML = '<div class="nr">Error: ' + e.message + '</div>'; }
@@ -1643,66 +1308,31 @@
 
         function searchVehicle() {
             var b = document.getElementById('sel-brand').value, m = document.getElementById('sel-model').value, y = document.getElementById('sel-year').value;
-            if (!b) { alert('Seleccion\u00e1 al menos una marca'); return; }
-            if (!P) return;
-            var matches = P.filter(function(p) {
-                if (!p.vehicles) return false;
-                return p.vehicles.some(function(v) {
-                    if (v.brand !== b) return false;
-                    if (m && v.master_model !== m) return false;
-                    if (y) { var yr = parseInt(y); if (yr < v.sold_from_year || yr > v.sold_until_year) return false; }
-                    return true;
-                });
-            });
-            render('vehi-res', matches, 'vehicle');
-            track('search', { type: 'vehicle', query: b+' '+m+(y?' '+y:''), brand: b, model: m, year: y, results: matches.length });
+            if (!b) { alert('Seleccion\u00e1 al menos una marca'); return; } if (!P) return;
+            var matches = P.filter(function(p) { if (!p.vehicles) return false; return p.vehicles.some(function(v) { if (v.brand !== b) return false; if (m && v.master_model !== m) return false; if (y) { var yr = parseInt(y); if (yr < v.sold_from_year || yr > v.sold_until_year) return false; } return true; }); });
+            render('vehi-res', matches, 'vehicle'); track('search', { type: 'vehicle', query: b+' '+m+(y?' '+y:''), brand: b, model: m, year: y, results: matches.length });
         }
 
-        function searchCode() {
-            var c = document.getElementById('inp-code').value.trim();
-            if (!c || !P) return;
-            var matches = P.filter(function(p) { return p.code && p.code.toLowerCase().indexOf(c.toLowerCase()) >= 0; });
-            render('code-res', matches, 'code');
-            track('search', { type: 'code', query: c, results: matches.length });
-        }
-
+        function searchCode() { var c = document.getElementById('inp-code').value.trim(); if (!c || !P) return; var matches = P.filter(function(p) { return p.code && p.code.toLowerCase().indexOf(c.toLowerCase()) >= 0; }); render('code-res', matches, 'code'); track('search', { type: 'code', query: c, results: matches.length }); }
         function norm(s) { return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
-
-        function searchKw() {
-            var raw = norm(document.getElementById('inp-kw').value.trim());
-            if (!raw || !P) return;
-            var words = raw.split(/\s+/).filter(function(w) { return w.length > 0; });
-            var matches = P.filter(function(p) { if (!p._searchText) return false; return words.every(function(w) { return p._searchText.indexOf(w) >= 0; }); });
-            render('kw-res', matches, 'keyword');
-            track('search', { type: 'keyword', query: raw, results: matches.length });
-        }
+        function searchKw() { var raw = norm(document.getElementById('inp-kw').value.trim()); if (!raw || !P) return; var words = raw.split(/\s+/).filter(function(w) { return w.length > 0; }); var matches = P.filter(function(p) { if (!p._searchText) return false; return words.every(function(w) { return p._searchText.indexOf(w) >= 0; }); }); render('kw-res', matches, 'keyword'); track('search', { type: 'keyword', query: raw, results: matches.length }); }
 
         // ============================================================
         //  RENDER RESULTADOS
         // ============================================================
         function render(id, items, from) {
-            var el = document.getElementById(id);
-            RP = items; BS = from || 'home';
+            var el = document.getElementById(id); RP = items; BS = from || 'home';
             if (!items || items.length === 0) { el.innerHTML = '<div class="nr">No se encontraron productos</div>'; return; }
             var h = '<div class="cnt">' + items.length + ' producto' + (items.length>1?'s':'') + ' encontrado' + (items.length>1?'s':'') + '</div>';
             items.forEach(function(p, i) {
-                h += '<div class="rc">';
-                h += '<div onclick="showDetail(' + i + ')">';
+                h += '<div class="rc"><div onclick="showDetail(' + i + ')">';
                 h += '<div style="display:flex;justify-content:space-between;align-items:center"><div class="r-code">' + (p.code||'') + '</div>' + favStarHtml(p.code||'') + '</div>';
                 h += '<div class="r-desc">' + (p.product||'') + ' - ' + (p.description||'') + '</div>';
                 h += '<div class="r-cat">' + (p.category||'') + '</div>';
-                if (p.pictures && p.pictures.length > 0) {
-                    h += '<div class="r-imgs">';
-                    p.pictures.slice(0,2).forEach(function(pic) { var u = pic.image_url||pic.url||''; if (u) h += '<img src="' + u + '" onerror="this.style.display=\'none\'">'; });
-                    h += '</div>';
-                }
+                if (p.pictures && p.pictures.length > 0) { h += '<div class="r-imgs">'; p.pictures.slice(0,2).forEach(function(pic) { var u = pic.image_url||pic.url||''; if (u) h += '<img src="' + u + '" onerror="this.style.display=\'none\'">'; }); h += '</div>'; }
                 if (p.vehicles && p.vehicles.length > 0) h += '<div class="r-vehi">' + p.vehicles.length + ' veh\u00edculo' + (p.vehicles.length>1?'s':'') + ' compatible' + (p.vehicles.length>1?'s':'') + '</div>';
-                h += '<div class="r-more">Ver detalle &#8594;</div>';
-                h += '</div>';
-                h += '<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">';
-                h += getBotonesAccion(p);
-                h += '</div>';
-                h += '</div>';
+                h += '<div class="r-more">Ver detalle &#8594;</div></div>';
+                h += '<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">' + getBotonesAccion(p) + '</div></div>';
             });
             el.innerHTML = h;
         }
@@ -1711,45 +1341,23 @@
         //  DETALLE
         // ============================================================
         function showDetail(i) {
-            var p = RP[i];
-            if (!p) return;
+            var p = RP[i]; if (!p) return;
             track('product_view', { code: p.code||'', product: p.product||'', category: p.category||'' });
-            var gal = document.getElementById('det-gallery');
-            var body = document.getElementById('det-body');
-            lbImgs = [];
-            var gh = '';
-            if (p.pictures && p.pictures.length > 0) {
-                p.pictures.forEach(function(pic) { var u = pic.image_url||pic.url||''; if (u) { lbImgs.push(u); gh += '<img src="' + u + '" onclick="openLB(' + (lbImgs.length-1) + ')" onerror="this.style.display=\'none\'">'; } });
-            }
+            var gal = document.getElementById('det-gallery'); var body = document.getElementById('det-body'); lbImgs = []; var gh = '';
+            if (p.pictures && p.pictures.length > 0) { p.pictures.forEach(function(pic) { var u = pic.image_url||pic.url||''; if (u) { lbImgs.push(u); gh += '<img src="' + u + '" onclick="openLB(' + (lbImgs.length-1) + ')" onerror="this.style.display=\'none\'">'; } }); }
             gal.innerHTML = gh;
             var h = '<div class="fav-bar"><div class="d-code">' + (p.code||'') + '</div>' + favStarHtml(p.code||'') + '</div>';
-            h += '<div class="d-prod">' + (p.product||'') + '</div>';
-            h += '<div class="d-desc">' + (p.description||'') + '</div>';
+            h += '<div class="d-prod">' + (p.product||'') + '</div><div class="d-desc">' + (p.description||'') + '</div>';
             h += '<span class="d-cat">' + (p.category||'') + '</span>';
-            if (p.attributes && p.attributes.length > 0) {
-                h += '<div class="d-sec"><div class="d-sec-t">Medidas / Atributos</div><div class="d-attr">';
-                p.attributes.forEach(function(a) { h += '<div class="d-attr-i"><div class="d-attr-n">' + (a.name||'') + '</div><div class="d-attr-v">' + (a.value||'') + ' ' + (a.unit||'') + '</div></div>'; });
-                h += '</div></div>';
-            }
-            if (p.components && p.components.length > 0) {
-                h += '<div class="d-sec"><div class="d-sec-t">Contenido del Kit</div>';
-                p.components.forEach(function(c) { h += '<div class="d-comp"><div class="d-comp-c">' + (c.code||'') + '</div><div class="d-comp-p">' + (c.product||'') + '</div></div>'; });
-                h += '</div>';
-            }
+            if (p.attributes && p.attributes.length > 0) { h += '<div class="d-sec"><div class="d-sec-t">Medidas / Atributos</div><div class="d-attr">'; p.attributes.forEach(function(a) { h += '<div class="d-attr-i"><div class="d-attr-n">' + (a.name||'') + '</div><div class="d-attr-v">' + (a.value||'') + ' ' + (a.unit||'') + '</div></div>'; }); h += '</div></div>'; }
+            if (p.components && p.components.length > 0) { h += '<div class="d-sec"><div class="d-sec-t">Contenido del Kit</div>'; p.components.forEach(function(c) { h += '<div class="d-comp"><div class="d-comp-c">' + (c.code||'') + '</div><div class="d-comp-p">' + (c.product||'') + '</div></div>'; }); h += '</div>'; }
             if (p.vehicles && p.vehicles.length > 0) {
-                var vg = {};
-                p.vehicles.forEach(function(v) { var b = v.brand||'Otros'; if (!vg[b]) vg[b] = []; vg[b].push(v); });
+                var vg = {}; p.vehicles.forEach(function(v) { var b = v.brand||'Otros'; if (!vg[b]) vg[b] = []; vg[b].push(v); });
                 h += '<div class="d-sec"><div class="d-sec-t">Veh\u00edculos Compatibles (' + p.vehicles.length + ')</div>';
-                Object.keys(vg).sort().forEach(function(b) {
-                    h += '<div class="d-vg"><div class="d-vg-brand">' + b + '</div>';
-                    vg[b].forEach(function(v) { h += '<div class="d-vg-item">' + (v.master_model||v.model||'') + ' ' + (v.version||'') + ' (' + v.sold_from_year + '-' + v.sold_until_year + ')</div>'; });
-                    h += '</div>';
-                });
+                Object.keys(vg).sort().forEach(function(b) { h += '<div class="d-vg"><div class="d-vg-brand">' + b + '</div>'; vg[b].forEach(function(v) { h += '<div class="d-vg-item">' + (v.master_model||v.model||'') + ' ' + (v.version||'') + ' (' + v.sold_from_year + '-' + v.sold_until_year + ')</div>'; }); h += '</div>'; });
                 h += '</div>';
             }
-            h += getBotonesDetalle(p);
-            body.innerHTML = h;
-            go('detail');
+            h += getBotonesDetalle(p); body.innerHTML = h; go('detail');
         }
         </script>
     </body>
